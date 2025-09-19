@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Luke Wertis">
+<meta name="dcterms.date" content="2025-09-08">
+
+<title>GEDI Cal/Val Workflow</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="CalVal_Workflow_files/libs/clipboard/clipboard.min.js"></script>
+<script src="CalVal_Workflow_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="CalVal_Workflow_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="CalVal_Workflow_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="CalVal_Workflow_files/libs/quarto-html/popper.min.js"></script>
+<script src="CalVal_Workflow_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="CalVal_Workflow_files/libs/quarto-html/anchor.min.js"></script>
+<link href="CalVal_Workflow_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="CalVal_Workflow_files/libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="CalVal_Workflow_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="CalVal_Workflow_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="CalVal_Workflow_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#plot-and-tree-survey-data" id="toc-plot-and-tree-survey-data" class="nav-link active" data-scroll-target="#plot-and-tree-survey-data"><span class="header-section-number">0.1</span> Plot and Tree Survey Data</a></li>
+  <li><a href="#starting-your-new-project" id="toc-starting-your-new-project" class="nav-link" data-scroll-target="#starting-your-new-project"><span class="header-section-number">1</span> Starting Your New Project</a></li>
+  <li><a href="#filling-out-datamatchcolumns.csv" id="toc-filling-out-datamatchcolumns.csv" class="nav-link" data-scroll-target="#filling-out-datamatchcolumns.csv"><span class="header-section-number">2</span> Filling out dataMatchColumns.csv</a></li>
+  <li><a href="#plotdataimportoptions.csv-treedataimportoptions.csv" id="toc-plotdataimportoptions.csv-treedataimportoptions.csv" class="nav-link" data-scroll-target="#plotdataimportoptions.csv-treedataimportoptions.csv"><span class="header-section-number">3</span> plotDataImportOptions.csv &amp; treeDataImportOptions.csv</a></li>
+  <li><a href="#datanew.csv" id="toc-datanew.csv" class="nav-link" data-scroll-target="#datanew.csv"><span class="header-section-number">4</span> dataNew.csv</a></li>
+  <li><a href="#studymetadata.csv" id="toc-studymetadata.csv" class="nav-link" data-scroll-target="#studymetadata.csv"><span class="header-section-number">5</span> studyMetadata.csv</a></li>
+  <li><a href="#datamanipulate.r" id="toc-datamanipulate.r" class="nav-link" data-scroll-target="#datamanipulate.r"><span class="header-section-number">6</span> dataManipulate.R</a></li>
+  <li><a href="#manipulate_tree" id="toc-manipulate_tree" class="nav-link" data-scroll-target="#manipulate_tree"><span class="header-section-number">7</span> Manipulate_tree</a></li>
+  <li><a href="#manipulate_plot" id="toc-manipulate_plot" class="nav-link" data-scroll-target="#manipulate_plot"><span class="header-section-number">8</span> Manipulate_plot</a></li>
+  <li><a href="#manipulate" id="toc-manipulate" class="nav-link" data-scroll-target="#manipulate"><span class="header-section-number">9</span> Manipulate</a>
+  <ul class="collapse">
+  <li><a href="#if-you-created-the-p.geom-values-during-the-manipulate_plot-step-you-can-skip-the-next-step." id="toc-if-you-created-the-p.geom-values-during-the-manipulate_plot-step-you-can-skip-the-next-step." class="nav-link" data-scroll-target="#if-you-created-the-p.geom-values-during-the-manipulate_plot-step-you-can-skip-the-next-step."><span class="header-section-number">9.1</span> <strong><em>If you created the p.geom values during the manipulate_plot step you can skip the next step.</em></strong></a></li>
+  <li><a href="#if-you-already-have-p.geom-information-in-your-starting-data.frame-this-is-where-you-will-pick-back-up-with-the-steps-and-if-you-used-shape_gedi-the-next-few-steps-will-not-apply-to-you." id="toc-if-you-already-have-p.geom-information-in-your-starting-data.frame-this-is-where-you-will-pick-back-up-with-the-steps-and-if-you-used-shape_gedi-the-next-few-steps-will-not-apply-to-you." class="nav-link" data-scroll-target="#if-you-already-have-p.geom-information-in-your-starting-data.frame-this-is-where-you-will-pick-back-up-with-the-steps-and-if-you-used-shape_gedi-the-next-few-steps-will-not-apply-to-you."><span class="header-section-number">9.2</span> <strong><em>If you already have p.geom information in your starting data.frame this is where you will pick back up with the steps and if you used shape_gedi the next few steps will not apply to you.</em></strong></a></li>
+  <li><a href="#now-both-approaches-to-the-manipulate-function-will-share-the-remaining-steps." id="toc-now-both-approaches-to-the-manipulate-function-will-share-the-remaining-steps." class="nav-link" data-scroll-target="#now-both-approaches-to-the-manipulate-function-will-share-the-remaining-steps."><span class="header-section-number">9.3</span> <strong><em>Now both approaches to the manipulate function will share the remaining steps.</em></strong></a></li>
+  </ul></li>
+  <li><a href="#makegedicalval" id="toc-makegedicalval" class="nav-link" data-scroll-target="#makegedicalval"><span class="header-section-number">10</span> makeGEDICalVal</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">GEDI Cal/Val Workflow</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Luke Wertis </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 8, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="plot-and-tree-survey-data" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="plot-and-tree-survey-data"><span class="header-section-number">0.1</span> Plot and Tree Survey Data</h2>
+<ul>
+<li>The objective of this notebook is to go over the steps needed from start to end to get your plot and tree inventory data structured correctly for creating simulated waveforms over GEDI footprint-sized subplots.</li>
+<li>The steps illustrated in this notebook are just a single example of an approach used for this specific site, every site is different and will require different methods, but the end result of every site should result in a standardized result that will be easily carried over to the second step and eventually, seamlessly fit in with a larger collection of sites.</li>
+<li>Overall we are taking steps towards turning your plot into 25m by 25m subplots where all the trees within an individual subplot are correctly pooled together.</li>
+<li>The steps needed to accomplish this objective can be broken down into 10 key steps</li>
+</ul>
+</section>
+<section id="starting-your-new-project" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Starting Your New Project</h1>
+<p><em>Setting up your project folder for the first time.</em></p>
+<ol type="1">
+<li><p>On the command line navigate to the <code>/renv</code> directory within the docker and type <code>R</code>, this will open R on the command line, now set the working directory as the GEDI_CalVal folder, <code>setwd("/workspace/GEDI_CalVal")</code>.</p></li>
+<li><p>Type <code>system(command = "Rscript scripts/createProjectDirectory.R {Your directory name}")</code>, this will create a new folder in the <code>/data</code> folder containing the name that you supplied along with 5 <strong><em>CSV</em></strong> files that we will be filling out and a R script named <strong><em>dataManipulate.R</em></strong>, you can close R and you do not need to save the image.</p></li>
+<li><p>Inside the newly created project directory create an additional folder called <code>/metadata</code> to store your original versions of the data.</p></li>
+<li><p>Make a copy of your tree and plot data, naming them <em>treeData</em> and <em>plotData</em>, ensure that they are in <strong><em>CSV</em></strong> format and put them in the main folder (not in metadata).</p></li>
+</ol>
+</section>
+<section id="filling-out-datamatchcolumns.csv" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Filling out dataMatchColumns.csv</h1>
+<p><em>Defining the variables used in your data and any name changes that need to be made.</em></p>
+<ol type="1">
+<li><p>We will start with the <strong><em>dataMatchColumns.csv</em></strong> file. Open this file, the initial file will contain only the following headers <strong>var_in</strong>, <strong>method</strong>, <strong>unit_in</strong>, <strong>var_out</strong>, <strong>notes</strong>.</p></li>
+<li><p>Follow the <strong><em>variableDefinition.csv</em></strong> (found in the <code>/config</code> folder of the gedicalval directory) variable and units column to ensure your columns match the desired name and format. There is a <em>description</em> column if you are unsure of what to rename your variable.</p></li>
+<li><p><strong>var_in</strong> are the column names that you have in your original <strong><em>plotData.csv</em></strong> and <strong><em>treeData.csv</em></strong>, you will need to <strong><em>supply the name of every column header from both files in the var_in column, be carful to ensure that everything matches exactly</em></strong>.</p></li>
+<li><p>The column <em>method</em> is used when the units that you use are different than the required units which are notated in the <strong>variableDefinition.csv</strong> file. If this is the case, in the same <code>/config</code> folder is a file called <strong><em>variableConversion.csv</em></strong> that you will supply the “conversion” value to, otherwise fill in the cell with <code>NA</code>.</p></li>
+<li><p>The <em>unit_in</em> column is filled out with the units that your original dataset used, if your variable is unitless use <code>NA</code>, the variable abbreviation that is needed is supplied in the <strong><em>variableDefinition.csv</em></strong> file under the header <em>units</em>.</p></li>
+<li><p>The <em>var_out</em> column has the variable names from <strong><em>variableDefinition.csv</em></strong> that correspond with your original column names. If your initial column name matches the required column name, you still need to supply that name.</p></li>
+<li><p>The <em>notes</em> column is there to help you keep tract of what you are doing, there is no need to fill this in with information, however, you need to <strong><em>supply <code>NA</code> to every cell that you do not have anything in them.</em></strong></p></li>
+</ol>
+</section>
+<section id="plotdataimportoptions.csv-treedataimportoptions.csv" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> plotDataImportOptions.csv &amp; treeDataImportOptions.csv</h1>
+<p><em>How R should handle reading in your data.</em></p>
+<ol type="1">
+<li><p>These two files are very similar and only require a few potential changes.</p></li>
+<li><p>If your data has headers (i.e., column names) leave as <code>TRUE</code>.</p></li>
+<li><p>For the 4th row, <em>separator</em>, you need to indicate how your <strong><em>CSV</em></strong> file indicates when a new cell begins, if you are unsure, open your <strong><em>CSV</em></strong> file using notepad, most commonly a “;” is used to separate data, but be sure that this is the case for your data.</p></li>
+</ol>
+</section>
+<section id="datanew.csv" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> dataNew.csv</h1>
+<p><em>Variables missing from your data that need to be included.</em></p>
+<ol type="1">
+<li><p>This file has a similar effect as <strong><em>dataMatchColumn.csv</em></strong> but allows for additional information to be added that might be missing from the original data.</p></li>
+<li><p>You will fill out <strong>newVariable</strong> for the variable name and <strong>newValue</strong> for the value that you want to give the variable.</p></li>
+<li><p>In situations when you need to make minor changes to the data that you do not want to handle in the dataManipulate you can handle here as well. <strong><em>For example if you need to change the pft.name for each plot in the data you can add plot under the lookupVariable header, the plot number under lookupValue, the column name under newVariable, and the value you want it to have under the newValue column.</em></strong></p></li>
+<li><p>Keep in mind that this is applied post <strong><em>dataManipulate.R</em></strong> has been run so the newVariable value needs to match the standardized version we use instead of the original name.</p></li>
+<li><p>Make sure that any cell that does not have information in it has <code>NA</code> in the cell.</p></li>
+</ol>
+</section>
+<section id="studymetadata.csv" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> studyMetadata.csv</h1>
+<p><em>Information on the data acquisition.</em></p>
+<ol type="1">
+<li>This file should be filled out to contain the information about the project itself.</li>
+</ol>
+</section>
+<section id="datamanipulate.r" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> dataManipulate.R</h1>
+<p><em>Script for manipulating plot and tree data. This is meant to be handled on your personal workspace nad not inside the docker for your ease of use.</em></p>
+<ol type="1">
+<li><p>This script is subdivided into <strong>manipulate</strong>, <strong>manipulate_plot</strong>, and <strong>manipulate_tree</strong>. You will need to start with either the plot or tree functions first as the manipulate function is applied to the combined plot and tree data.</p></li>
+<li><p>If you are unsure of the functions to use then reference, <code>R/geometry.R</code> which contains all of the functions for manipulating spatial data and uses the library <code>terra</code>. <code>R/metadata.R</code>, <code>R/support.R</code>, and <code>R/steps.R</code> supply the specialized functions used to load the data in the format we need it in.</p></li>
+<li><p>One thing to note is that to be efficent with memory, a single MODIS PFT raster was included, which is for the year 2017, the file can be found at <code>/extra/MODIS_pft</code>. If you need a different MODIS year, replace the one provided with the verion you need.</p></li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"~/GEDI_CalVal"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/metadata.R"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/support.R"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/steps.R"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/geometry.R"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BIOMASS)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xml2)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rlang)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="manipulate_tree" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Manipulate_tree</h1>
+<p><em>Formatting individual trees to meet GEDI cal/val expectations.</em></p>
+<ol type="1">
+<li><p><strong><em>Every project is going to be different, make sure you have an understanding of how the data was collected and reported</em></strong>, knowing this will help identify issues in the data that you will be able to address that is not listed below. There are bound to be cases where you will need to rename column values and address issues within the data, this is up to you to handle correctly, just make sure that you are reviewing your alterations.</p></li>
+<li><p>You will want to read in the <strong><em>treeDataImportOptions.csv</em></strong> file, using <code>read_data_raw_import_options()</code>, that you created earlier and your <strong><em>treeData.csv</em></strong> file, using <code>read_csv()</code>. If there are multiple files for this project, remember to uniquely name them and combine the tree data.</p></li>
+<li><p>The tree data needs to have individual tree information which includes the location, if there is a separate file that contains the location of the individual trees, this is the place to read it in and combine with the tree data.</p></li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the file that explains how to read in our tree data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>opts <span class="ot">&lt;-</span> <span class="fu">read_data_raw_import_options</span>(<span class="st">"~/GEDI_CalVal/data/A_Practice/treeDataImportOptions.csv"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load in the tree data</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>treeData<span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/GEDI_CalVal/data/A_Practice/treeData2020-09.csv"</span>, <span class="at">header=</span>opts<span class="sc">$</span>header, <span class="at">skip=</span>opts<span class="sc">$</span>skip, <span class="at">na.strings=</span>opts<span class="sc">$</span>na.strings)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure there are no duplicated columns </span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>treeData <span class="ot">&lt;-</span> treeData[<span class="sc">!</span><span class="fu">duplicated</span>(treeData[,<span class="fu">c</span>(<span class="st">'individualID'</span>, <span class="st">'eventID'</span>)]),]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>treeLocation <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/GEDI_CalVal/data/A_Practice/treeLocation.csv"</span>, <span class="at">header=</span>opts<span class="sc">$</span>header, <span class="at">skip=</span>opts<span class="sc">$</span>skip, <span class="at">na.strings=</span>opts<span class="sc">$</span>na.strings)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>treeLocation <span class="ot">&lt;-</span> treeLocation[<span class="sc">!</span><span class="fu">duplicated</span>(treeLocation[,<span class="st">'individualID'</span>], <span class="at">fromLast=</span><span class="cn">TRUE</span>),]</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(treeData, treeLocation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<ol start="4" type="1">
+<li>Next ensure that your <strong>DBH measurements</strong> are correct, check for missing values or obviously incorrect measurements. Amend any issues here, any way you choose. Additionally, if you have a minimum DBH that you are working with make sure to remove any cases with a lower value.</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove stems under 10cm. There are multiple sub-subplots with smaller stems that we are excluding</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> raw[raw<span class="sc">$</span>stemDiameter <span class="sc">&gt;=</span> <span class="dv">10</span>,]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct an DBH measurement. DBH and height of DBH measurement switched</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>stemDiameter[raw<span class="sc">$</span>individualID<span class="sc">==</span><span class="st">'NEON.PLA.D16.ABBY.00862'</span> <span class="sc">&amp;</span> raw<span class="sc">$</span>eventID<span class="sc">==</span><span class="st">'vst_ABBY_2016'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>individualID)]<span class="ot">&lt;-</span>raw<span class="sc">$</span>measurementHeight[raw<span class="sc">$</span>individualID<span class="sc">==</span><span class="st">'NEON.PLA.D16.ABBY.00862'</span> <span class="sc">&amp;</span> raw<span class="sc">$</span>eventID<span class="sc">==</span><span class="st">'vst_ABBY_2016'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>individualID)]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>measurementHeight[raw<span class="sc">$</span>individualID<span class="sc">==</span><span class="st">'NEON.PLA.D16.ABBY.00862'</span> <span class="sc">&amp;</span> raw<span class="sc">$</span>eventID<span class="sc">==</span><span class="st">'vst_ABBY_2016'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>individualID)] <span class="ot">&lt;-</span> <span class="dv">130</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<ol start="5" type="1">
+<li>If your crown diameter was measured, fill that in for <code>raw$c.w</code></li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crown diameter was measured for a subset of trees.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>c.w <span class="ot">&lt;-</span> <span class="fu">apply</span>(<span class="fu">cbind</span>(raw<span class="sc">$</span>maxCrownDiameter, raw<span class="sc">$</span>ninetyCrownDiameter), <span class="dv">1</span>, mean, <span class="at">na.rm=</span>T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<ol start="6" type="1">
+<li><strong><em>Fill out the status value for your data (i.e., <code>raw$status</code>), this receives a value of 0 if it is dead and a value of 1 if the tree is alive</em></strong>. Make sure to reference the column you have that information in and translate to the binary system needed in the status column.</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set live-dead status</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>status <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>status[<span class="fu">grep</span>(<span class="st">'Live'</span>, raw<span class="sc">$</span>plantStatus)] <span class="ot">&lt;-</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<ol start="7" type="1">
+<li>Next is formatting the data, use the function <code>as.Date()</code> and supply the format that your date is in.</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Format date</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>tree.date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(raw<span class="sc">$</span>date, <span class="at">format=</span><span class="st">'%Y-%m-%d'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<ol start="8" type="1">
+<li><strong><em>Next we want to format <code>raw$species</code>, this column will need both the genus and species separated by a space</em></strong>. Any row missing either genus or species receives an NA value for their species. Depending on how the tree data was compiled <strong><em>you may need to read in the species information</em></strong>, if this is the case, remember to use <code>read_data_raw_import_options()</code> to read in the instructions for how to handle this particular <strong><em>csv</em></strong> file and <code>read_csv()</code> for the <strong><em>speciesData</em></strong> file. <strong><em>Remember to combine the tree data with the species data.</em></strong></li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove authority from species names, and set unknown species to NA</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>species <span class="ot">&lt;-</span> <span class="fu">sapply</span>(raw<span class="sc">$</span>scientificName, <span class="cf">function</span>(x){<span class="fu">paste</span>(<span class="fu">unlist</span>(<span class="fu">strsplit</span>(x, <span class="st">" "</span>))[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">collapse=</span><span class="st">" "</span>)})</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>species[raw<span class="sc">$</span>taxonRank<span class="sc">==</span><span class="st">"genus"</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>taxonRank)] <span class="ot">&lt;-</span> <span class="fu">sapply</span>(raw<span class="sc">$</span>species[raw<span class="sc">$</span>taxonRank<span class="sc">==</span><span class="st">"genus"</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>taxonRank)], <span class="cf">function</span>(x){<span class="fu">unlist</span>(<span class="fu">strsplit</span>(x, <span class="st">" "</span>))[<span class="dv">1</span>]})</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>species[raw<span class="sc">$</span>species<span class="sc">==</span><span class="st">"NA NA"</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>species)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>species[raw<span class="sc">$</span>species<span class="sc">==</span><span class="st">"Unknown plant"</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>species)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add species data to the tree data. Includes allom.key</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>opts <span class="ot">&lt;-</span> <span class="fu">read_data_raw_import_options</span>(<span class="st">"~/GEDI_CalVal/data/A_Practice/speciesDataImportOptions.csv"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>species.raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/GEDI_CalVal/data/A_Practice/speciesData.csv"</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                          <span class="at">header=</span>opts<span class="sc">$</span>header, <span class="at">skip=</span>opts<span class="sc">$</span>skip, <span class="at">na.strings=</span>opts<span class="sc">$</span>na.strings)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">merge</span>(raw, species.raw, <span class="at">by.x=</span><span class="st">'taxonID'</span>, <span class="at">by.y=</span>opts<span class="sc">$</span>key, <span class="at">all.x=</span><span class="cn">TRUE</span>, <span class="at">all.y=</span><span class="cn">FALSE</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>species <span class="ot">&lt;-</span> raw<span class="sc">$</span>ScientificName</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>species[raw<span class="sc">$</span>species<span class="sc">==</span><span class="st">"NA NA"</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>species)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<ol start="9" type="1">
+<li><p>If you have allometry information in a separate file read that data in now using <code>read_csv()</code>. <strong><em>This stage is up to you on how to handle the allometry information, make sure your allom.key and species names in your working data are the same as the allometric dataframe</em></strong>. The methods for handling this information is going to vary based on the project but the goal is to have the allom.key column correctly align with the tree information.</p></li>
+<li><p>If your tree data is missing allom.key information because of species missing, replace the <code>NA</code> with the most common allom.key value in the project. You can determine the most common allom.key value manually or through the use of a function.</p></li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mode function</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>getmode <span class="ot">&lt;-</span> <span class="cf">function</span>(v) {</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    uniqv <span class="ot">&lt;-</span> <span class="fu">unique</span>(v)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    uniqv[<span class="fu">which.max</span>(<span class="fu">tabulate</span>(<span class="fu">match</span>(v, uniqv)))]</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># For trees with missing allom.key because species is missing, replace with the most common allom.key for the project</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>allom.key[<span class="fu">is.na</span>(raw<span class="sc">$</span>allom.key) <span class="sc">&amp;</span> <span class="fu">is.na</span>(raw<span class="sc">$</span>species)] <span class="ot">&lt;-</span> <span class="fu">getmode</span>(raw<span class="sc">$</span>allom.key[<span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>allom.key)]) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<ol start="11" type="1">
+<li>Create a new column named <strong>key</strong> which is the combination of <strong>plotID</strong> and <strong>eventID</strong> separated by a “_”.</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine plot and survey for key to combine with plot data</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>key <span class="ot">&lt;-</span> <span class="fu">paste</span>(raw<span class="sc">$</span>plotID, raw<span class="sc">$</span>eventID, <span class="at">sep=</span><span class="st">'_'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="manipulate_plot" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Manipulate_plot</h1>
+<p><em>Formatting plot to prepare for GEDI footprint sized subplot creation.</em></p>
+<ol type="1">
+<li><p><strong><em>Every project is going to be different, make sure you have an understanding of how the data was collected and reported</em></strong>, knowing this will help identify issues in the data that you will be able to address that is not listed below. There are bound to be cases where you will need to rename column values and address issues within the data, this is up to you to handle correctly, just make sure that you are reviewing your alterations.</p></li>
+<li><p>You will load in the <strong><em>plotDataImportOptions.csv</em></strong> and <strong><em>plotData.csv</em></strong> in the same manner as the tree data. Use <code>read_data_raw_import_options()</code> to read in the <strong><em>plotDataImportOptions.csv</em></strong> and <code>read_csv()</code> for the <strong><em>treeData.csv</em></strong>. <strong><em>If you are combining multiple files into a single data frame make sure that all data frames have the same number of columns and that they are named the same.</em></strong> You can manipulate the columns during this process. Once the data frames are all matching join them together.</p></li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>opts <span class="ot">&lt;-</span> <span class="fu">read_data_raw_import_options</span>(<span class="st">"~/GEDI_CalVal/data/A_Practice/plotDataImportOptions.csv"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>raw<span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/GEDI_CalVal/data/A_Practice/plotData2020-08.csv"</span>, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">header=</span>opts<span class="sc">$</span>header, <span class="at">skip=</span>opts<span class="sc">$</span>skip, <span class="at">na.strings=</span>opts<span class="sc">$</span>na.strings)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<ol start="3" type="1">
+<li>Next is formatting the data, use the function <code>as.Date()</code> and supply the format that your date is in, make sure that this is the same format as the <strong><em>treeData.csv</em></strong> was in.</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Format date</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(raw<span class="sc">$</span>date, <span class="at">format=</span><span class="st">'%Y-%m-%d'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<ol start="4" type="1">
+<li>Assign the date and name of the lidar project to the appropriate projects, using <strong>l.date</strong> for the year of the lidar collection and <strong>l.project</strong> for the unique name of the lidar collection. Also ensure that <strong>l.epsg</strong> is in the correct format.</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign lidar date and project</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>l.date[raw<span class="sc">$</span>eventID<span class="sc">==</span><span class="st">'vst_ABBY_2020'</span>] <span class="ot">&lt;-</span> <span class="dv">2021</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>l.project[raw<span class="sc">$</span>eventID<span class="sc">==</span><span class="st">'vst_ABBY_2020'</span>] <span class="ot">&lt;-</span> <span class="st">'neon_abby2021'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<ol start="5" type="1">
+<li>If <strong>p.epsg</strong>, <strong>Easting</strong>, and <strong>Northing</strong> are not provided in the plotData, there are a few ways to fix the issue.
+<ul>
+<li>Use <code>get_utmwgs84_epsg()</code> to obtain the epsg code, based on yout lon/lat information.</li>
+<li>If you know your starting epsg (i.e., <strong>src_epsg</strong>), use the p.epsg from <code>convert_projection()</code> to get the <strong>Easting</strong> and <strong>Northing</strong> infromation.</li>
+<li>If your lon/lat information is based on EPSG:4326, use <code>geo2utm()</code> where you only need to provide the lon and lat.</li>
+</ul></li>
+</ol>
+<p>Both methods for obtaining <strong>Easting</strong> and <strong>Northing</strong> return a list, meaning Position[1,] represents <strong>Easting</strong> and Position[2,] is <strong>Northing</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>p.epsg <span class="ot">&lt;-</span> <span class="fu">get_utmwgs84_epsg</span>(raw<span class="sc">$</span>decimalLongitude, raw<span class="sc">$</span>decimalLatitude)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># With a known starting epsg and converted UTM epsg</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>utmcoords <span class="ot">&lt;-</span> <span class="fu">mapply</span>(convert_projection,raw<span class="sc">$</span>decimalLongitude,raw<span class="sc">$</span>decimalLatitude,<span class="dv">4326</span>,raw<span class="sc">$</span>p.epsg)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># If you are using EPSG:4326 and converting to UTM</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>utmcoords <span class="ot">&lt;-</span> <span class="fu">mapply</span>(geo2utm,raw<span class="sc">$</span>decimalLongitude,raw<span class="sc">$</span>decimalLatitude)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<ol start="6" type="1">
+<li><p>If you need to manually manipulate the location of the plots, this is the place to handle that, this can vary drastically between projects so it is up to you to determine the best way to handle this potential step.</p></li>
+<li><p>Create a new column named key which is the combination of <strong>plotID</strong> and <strong>eventID</strong> separated by a “_”.</p></li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine plot and survey for key to combine with tree data</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>key <span class="ot">&lt;-</span> <span class="fu">paste</span>(raw<span class="sc">$</span>plotID, raw<span class="sc">$</span>eventID, <span class="at">sep=</span><span class="st">'_'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="manipulate" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Manipulate</h1>
+<p><em>Creation of subplots and correct assignment of trees to associated plots.</em></p>
+<p>This step uses a combined <strong><em>treeData.csv</em></strong> and <strong><em>plotData.csv</em></strong> and the join step takes place during the <code>makeGEDICalVal</code> script, but to make sure your steps work correctly you can join your <strong><em>plotData.csv</em></strong> and <strong><em>treeData.csv</em></strong> together after you have tested them in their individual manipulate functions.</p>
+<section id="if-you-created-the-p.geom-values-during-the-manipulate_plot-step-you-can-skip-the-next-step." class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="if-you-created-the-p.geom-values-during-the-manipulate_plot-step-you-can-skip-the-next-step."><span class="header-section-number">9.1</span> <strong><em>If you created the p.geom values during the manipulate_plot step you can skip the next step.</em></strong></h2>
+<ol type="1">
+<li><p>If you have a shapefile of the plots read them in using the function <code>vect()</code>. Now we will need to create subplots diving up the larger plot to match the dimensions of a GEDI footprint. To accomplish this we will use the function <code>polygonchopper()</code>. This function requires an understanding of the plot data and is run in a <code>mapply()</code> function so that each plot is run separately. I will attempt to breakdown how to set up this function but again this will vary based on your data. For this function, you will need to supply 7 different values.</p>
+<ul>
+<li><strong>polygon:</strong> this is comprised of the individual plots that make up the shapefile, you may only be concerned with a few of the total plots in which case you will need to subset the data, but assuming you are using every geometry in the shapefile you can use <code>lapply(seq_len(nrow(shape)), function(i) shape[i, ])</code> with shape being the name of the shapefile.</li>
+<li><strong>ID:</strong> This should be the unique identifier that distinguishes every plot apart from each other and should be in data frame format.</li>
+<li><strong>PlotStatus:</strong> This has the value of plot or subplot status of the individual geometries, if this is not already in the shapefile data you will need to supply it in the function through the use of a list or prior to this function.</li>
+<li><strong>Start_side:</strong> this informs the function on how it will move through the geometries and is also supplied in the form of a list.</li>
+<li><strong>Dimension:</strong> This should be the same regardless of the plot and should be a value of 25, representing the diameter of the GEDI footprint.</li>
+<li><strong>asGrid:</strong> This should remain as TRUE</li>
+<li><strong>proj4string:</strong> this is the crs that will be used on the final output, this should have the same crs as the shapefile, you can use crs(shape) to automate this.</li>
+</ul></li>
+</ol>
+<p>The result of this function is a list of spatialVectors one for each geometry in the data, we will call <strong>shape_gedi</strong>. Make sure to remove any empty spatialvectors from the list, then combine the list creating a single spatialvector. To ensure only complete subplots are retained you will need to compare the original shape to the output of the polygonChopper.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is only to allow for the polygonChopper work flow to be demonstrated. </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"~/GEDI_CalVal/data/A_Practice/shape_gedi_raw.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import shapefiles for plots are read WKT</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>shape <span class="ot">&lt;-</span> <span class="fu">vect</span>(<span class="st">'~/GEDI_CalVal/data/A_Practice/shapeFiles/AND_A01_2013_050x050m.shp'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide plots in shapefile into GEDI footprint size rectangles so that when subplot is aggregated with full plot biomass is unique for each footprint</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>shape_gedi <span class="ot">&lt;-</span> <span class="fu">mapply</span>(<span class="at">FUN=</span>polygonChopper, <span class="at">polygon =</span> <span class="fu">lapply</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(shape)), <span class="cf">function</span>(i) shape[i, ]), </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ID =</span> <span class="fu">as.data.frame</span>(shape)<span class="sc">$</span>FullId, </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">PlotStatus =</span> <span class="fu">as.data.frame</span>(shape)<span class="sc">$</span>PSFlag, </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">start_side =</span> <span class="fu">rep</span>(<span class="st">"topright"</span>,<span class="dv">40</span>),</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">MoreArgs =</span> <span class="fu">list</span>(<span class="at">dimension=</span><span class="dv">25</span>,  <span class="at">asGrid=</span>T, <span class="at">proj4string =</span> <span class="fu">crs</span>(shape)))</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Removes empty elements of the list             </span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>shape_gedi <span class="ot">&lt;-</span> shape_gedi[<span class="sc">!</span><span class="fu">unlist</span>(<span class="fu">lapply</span>(shape_gedi, rlang<span class="sc">::</span>is_empty))]</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Combines all elements of the list into a single spatial vector</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>shape_gedi <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, shape_gedi)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an unique ID for each plot</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>shape_gedi<span class="sc">$</span>plotID <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"S"</span>,<span class="st">"B"</span>, shape_gedi<span class="sc">$</span>newID,<span class="at">fixed=</span>T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>polygon uses each row of data in the spatial vector “shape” ID is the column that specifies the naming scheme the subplots will be named based on. This can take a while to run.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>shape <span class="ot">&lt;-</span> <span class="fu">vect</span>(<span class="st">'~/GEDI_CalVal/data/A_Practice/shapeFiles/AND_A01_2013_050x050m.shp'</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide plots in shapefile into GEDI footprint size rectangles so that when subplot is aggregated with full plot biomass is unique for each footprint</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>shape_gedi <span class="ot">&lt;-</span> <span class="fu">mapply</span>(<span class="at">FUN=</span>polygonChopper, </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">polygon =</span> <span class="fu">lapply</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(shape)), <span class="cf">function</span>(i) shape[i, ]), </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ID =</span> <span class="fu">as.data.frame</span>(shape)<span class="sc">$</span>FullId, </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">PlotStatus =</span> <span class="fu">as.data.frame</span>(shape)<span class="sc">$</span>PSFlag, </span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">start_side =</span> <span class="fu">rep</span>(<span class="st">"topright"</span>,<span class="dv">40</span>),</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">MoreArgs =</span> <span class="fu">list</span>(<span class="at">dimension=</span><span class="dv">25</span>,  <span class="at">asGrid=</span>T, <span class="at">proj4string =</span> <span class="fu">crs</span>(shape)))</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>shape_gedi <span class="ot">&lt;-</span> shape_gedi[<span class="sc">!</span><span class="fu">unlist</span>(<span class="fu">lapply</span>(shape_gedi, rlang<span class="sc">::</span>is_empty))]</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>shape_gedi <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, shape_gedi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="CalVal_Workflow_files/figure-html/Plot%20vs.%20GEDI%20sized%20subplots-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>An example plot showing the change made from the original plot shape to the GEDI sized subplots after the polygonChopper step</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li><p>We want to make sure the tree points fall within the subplots, any points falling outside the bounds of the subplot boundaries will need to be removed, you can use the function <code>terra::relate(relation = “within” -or- "intersects")</code> to make select only the trees in the polygons.</p></li>
+<li><p>Using <strong>shape_gedi</strong>, assign the plot+tree dataset with the appropriate ID based on which geometry each row belongs to.</p></li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert trees into a spatial vector</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>tree_loc <span class="ot">&lt;-</span> <span class="fu">vect</span>(raw<span class="sc">%&gt;%</span>dplyr<span class="sc">::</span><span class="fu">select</span>(UTM.Easting,UTM.Northing), <span class="at">geom =</span> <span class="fu">c</span>(<span class="st">"UTM.Easting"</span>, <span class="st">"UTM.Northing"</span>), <span class="at">crs =</span> <span class="fu">crs</span>(shape))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Only keep plots with trees</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>plot_tree_intersect  <span class="ot">&lt;-</span> shape_gedi[tree_loc] <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>()</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>plot_tree_intersect <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">relate</span>(shape_gedi, tree_loc, <span class="at">relation =</span> <span class="st">"intersects"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">t</span>() <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>()</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigns the TRUE/FALSE data.frame the name of the plots to determine which plot has tree(s) within it.</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(plot_tree_intersect) <span class="ot">&lt;-</span> shape_gedi<span class="sc">$</span>ID</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Converts the data.frame into a matrix</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>plot_tree_intersect <span class="ot">&lt;-</span> plot_tree_intersect <span class="sc">%&gt;%</span> <span class="fu">as.matrix</span>()</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Removes rows of raw not found in plot_tree_intersect</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> raw[<span class="fu">apply</span>(plot_tree_intersect, <span class="dv">1</span>, any),]</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Removes rows of plot_tree_intersect without a tree within the plot</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>plot_tree_intersect <span class="ot">&lt;-</span> plot_tree_intersect[<span class="fu">apply</span>(plot_tree_intersect, <span class="dv">1</span>, any),]</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigns the newID with the value of the plot the tree is found within</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">colnames</span>(plot_tree_intersect)){</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>   raw<span class="sc">$</span>newID[plot_tree_intersect[,i]] <span class="ot">&lt;-</span> i</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="CalVal_Workflow_files/figure-html/Plot%20vs.%20GEDI%20subplots%20side%20by%20side-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Showing the difference between the original plot and GEDI subplots when the stem map is overlayed. This stem map corresponds with the m.agb metric that will be generated at the end of this process, with the m.agb coming from the individual stems within each individual grid.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Next we will need to find the lon and lat of the center for each of the “plot” geometries of <strong>shape_gedi</strong> and turn this into a data.frame. we will then make sure the lon/lat are in degrees and not UTM, if they are in UTM use <code>epsg2geo()</code>, converting to the epsg you specified in your .csv file. The output of the previous function will be matrix, we will want this as a data.frame along with the <strong>plotID</strong> for each lon/lat combination. This will then be merged with the <strong>shape_gedi</strong> data resulting in two additional columns, <strong>longitude</strong> and <strong>latitude</strong>.</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Find centroid of plot and calculate longitude and latitude</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>cent <span class="ot">&lt;-</span> <span class="fu">centroids</span>(shape_gedi) <span class="sc">%&gt;%</span> <span class="fu">crds</span>() </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Converts to a data frame</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>cent <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(cent)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We only want to retain the plots in this case, removing the subplots</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>cent <span class="ot">&lt;-</span> cent[shape_gedi<span class="sc">$</span>PlotStatus <span class="sc">==</span> <span class="st">'plot'</span>,]</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Supplying the x, y, and EPSG we need our lon/lat coordinates in</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>cent <span class="ot">&lt;-</span> <span class="fu">mapply</span>(epsg2geo,cent[,<span class="dv">1</span>],cent[,<span class="dv">2</span>],<span class="dv">32723</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame from the multiple data sources</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>cent <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">PlotID =</span> (shape_gedi[shape_gedi<span class="sc">$</span>PlotStatus<span class="sc">==</span><span class="st">'plot'</span>])<span class="sc">$</span>PlotID, <span class="at">longitude=</span>cent[<span class="dv">1</span>,], <span class="at">latitude =</span> cent[<span class="dv">2</span>,], <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Bring in the lon/lat information to the original spatial vector</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>shape_gedi <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">merge</span>(<span class="at">x=</span>shape_gedi[<span class="fu">c</span>(<span class="st">"newID"</span>, <span class="st">"oldID"</span>, <span class="st">"PlotStatus"</span>, <span class="st">"PlotID"</span>)], <span class="at">y=</span> cent, <span class="at">by=</span><span class="st">'PlotID'</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="CalVal_Workflow_files/figure-html/GEDI%20subplots%20with%20the%20center%20point-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>cent represents the location where the simulated GEDI waveform will be centered.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li><p>We then need to obtain the WKT for both <strong>p.geom</strong> and <strong>sp.geom</strong>.</p></li>
+<li><p>Merge <strong>shape_gedi</strong> with the plot+tree data.</p></li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add p.geom and sp.geom from shapefile</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plotID are the shape_gedi rows with a Plotstatus value of plot and we pull those specific rows plotID value</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>p.geom <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">'PlotID'</span> <span class="ot">=</span> <span class="fu">values</span>(shape_gedi[shape_gedi<span class="sc">$</span>PlotStatus <span class="sc">==</span><span class="st">'plot'</span>])[<span class="st">"PlotID"</span>],</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># p.geom is the WKT of the geometry for the shape_gedi rows PlotStatus with a value of plot  </span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'p.geom'</span> <span class="ot">=</span> <span class="fu">geom</span>(shape_gedi, <span class="at">wkt=</span>T, <span class="at">list=</span>T)[shape_gedi<span class="sc">$</span>PlotStatus <span class="sc">==</span><span class="st">'plot'</span>], <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># obtain all the newID and sp.geom WKT from the shape_gedi </span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>sp.geom <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">'newID'</span> <span class="ot">=</span> shape_gedi<span class="sc">$</span>newID,</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>                      <span class="st">'sp.geom'</span> <span class="ot">=</span> <span class="fu">geom</span>(shape_gedi, <span class="at">wkt=</span>T, <span class="at">list=</span>T), <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># combine the p.geom and sp.geom with the shape_gedi data</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>shape_gedi <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">merge</span>(<span class="at">x=</span>shape_gedi[<span class="fu">c</span>(<span class="st">"newID"</span>, <span class="st">"oldID"</span>, <span class="st">"PlotStatus"</span>, <span class="st">"PlotID"</span>)], <span class="at">y=</span> p.geom, <span class="at">by=</span><span class="st">'PlotID'</span>)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>shape_gedi <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">merge</span>(<span class="at">x=</span>shape_gedi[<span class="fu">c</span>(<span class="st">"newID"</span>, <span class="st">"oldID"</span>, <span class="st">"PlotStatus"</span>, <span class="st">"PlotID"</span>, <span class="st">"p.geom"</span>)], <span class="at">y=</span> sp.geom, <span class="at">by=</span><span class="st">'newID'</span>)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ensure the newID is a character</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>shape_gedi<span class="sc">$</span>newID <span class="ot">&lt;-</span> <span class="fu">as.character</span>(shape_gedi<span class="sc">$</span>newID)</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Fixing issues with duplicated column names</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(raw)[<span class="fu">duplicated</span>(<span class="fu">colnames</span>(raw))] <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">colnames</span>(raw)[<span class="fu">duplicated</span>(<span class="fu">colnames</span>(raw))], <span class="st">'.y'</span>, <span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="co"># add in the shape_gedi data to the treeData+plotData data frame</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">merge</span>(<span class="at">x =</span> shape_gedi, <span class="at">y =</span> raw, <span class="at">by =</span> <span class="st">"newID"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>()    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="if-you-already-have-p.geom-information-in-your-starting-data.frame-this-is-where-you-will-pick-back-up-with-the-steps-and-if-you-used-shape_gedi-the-next-few-steps-will-not-apply-to-you." class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="if-you-already-have-p.geom-information-in-your-starting-data.frame-this-is-where-you-will-pick-back-up-with-the-steps-and-if-you-used-shape_gedi-the-next-few-steps-will-not-apply-to-you."><span class="header-section-number">9.2</span> <strong><em>If you already have p.geom information in your starting data.frame this is where you will pick back up with the steps and if you used shape_gedi the next few steps will not apply to you.</em></strong></h2>
+<ol type="1">
+<li>If tree locations are represented by anything other than the exact location of where the tree is located we need to make the proper adjustments to update the tree locations. We need to convert our lon/lat data into UTM.</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"~/GEDI_CalVal/data/A_Practice/p_geom_raw.csv"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting lat/lon into UTM list</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>utmcoord <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">mapply</span>(geo2utm, raw<span class="sc">$</span>decimalLongitude, raw<span class="sc">$</span>decimalLatitude))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Updating tree locations based on a combination of site-specific measurements</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>x <span class="ot">&lt;-</span> utmcoord[,<span class="dv">1</span>] <span class="sc">+</span> raw<span class="sc">$</span>stemDistance <span class="sc">*</span> <span class="fu">sin</span>((raw<span class="sc">$</span>stemAzimuth)<span class="sc">*</span>pi<span class="sc">/</span><span class="dv">180</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>y <span class="ot">&lt;-</span> utmcoord[,<span class="dv">2</span>] <span class="sc">+</span> raw<span class="sc">$</span>stemDistance <span class="sc">*</span> <span class="fu">cos</span>((raw<span class="sc">$</span>stemAzimuth)<span class="sc">*</span>pi<span class="sc">/</span><span class="dv">180</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<ol start="2" type="1">
+<li>Even if we did not need to update the tree locations we will still need to convert the lon/lat into UTM to obtain the p.geom for each plot.</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>utmcoord <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">mapply</span>(geo2utm, raw<span class="sc">$</span>decimalLongitude, raw<span class="sc">$</span>decimalLatitude))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="do">## plot geometry function, used below</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>write.p.geom <span class="ot">&lt;-</span> <span class="cf">function</span>(coord.x, coord.y, dim){</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    sw.x <span class="ot">&lt;-</span> coord.x <span class="sc">-</span> dim<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    sw.y <span class="ot">&lt;-</span> coord.y <span class="sc">-</span> dim<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    nw.x <span class="ot">&lt;-</span> coord.x <span class="sc">-</span> dim<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    nw.y <span class="ot">&lt;-</span> coord.y <span class="sc">+</span> dim<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    ne.x <span class="ot">&lt;-</span> coord.x <span class="sc">+</span> dim<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    ne.y <span class="ot">&lt;-</span> coord.y <span class="sc">+</span> dim<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    se.x <span class="ot">&lt;-</span> coord.x <span class="sc">+</span> dim<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    se.y <span class="ot">&lt;-</span> coord.y <span class="sc">-</span> dim<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    poly <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">vect</span>(<span class="fu">as.character</span>(<span class="fu">paste</span>(<span class="st">'POLYGON(('</span>, sw.x, sw.y, <span class="st">','</span>,</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>                                           nw.x, nw.y, <span class="st">','</span>,</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>                                           ne.x, ne.y, <span class="st">','</span>,</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>                                           se.x, se.y, <span class="st">','</span>,</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>                                           sw.x, sw.y, <span class="st">'))'</span>, <span class="at">sep =</span> <span class="st">' '</span>)))</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">#p.geom &lt;- rgeos::writeWKT(poly)</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    p.geom <span class="ot">&lt;-</span> <span class="fu">geom</span>(poly, <span class="at">wkt=</span>T, <span class="at">list=</span>T)</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating WKT for the plot geometry</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>p.geom <span class="ot">&lt;-</span> <span class="fu">mapply</span>(write.p.geom, utmcoord[,<span class="dv">1</span>], utmcoord[,<span class="dv">2</span>], <span class="at">MoreArgs =</span> <span class="fu">list</span>(<span class="at">dim=</span><span class="dv">40</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<ol start="3" type="1">
+<li>If your <strong>totalSampledAreaTrees</strong> is 400 than this represents a single 20 x 20m subplot which is our ideal plot size, they will receive a subplot value of “center” if the <strong>totalSampledAreaTrees</strong> is a 40m x 40m plot than it will need to be divided into quadrants. This applies for all plot sizes, you need to understand the dimensions of your plot to accurately segment the plots into 20x20m subplots. The subplot values other than <strong>center</strong> can be <strong>sw</strong>, <strong>se</strong>, <strong>ne</strong>, <strong>nw</strong>.</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Within 40x40 m plot, there are 1-2 20x20m subplots. </span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Single subplots are in the center of the plot.</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># If there are two subplots, they are in two quadrants of the plot.</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>subplot <span class="ot">&lt;-</span> raw<span class="sc">$</span>subplotID</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>subplot[raw<span class="sc">$</span>totalSampledAreaTrees<span class="sc">==</span><span class="dv">400</span>] <span class="ot">&lt;-</span> <span class="st">'center'</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>subplot[raw<span class="sc">$</span>subplot<span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">31</span>)] <span class="ot">&lt;-</span> <span class="st">'sw'</span> <span class="co"># This requires a knowledge of the plots in your data</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>subplot[raw<span class="sc">$</span>subplot<span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">23</span>,<span class="dv">32</span>)] <span class="ot">&lt;-</span> <span class="st">'se'</span> <span class="co"># This requires a knowledge of the plots in your data</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>subplot[raw<span class="sc">$</span>subplot<span class="sc">%in%</span><span class="fu">c</span>(<span class="dv">39</span>,<span class="dv">40</span>)] <span class="ot">&lt;-</span> <span class="st">'nw'</span> <span class="co"># This requires a knowledge of the plots in your data</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>subplot[raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="dv">41</span>] <span class="ot">&lt;-</span> <span class="st">'ne'</span> <span class="co"># This requires a knowledge of the plots in your data</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Create subplot geometries for each subplot group, you might not have to do this, again understand the data you are working with </span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>sp.geom[raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="st">'sw'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>subplot)] <span class="ot">&lt;-</span> <span class="fu">mapply</span>(write.p.geom, utmcoord[,<span class="dv">1</span>][raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="st">'sw'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>subplot)]<span class="sc">-</span><span class="dv">10</span>, </span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>                                                                 utmcoord[,<span class="dv">2</span>][raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="st">'sw'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>subplot)]<span class="sc">-</span><span class="dv">10</span>, <span class="at">MoreArgs =</span> <span class="fu">list</span>(<span class="at">dim=</span><span class="dv">20</span>))</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>sp.geom[raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="st">'se'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>subplot)] <span class="ot">&lt;-</span> <span class="fu">mapply</span>(write.p.geom, utmcoord[,<span class="dv">1</span>][raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="st">'se'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>subplot)]<span class="sc">+</span><span class="dv">10</span>,</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>                                                                 utmcoord[,<span class="dv">2</span>][raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="st">'se'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>subplot)]<span class="sc">-</span><span class="dv">10</span>, <span class="at">MoreArgs =</span> <span class="fu">list</span>(<span class="at">dim=</span><span class="dv">20</span>))</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>sp.geom[raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="st">'nw'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>subplot)] <span class="ot">&lt;-</span> <span class="fu">mapply</span>(write.p.geom, utmcoord[,<span class="dv">1</span>][raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="st">'nw'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>subplot)]<span class="sc">-</span><span class="dv">10</span>, </span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>                                                                 utmcoord[,<span class="dv">2</span>][raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="st">'nw'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>subplot)]<span class="sc">+</span><span class="dv">10</span>, <span class="at">MoreArgs =</span> <span class="fu">list</span>(<span class="at">dim=</span><span class="dv">20</span>))</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>sp.geom[raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="st">'ne'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>subplot)] <span class="ot">&lt;-</span> <span class="fu">mapply</span>(write.p.geom, utmcoord[,<span class="dv">1</span>][raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="st">'ne'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>subplot)]<span class="sc">+</span><span class="dv">10</span>, </span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>                                                                 utmcoord[,<span class="dv">2</span>][raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="st">'ne'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>subplot)]<span class="sc">+</span><span class="dv">10</span>, <span class="at">MoreArgs =</span> <span class="fu">list</span>(<span class="at">dim=</span><span class="dv">20</span>))</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>sp.geom[raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="st">'center'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>subplot)] <span class="ot">&lt;-</span> <span class="fu">mapply</span>(write.p.geom, utmcoord[,<span class="dv">1</span>][raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="st">'center'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>subplot)], </span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>                                                                     utmcoord[,<span class="dv">2</span>][raw<span class="sc">$</span>subplot<span class="sc">==</span><span class="st">'center'</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(raw<span class="sc">$</span>subplot)], <span class="at">MoreArgs =</span> <span class="fu">list</span>(<span class="at">dim=</span><span class="dv">20</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="now-both-approaches-to-the-manipulate-function-will-share-the-remaining-steps." class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="now-both-approaches-to-the-manipulate-function-will-share-the-remaining-steps."><span class="header-section-number">9.3</span> <strong><em>Now both approaches to the manipulate function will share the remaining steps.</em></strong></h2>
+<ol type="1">
+<li><p>Look over your combined data.frame and see if there are any columns that are still empty, for the most part these will be relatively easy to fill in, most of these values should be in the <strong>dataNew.csv</strong> or an ancillary file.</p></li>
+<li><p>Also double check your data to make sure you do not have any rows that are missing key pieces of information which could mean that these rows need to be removed.</p></li>
+<li><p>To ensure that everything is running correctly, you can run the entire script line-by-line, the end result of the 3 manipulate functions is not the same as the overall finished product of the <code>makeGEDICalVal</code> script but is very indicative of if the overall function will run without errors.</p></li>
+</ol>
+<p><strong><em>Below are examples of possible values/approaches you will need to finish filling out your data</em></strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>p.origin <span class="ot">&lt;-</span> <span class="st">"C"</span>  <span class="co"># add that this is the center</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>sp.shape <span class="ot">&lt;-</span> <span class="st">"R"</span>  <span class="co"># Insert the shape information on the plot</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add other constant fields</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>epsg <span class="ot">&lt;-</span> <span class="dv">32723</span>  </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add essential information</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>region <span class="ot">&lt;-</span> <span class="st">"SA"</span> <span class="co"># Add the geographic region in the world</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>dft <span class="ot">&lt;-</span>  <span class="st">"DA"</span> <span class="co"># Add the plant funtional type information</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>vegetation <span class="ot">&lt;-</span> <span class="st">"TropRF"</span> <span class="co"># Add the vegetation type </span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Get live/dead status</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co">#raw$status &lt;-  as.numeric(raw$Dead == FALSE) # assign a 1 if the tree is alive</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the allometric key</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>allom.key <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="co">#raw$allom.key[(raw$Htot &gt; 0) &amp; !is.na(raw$Htot)] &lt;- 67</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Add constants</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>d.ht <span class="ot">&lt;-</span> <span class="fl">1.30</span> <span class="co"># add the height at which the dbh measurement was taken</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>p.mindiam <span class="ot">&lt;-</span> <span class="fl">0.35</span></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>sp.mindiam <span class="ot">&lt;-</span> <span class="fl">0.10</span>  </span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a> <span class="co"># Plot extent information</span></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>p.shape <span class="ot">&lt;-</span> <span class="st">"R"</span>  <span class="co"># Insert the shape information on the plot</span></span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>p.majoraxis <span class="ot">&lt;-</span> <span class="dv">25</span> <span class="co"># Store the extent of the plot</span></span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>p.minoraxis <span class="ot">&lt;-</span> <span class="dv">25</span> <span class="co"># Store the extent of the plot</span></span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>subplot <span class="ot">&lt;-</span> <span class="st">"largeTree"</span> <span class="co"># Subplot identifier</span></span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>subplot[raw<span class="sc">$</span>DBH <span class="sc">&lt;</span> <span class="dv">35</span>] <span class="ot">&lt;-</span> <span class="st">"smallTree"</span></span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>sp.majoraxis <span class="ot">&lt;-</span> <span class="dv">25</span> <span class="co"># Store the extent of the plot</span></span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>sp.minoraxis <span class="ot">&lt;-</span> <span class="dv">25</span> <span class="co"># Store the extent of the plot</span></span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>sp.majoraxis[raw<span class="sc">$</span>DBH <span class="sc">&lt;</span> <span class="dv">35</span>] <span class="ot">&lt;-</span> <span class="dv">25</span> <span class="co"># Store the extent of the plot</span></span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>sp.minoraxis[raw<span class="sc">$</span>DBH <span class="sc">&lt;</span> <span class="dv">35</span>] <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># Store the extent of the plot  raw$sp.area &lt;- 5*50</span></span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>p.area <span class="ot">&lt;-</span> <span class="fu">sapply</span>(raw<span class="sc">$</span>p.geom, <span class="at">FUN =</span> <span class="cf">function</span>(x){terra<span class="sc">::</span><span class="fu">expanse</span>(terra<span class="sc">::</span><span class="fu">vect</span>(x))})</span>
+<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>sp.area <span class="ot">&lt;-</span> <span class="fu">sapply</span>(raw<span class="sc">$</span>sp.geom, <span class="at">FUN =</span> <span class="cf">function</span>(x){terra<span class="sc">::</span><span class="fu">expanse</span>(terra<span class="sc">::</span><span class="fu">vect</span>(x))})</span>
+<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating crown location  </span></span>
+<span id="cb24-40"><a href="#cb24-40" aria-hidden="true" tabindex="-1"></a><span class="co">#raw$crown &lt;- pmax(c(raw$RN + raw$RS),c(raw$RE + raw$RW))</span></span>
+<span id="cb24-41"><a href="#cb24-41" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-42"><a href="#cb24-42" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>p.sample <span class="ot">&lt;-</span> <span class="dv">1</span>   </span>
+<span id="cb24-43"><a href="#cb24-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-44"><a href="#cb24-44" aria-hidden="true" tabindex="-1"></a>raw<span class="sc">$</span>survey <span class="ot">&lt;-</span> <span class="dv">2013</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+</section>
+<section id="makegedicalval" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> makeGEDICalVal</h1>
+<p><em>Running the completed script.</em></p>
+<ul>
+<li><p>Once you have finished the steps above you will return to the command line and just like the <code>system(command = "Rscript scripts/createProjectDirectory.R")</code> you will run <code>R</code>, <code>setwd("/workspace/GEDI_CalVal/")</code>, <code>system(command = "Rscript scripts/makeGEDICalVal.R -b -i {your directory}"")</code>. <em><strong>The output file using the Rscript can only handle a single project at a time and will output a .rds file with the date stamp of the file creation, you will need to go into the </strong>/shiny<strong> folder and add the project name between</strong></em> <code>gedicalval_</code> and <code>the date string_r01.rds</code>. This will take a while to run and if there are any errors there will be an error message in the command window indicating what function caused the script to fail, if the script failed to compile and no error message was given, check the scripts in the <code>/R</code> folder, primarily, <code>geometry.R</code> and <code>postprocess.R</code> and make sure there is a function named <code>browser()</code> that is not commented out for each function, this will tell you which function failed. However, when using the functions not from the command line you will want to have the <code>browser()</code> functions commented out (i.e., #). The issue will not be in the R scripts that hold the functions that are used but rather in the <code>dataManipulate.R</code> script, the error message will indicate which function on your end was not set up correctly, it is then up to you to identify the location of the error in your script and attempt to fix whatever was wrong. Save your script and rerun the <code>makeGEDICalVal.R</code> command. This step can be a lot of trial and error but hopefully, everything will be set up correctly and there will be minimal issues.</p></li>
+<li><p>The final output of a successfully run project is a <strong>.yml</strong> file in your main calval directory and a <strong>.rds</strong> file in the shiny folder. The .rds file holds multiple data sets, <strong>treedata</strong>, <strong>plotdata</strong>, <strong>gedidata</strong>, <strong>metadata</strong>, <strong>dictionary</strong>, <strong>allometry</strong>, <strong>lidar</strong>, and <strong>footprint</strong>, along with five other pieces of information, <strong>fp_radius</strong>, <strong>fp_spacing</strong>, <strong>tk_spacing</strong>, <strong>montecarlo</strong>, and <strong>nruns</strong>.</p></li>
+<li><p>This ends the plot data normalization and ingestion portion of this workflow, the next steps will focus on converting your LiDAR data from continuous point cloud to discrete waveforms fitted over your subplots to match a GEDI footprint, directions can be found in the <a href="Simulating_GEDI_Waveforms.html">Simulating GEDI Waveforms</a> document.</p></li>
+</ul>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

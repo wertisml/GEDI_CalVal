@@ -1,0 +1,5 @@
+name,treeData.csv
+header,TRUE
+skip,0
+key,plot
+separator,";"

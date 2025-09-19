@@ -1,0 +1,49 @@
+variable,group,description
+study.id,key,study name
+email.submit,key,email of data submitter
+institution,key,institutional affiliation
+name.contact,key,name of primary point of contact
+email.contact,key,email of primary point of contact
+citation,key,citation that describes study or data
+affiliation.details,key,details of how data provider would like their affiliation listed
+field.restrictions,field,field data use restrictions
+field.restrictions.details,field,description of field data use restictions
+field.fos.sharing,field,field data sharing with ESA Forest Observation System
+field.contact.fos,field,email for contact with Forest Observeration System regarding field data
+veg.type,field,vegetation type
+country,field,country of data collection
+study.area,field,local name of study area
+field.date,field,completion date of field data collection
+d.stem.protocol,field,stem diameter measurment protocol
+mindiam,field,size threshold that defines whether trees are included in the sample
+field.coord.sys,field,coordinate system for field data georeferencing
+p.layout,field,plot layout
+p.layout.details,field,description of plot layout
+p.shape,field,plot shape
+h.t.meas,field,tree height measured or modeled
+biomass.method,field,method of aboveground biomass estimation
+biomass.equation,field,scaling equation for biomass estimation
+tree.id,field,were tree species identified
+tree.id.level,field,taxonomic level of tree identification
+tree.status,field,was live-dead status of trees reported
+tree.status.details,field,method of recording live-dead status of trees
+tree.wood.dens,field,were wood density measurements made
+data.level,field,was tree or plot level data provided
+tree.map,field,were individual trees mapped
+lidar.share,lidar,lidar sharing with GEDI
+lidar.restrictions,lidar,lidar data use restrictions
+lidar.restrictions.details,lidar,description of lidar data use restrictions
+lidar.fos.sharing,lidar,lidar data sharing with ESA Forest Observation System
+lidar.fos.contact,lidar,email for contact with Forest Observeration System regarding lidar data
+lidar.date,lidar,date of airborne lidar acquisition
+lidar.sensor,lidar,lidar sensor
+lidar.sensor.write,lidar,lidar sensor written in by data provider
+lidar.coord.sys,lidar,coordinate system for lidar data georeferencing
+lidar.proj,lidar,lidar data projected relative to ellipsoidal or geoidal reference frame
+lidar.alt,lidar,nominal flight altitude
+lidar.classification,lidar,level of classification performed on the data
+lidar.qc,lidar,has data been subject to quality control or field validation
+lidar.qc.details,lidar,description of quality control or validation activities
+lidar.waveform,lidar,sharing full waveform lidar data
+submit.timestamp,key,time of metadata submission
+notes,field,additional notes from data provider

@@ -1,0 +1,11 @@
+Item,Value
+Source,Queensland Department of Science Information Technology and Innovation
+Project,Ausplots Forests
+Contact,"Ben Sparrow, John Armston"
+Email,"ben.sparrow@adelaide.edu.au, armston@umd.edu"
+Region,Australia
+Sampling strategy,100mx100m stem mapped plots
+Stem measurement,Stem diameter measure with diameter tape at 1.3m for all stems >10 cm
+Height measurement,Height measured for all trees >10 cm
+Location measurement,Unknown
+Height model,weibull

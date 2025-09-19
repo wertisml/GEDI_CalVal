@@ -1,0 +1,5 @@
+name,allomData.csv
+header,TRUE
+skip,0
+key,species
+separator,","

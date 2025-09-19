@@ -1,0 +1,35 @@
+lookupVariable,lookupValue,newVariable,newValue,source
+NA,NA,p.origin,SW,NA
+NA,NA,p.shape,R,NA
+NA,NA,p.mindiam,0.1,NA
+NA,NA,sp.mindiam,0.1,NA
+NA,NA,region,Au,NA
+NA,NA,vegetation,Wo,NA
+NA,NA,dft,EA,NA
+NA,NA,p.stemmap,1,NA
+plot,NSFNNC004,l.project,oeh_ausplotsforests,NA
+plot,NSFNNC005,l.project,oeh_ausplotsforests,NA
+plot,NSFNNC007,l.project,oeh_ausplotsforests,NA
+plot,NSFNNC008,l.project,oeh_ausplotsforests,NA
+NA,NA,private,0,NA
+NA,NA,d.ht,1.3,NA
+NA,NA,pft,EA,NA
+NA,NA,agb.valid,1,NA
+NA,NA,sp.shape,R,NA
+NA,NA,sp.area,2500,NA
+plot,TCFTSR002,l.project,warra,NA
+plot,TCFTSR001,l.project,warra,NA
+plot,TCFTSR005,l.project,zigzag_creek,NA
+plot,TCFTSR005,l.date,4/17/2012,NA
+plot,TCFTSR005,l.epsg,28355,NA
+plot,TCFTSR005,l.instr,Riegl LMS-Q560,NA
+NA,NA,sp.mindiam,0.1,NA
+NA,NA,sp.shape,R,NA
+NA,NA,sp.area,625,NA
+plot,NSFSEC001,pft.name,Evergreen Broadleaf trees,NA
+plot,NSFSEC002,pft.name,Evergreen Broadleaf trees,NA
+plot,NSFSEC003,pft.name,Evergreen Broadleaf trees,NA
+plot,TCFTNS003,pft.name,Evergreen Broadleaf trees,NA
+plot,TCFTSR001,pft.name,Evergreen Broadleaf trees,NA
+plot,TCFTSR003,pft.name,Evergreen Broadleaf trees,NA
+plot,TCFTSR006,pft.name,Evergreen Broadleaf trees,NA

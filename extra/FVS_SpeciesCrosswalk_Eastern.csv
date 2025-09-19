@@ -1,0 +1,467 @@
+USDA PLANTS SYMBOL,FIA CODE (3 digit),FVS ALPHA CODE,COMMON NAME (from FSVeg),SCIENTIFIC NAME (from FSVeg),CS_Mapped_To,LS_Mapped_To,NE_Mapped_To,SN_Mapped_To
+ABBA  ,012,BF,Balsam Fir,Abies balsamea (L.) Mill.,OS,BF,BF,FR
+ABCO  ,015,,White Fir,Abies concolor (Gord. & Glend.) Lindl. ex Hildebr.,OS,BF,BF,FR
+ABFR  ,016,,Fraser Fir,Abies fraseri (Pursh) Poir.,OS,BF,BF,FR
+ABIES ,010,FR,Fir Spp.,Abies Mill.,OS,BF,BF,FR
+ACFA  ,303,,Sweet Acacia,Acacia farnesiana (L.) Willd.,NC,NC,NC,OH
+ACGR  ,304,,Catclaw Acacia,Acacia greggii A. Gray,NC,NC,NC,OH
+ACACI ,300,,Acacia Spp.,Acacia Mill.,NC,NC,NC,OH
+ACBA3 ,311,FM,Florida Maple,Acer barbatum Michx.,SM,SM,SM,FM
+ACGL  ,321,,Rocky Mountain Maple,Acer glabrum Torr.,BE,MM,BE,BE
+ACGR3 ,322,,Bigtooth Maple,Acer grandidentatum Nutt.,BE,MM,BE,BE
+ACER  ,310,MP,Maple Spp.,Acer L.,RM,SM,SM,RM
+ACLE  ,323,CM,Chalk Maple,Acer leucoderme Small,SM,SM,SM,SM
+ACNE2 ,313,BE,Boxelder,Acer negundo L.,BE,BE,BE,BE
+ACNI5 ,314,BM,Black Maple,Acer nigrum Michx. f.,SM,BM,BM,SM
+ACPE  ,315,ST,Striped Maple,Acer pensylvanicum L.,BE,ST,ST,BE
+ACPL  ,320,,Norway Maple,Acer platanoides L.,SM,SM,SM,SM
+ACRU  ,316,RM,Red Maple,Acer rubrum L.,RM,RM,RM,RM
+ACSA2 ,317,SV,Silver Maple,Acer saccharinum L.,SV,SV,SV,SV
+ACSA3 ,318,SM,Sugar Maple,Acer saccharum Marsh.,SM,SM,SM,SM
+ACSP2 ,319,MM,Mountain Maple,Acer spicatum Lam.,BE,MM,BE,BE
+ACWR4 ,906,,Paurotis Palm,Acoelorrhaphe wrightii (Griseb. & H. Wendl.) H. Wendl. ex Becc.,NC,NC,NC,OT
+AEFL  ,332,YY,Yellow Buckeye,Aesculus flava Aiton,OB,CH,YY,BU
+AEGL  ,331,OB,Ohio Buckeye,Aesculus glabra Willd.,OB,CH,BU,BU
+AEGLA ,334,,Texas Buckeye,Aesculus glabra Willd. var. arguta (Buckley) B.L. Rob.,NC,NC,NC,OH
+AESCU ,330,BU,"Buckeye, Horsechestnut",Aesculus L.,OB,CH,BU,BU
+AEPA  ,336,,Red Buckeye,Aesculus pavia L.,NC,NC,NC,OH
+AESY  ,337,,Painted Buckeye,Aesculus sylvatica Bartram,NC,NC,NC,OH
+AIAL  ,341,AI,Ailanthus,Ailanthus altissima (Mill.) Swingle,NC,NC,AI,OH
+ALJU  ,345,,"Mimosa, Silktree",Albizia julibrissin Durazz.,NC,NC,NC,OH
+ALGL2 ,355,,European Alder,Alnus glutinosa (L.) Gaertn.,NC,NC,NC,OH
+ALIN2 ,,,Gray Alder,Alnus incana (L.) Moench,NC,NC,NC,OH
+ALINR ,,,Speckled Alder,Alnus incana (L.) Moench ssp. rugosa (Du Roi) R.T. Clausen,NC,NC,NC,OH
+ALNUS ,350,,Alder Spp.,Alnus Mill.,NC,NC,NC,OH
+ALVI5 ,,,Green Alder,Alnus viridis (Chaix) DC.,NC,NC,NC,OH
+ALVIC ,,,Mountain Alder,Alnus viridis (Chaix) DC. ssp. crispa (Aiton) Turrill,NC,NC,NC,OH
+AMAR3 ,357,,Common Serviceberry,Amelanchier arborea (Michx. f.) Fernald,NC,NC,SE,OH
+AMARA4,,,Serviceberry Variety,Amelanchier arborea (Michx. f.) Fernald var. arborea,NC,NC,SE,OH
+AMELA ,356,SE,Serviceberry Spp.,Amelanchier Medik.,NC,NC,SE,OH
+AMSA  ,358,,Roundleaf Serviceberry,Amelanchier sanguinea (Pursh) DC.,NC,NC,SE,OH
+AMEL  ,852,,Torchwood,Amyris elemifera L.,NC,NC,NC,OT
+ANGL4 ,853,,Pond Apple,Annona glabra L.,NC,NC,NC,OT
+ARSP2 ,,,Devil¡¯S Walkingstick,Aralia spinosa L.,NC,NC,NC,OH
+ARXA80,,,Texas Madrone,Arbutus xalapensis Kunth,NC,NC,NC,OT
+ARECA ,915,,Other Palms,Areca L.,NC,NC,NC,OT
+ASOB6 ,,,Bigflower Pawpaw,Asimina obovata (Willd.) Nash,NC,NC,NC,OH
+ASTR  ,367,,Pawpaw,Asimina triloba (L.) Dunal,NC,NC,NC,OH
+AVGE  ,986,,Black Mangrove,Avicennia germinans (L.) L.,NC,NC,NC,OH
+BEAL2 ,371,YB,Yellow Birch,Betula alleghaniensis Britton,RB,YB,YB,BB
+BETUL ,370,BB,Birch Spp.,Betula L.,RB,PB,YB,BB
+BELE  ,372,SB,Sweet Birch,Betula lenta L.,RB,YB,SB,SB
+BENI  ,373,RB,River Birch,Betula nigra L.,RB,PB,RB,BB
+BEOC2 ,374,WR,Water Birch,Betula occidentalis Hook.,RB,PB,WR,BB
+BEPA  ,375,PB,Paper Birch,Betula papyrifera Marsh.,RB,PB,PB,BB
+BEPAC ,,,Western Paper Birch,Betula papyrifera var. commutata,RB,PB,PB,BB
+BEPO  ,379,GB,Gray Birch,Betula populifolia Marsh.,RB,YB,GB,BB
+BEPU4 ,,,Bog Birch,Betula pumila L.,RB,PB,YB,BB
+BEUB  ,377,,Virginia Roundleaf Birch,Betula uber (Ashe) Fernald,RB,PB,RB,BB
+BRPO3 ,,,Puerto Rico Raintree,Brunfelsia portoricensis Krug & Urb.,NC,NC,NC,OH
+BUSI  ,854,,Gumbo Limbo,Bursera simaruba (L.) Sarg.,NC,NC,NC,OT
+CALU12,,,Luquillo Forest Lidflower,Calyptranthes luquillensis Alain,NC,NC,NC,OH
+CAWO5 ,,,Woodbury's Lidflower,Calyptranthes woodburyi Alain,NC,NC,NC,OH
+CACA18,391,AH,"Am Hornbeam, Musclewood",Carpinus caroliniana Walter,AH,AH,AH,AH
+CAAL27,409,MH,Mockernut Hickory,Carya alba (L.) Nutt.,MH,PH,MH,HI
+CAAQ2 ,401,WH,Water Hickory,Carya aquatica (Michx. f.) Nutt.,WH,BH,HI,HI
+CACA38,413,,Southern Shagbark Hickory,Carya carolinae-septentrionalis (Ashe) Engl. & Graebn.,SH,SH,HI,HI
+CACO15,402,BH,Bitternut Hickory,Carya cordiformis (Wangenh.) K. Koch,BH,BH,HI,HI
+CAFL6 ,411,,Scrub Hickory,Carya floridana Sarg.,BI,PH,HI,HI
+CAGL8 ,403,PH,Pignut Hickory,Carya glabra (Mill.) Sweet,PH,PH,PH,HI
+CAIL2 ,404,PE,Pecan,Carya illinoinensis (Wangenh.) K. Koch,PE,BH,HI,HI
+CALA21,405,SL,Shellbark Hickory,Carya laciniosa (Michx. f.) G. Don,SL,SH,SL,HI
+CAMY  ,406,,Nutmeg Hickory,Carya myristiciformis (Michx. f.) Nutt.,PE,BH,HI,HI
+CARYA ,400,HI,Hickory Spp.,Carya Nutt.,HI,BH,HI,HI
+CAOV3 ,412,,Red Hickory,Carya ovalis (Wangenh.) Sarg.,PH,PH,HI,HI
+CAOV2 ,407,SH,Shagbark Hickory,Carya ovata (Mill.) K. Koch,SH,SH,SH,HI
+CAPA24,410,,Sand Hickory,Carya pallida (Ashe) Engl. & Graebn.,PH,PH,HI,HI
+,,HS,Select hickory,Carya select ,HS,BH,HI,HI
+CATE9 ,408,BI,Black Hickory,Carya texana Buckley,BI,PH,HI,HI
+CADE12,421,AC,American Chestnut,Castanea dentata (Marsh.) Borkh.,NC,AC,NC,OH
+CASTA ,420,,Chesnut Spp.,Castanea Mill.,NC,AC,NC,OH
+CAMO83,424,,Chinese Chesnut,Castanea mollissima Blume,NC,AC,NC,OH
+CAPU9 ,422,,Allegheny Chinkapin,Castanea pumila (L.) Mill.,NC,AC,NC,OH
+CAPUO ,423,,Ozark Chinkapin,Castanea pumila (L.) Mill. var. ozarkensis (Ashe) Tucker,NC,AC,NC,OH
+CAGL11,856,,Gray Sheoak,Casuarina glauca Siebold ex Spreng.,NC,NC,NC,OT
+CALE28,857,,Australian Pine,Casuarina lepidophloia F. Muell.,NC,NC,NC,OT
+CASUA ,855,,Sheoak Spp.,Casuarina Rumph. ex L.,NC,NC,NC,OT
+CABI8 ,451,,Southern Catalpa,Catalpa bignonioides Walter,CA,CH,OH,CA
+CATAL ,450,CA,Catalpa Spp.,Catalpa Scop.,CA,CH,OH,CA
+CASP8 ,452,,Northern Catalpa,Catalpa speciosa (Warder) Warder ex Engelm.,CA,CH,OH,CA
+CELTI ,460,HB,Hackberry Spp.,Celtis L.,HK,HK,HK,HB
+CELA  ,461,SG,Sugarberry,Celtis laevigata Willd.,SG,HK,HK,HB
+CELAR ,463,,Netleaf Hackberry,Celtis laevigata Willd. var. reticulata (Torr.) L.D. Benson,SG,HK,HK,HB
+CEOC  ,462,HK,Hackberry,Celtis occidentalis L.,HK,HK,HK,HB
+CEPHA ,,,Buttonbush,Cephalanthus L.,NC,NC,NC,OH
+CECA4 ,471,RD,Eastern Redbud,Cercis canadensis L.,RD,NC,NC,RD
+CEMO2 ,,,Alderleaf Mountain Mahogany,Cercocarpus montanus Raf.,NC,NC,NC,OT
+CEMOP ,,,Hairy Mountain Mahogany,Cercocarpus montanus Raf. var. paucidentatus (S. Watson) F.L. Martin,NC,NC,NC,OT
+CHAMA4,040,,Cedar Spp.,Chamaecyparis Spach,OS,OS,AW,JU
+CHTH2 ,043,AW,Atlantic White-Cedar,"Chamaecyparis thyoides (L.) Britton, Sterns & Poggenb.",OS,OS,AW,JU
+CICA  ,858,,Camphor Tree,Cinnamomum camphora (L.) J. Presl,NC,NC,NC,OT
+CIFR  ,859,,Fiddlewood,Citharexylum fruticosum,NC,NC,NC,OT
+CITRU2,860,,Citrus Spp.,Citrus L.,NC,NC,NC,OT
+CLKE  ,481,,Yellowwood,Cladrastis kentukea (Dum. Cours.) Rudd,OL,CH,OH,OH
+CLADR ,,,Yellowwood Spp.,Cladrastis Raf.,OL,CH,OH,OH
+CODI8 ,863,,Pigeon Plum,Coccoloba diversifolia Jacq.,NC,NC,NC,OT
+COAR  ,907,,Silver Palm,Coccothrinax argentata (Jacq.) L.H. Bailey,NC,NC,NC,OT
+CONU  ,908,,Coconut Palm,Cocos nucifera L.,NC,NC,NC,OT
+COEL2 ,864,,Soldierwood,Colubrina elliptica (Sw.) Briz. & Stern,NC,NC,NC,OT
+COER2 ,987,,Buttonwood Mangrove,Conocarpus erectus L.,NC,NC,NC,OH
+CORU17,,,Luquillo Mountain Snailwood,Conostegia rufescens Naud.,NC,NC,NC,OH
+COSE2 ,865,,Geiger Tree,Cordia sebestena L.,NC,NC,NC,OT
+COAL2 ,,,Alternateleaf Dogwood,Cornus alternifolia L. f.,DW,DW,DW,DW
+COFL2 ,491,DW,Flowering Dogwood,Cornus florida L.,DW,DW,DW,DW
+CORNU ,490,,Dogwood Spp.,Cornus L.,DW,DW,DW,DW
+CORU  ,,,Roundleaf Dogwood,Cornus rugosa Lam.,DW,DW,DW,DW
+COSES ,,,Redosier Dogwood,Cornus sericea L.,NC,NC,NC,OH
+COSE16,,,Redosier Dogwood,Cornus sericea L. ssp. sericea,DW,DW,DW,DW
+COAM3 ,,,American Hazelnut,Corylus americana Walter,NC,NC,NC,OT
+COCO6 ,,,Beaked Hazelnut,Corylus cornuta Marsh.,NC,NC,NC,OT
+CORYL ,,,Hazelnut Spp.,Corylus L.,NC,NC,NC,OT
+COOB2 ,996,,Smoketree,Cotinus obovatus Raf.,NC,NC,NC,OH
+CRBR3 ,503,,Brainerd Hawthorn,Crataegus brainerdii Sarg.,HT,HT,HT,OH
+CRCA  ,504,,Pear Hawthorn,Crataegus calpodendron (Ehrh.) Medik.,HT,HT,HT,OH
+CRCH  ,505,,Fireberry Hawthorn,Crataegus chrysocarpa Ashe,HT,HT,HT,OH
+CRCR2 ,501,,Cockspur Hawthorn,Crataegus crus-galli L.,HT,HT,HT,OH
+CRDI  ,506,,Broadleaf Hawthorn,Crataegus dilatata Sarg.,HT,HT,HT,OH
+CRFL  ,507,,Fanleaf Hawthorn,Crataegus flabellata (Bosc ex Spach) K. Koch,HT,HT,HT,OH
+CRATA ,500,HT,Hawthorn,Crataegus L.,HT,HT,HT,OH
+CRMO2 ,502,,Downy Hawthorn,Crataegus mollis Scheele,HT,HT,HT,OH
+CRMO3 ,508,,Oneseed Hawthorn,Crataegus monogyna Jacq.,HT,HT,HT,OH
+CRPE  ,509,,Scarlet Hawthorn,Crataegus pedicellata Sarg.,HT,HT,HT,OH
+CRWA  ,,,Warners Hawthorn,Crataegus warneri Sarg.,HT,HT,HT,OH
+CUAN4 ,866,,Carrotwood,Cupaniopsis anacardioides (A. Rich.) Radlk.,NC,NC,NC,OT
+CUAR  ,051,,Arizona Cypress,Cupressus arizonica Greene,JU,RC,OC,JU
+TAXOD ,220,,Cypress Spp.,Cupressus L.,BY,OS,OC,BY
+DIOSP ,520,,Persimmon Spp.,Diospyros L.,PS,CH,PS,PS
+DITE3 ,522,,Texas Persimmon,Diospyros texana Scheele,PS,CH,PS,PS
+DIVI5 ,521,PS,Common Persimmon,Diospyros virginiana L.,PS,CH,PS,PS
+DIPA9 ,,,Eastern Leatherwood,Dirca palustris L.,NC,NC,NC,OT
+ELAN  ,997,,Russian Olive,Elaeagnus angustifolia L.,NC,NC,NC,OH
+EUCA2 ,512,,River Redgum,Eucalyptus camaldulensis Dehnh.,NC,NC,OH,OH
+EUGR12,513,,Grand Eucalyptus,Eucalyptus grandis W. Hill ex Maid.,NC,NC,OH,OH
+EUCAL ,510,,Eucalyptus,Eucalyptus L'H¨¦r.,NC,NC,OH,OH
+EURO2 ,514,,Swamp Mahogany,Eucalyptus robusta Sm.,NC,NC,OH,OH
+EUEG  ,,,Guasabara,Eugenia eggersii Kiaersk.,NC,NC,NC,OH
+EURH  ,873,,Red Stopper,Eugenia rhombea (Berg) Krug & Urb.,NC,NC,NC,OT
+EXPA  ,874,,"Inkwood, Butterbough",Exothea paniculata (Juss.) Radlk.,NC,NC,NC,OT
+FAGR  ,531,AB,American Beech,Fagus grandifolia Ehrh.,AB,AB,AB,AB
+FAGUS ,,,Beech Spp.,Fagus L.,AB,AB,AB,AB
+FIAU  ,876,,Strangler Fig,Ficus aurea Nutt.,NC,NC,NC,OT
+FICA  ,,,Edible Fig,Ficus carica L.,NC,NC,NC,OT
+FICI  ,877,,"Shortleaf Fig, Wild Banyantree",Ficus citrifolia Mill.,NC,NC,NC,OT
+FRAL4 ,,,Glossy Buckthorn,Frangula alnus Mill.,NC,NC,NC,OT
+FRCA13,,,Carolina Buckthorn,Frangula caroliniana (Walter) A. Gray,NC,NC,NC,OT
+FRAM2 ,541,WA,White Ash,Fraxinus americana L.,WA,WA,WA,WA
+FRCA3 ,548,,Carolina Ash,Fraxinus caroliniana Mill.,AS,GA,AS,AS
+FRAXI ,540,AS,Ash Spp.,Fraxinus L.,AS,GA,AS,AS
+FRNI  ,543,BA,Black Ash,Fraxinus nigra Marsh.,BA,BA,BA,BA
+FRPE  ,544,GA,Green Ash,Fraxinus pennsylvanica Marsh.,GA,GA,GA,GA
+FRPR  ,545,PA,Pumpkin Ash,Fraxinus profunda (Bush) Bush,PA,WA,PA,AS
+FRQU  ,546,UA,Blue Ash,Fraxinus quadrangulata Michx.,UA,WA,AS,AS
+FRTE  ,549,,Texas Ash,Fraxinus texensis (A. Gray) Sarg.,AS,GA,AS,AS
+FRVE2 ,547,,Velvet Ash,Fraxinus velutina Torr.,AS,GA,AS,AS
+GIBI2 ,561,,Ginkgo,Ginkgo biloba L.,UH,CH,OH,OH
+GLAQ  ,551,,Waterlocust,Gleditsia aquatica Marsh.,HL,BK,BK,HL
+GLEDI ,550,,Locust Spp.,Gleditsia L.,HL,BK,BK,HL
+GLTR  ,552,HL,Honeylocust,Gleditsia triacanthos L.,HL,BK,BK,HL
+GOLA  ,555,LB,Loblolly-Bay,Gordonia lasianthus (L.) Ellis,NC,NC,NC,LB
+GUDI  ,882,,"Blolly, Beeftree",Guapira discolor (Spreng.) Little,NC,NC,NC,OT
+GYDI  ,571,KC,Kentucky Coffeetree,Gymnocladus dioicus (L.) K. Koch,KC,CH,OH,OH
+HACA3 ,581,,Carolina Silverbell,Halesia carolina L.,NC,NC,NC,HA
+HADI3 ,582,,Two-Wing Silverbell,Halesia diptera Ellis,NC,NC,NC,HA
+HALES ,580,HA,Silverbell Spp.,Halesia Ellis ex L.,NC,NC,NC,HA
+HAPA2,583,,Little Silverbell,Halesia parviflora,NC,NC,NC,HA
+HAMAM ,,,Witchazel Spp.,Hamamelis L.,NC,NC,NC,OT
+HAVI4 ,,,American Witchhazel,Hamamelis virginiana L.,NC,NC,NC,OT
+HIMA2 ,883,,Manchineel,Hippomane mancinella L.,NC,NC,NC,OT
+ILCO2 ,,,Longstalk Holly,Ilex collina Alexander,NC,NC,HY,HY
+ILLO  ,,,Georgia Holly,Ilex longipes Chapm. ex Trel.,NC,NC,HY,HY
+ILMO  ,,,Mountain Holly,Ilex montana Torr. & A. Gray ex A. Gray,NC,NC,HY,HY
+NEMU2 ,,,Catberry,Ilex mucronata,NC,NC,NC,OT
+ILOP  ,591,HY,American Holly,Ilex opaca Aiton,NC,NC,HY,HY
+ILVE  ,,,Common Winterberry,Ilex verticillata (L.) A. Gray,NC,NC,NC,OT
+ILPA  ,,,Yellow Anisetree,Illicium parviflorum Michx. ex Vent.,NC,NC,NC,OT
+JUCI  ,601,BN,Butternut,Juglans cinerea L.,BN,BN,BN,BN
+JUGLA ,600,,Walnut Spp.,Juglans L.,WN,WN,WN,WN
+JUMA  ,606,,Arizona Walnut,Juglans major (Torr.) A. Heller,WN,WN,WN,WN
+JUMI  ,605,,Texas Walnut,Juglans microcarpa Berl.,WN,WN,WN,WN
+JUNI  ,602,WN,Black Walnut,Juglans nigra L.,WN,WN,WN,WN
+JUAS  ,061,,Ashe Juniper,Juniperus ashei J. Buchholz,JU,RC,OC,JU
+JUCO11,059,,Redberry Juniper,Juniperus coahuilensis (Marti?ez) Gaussen ex R.P. Adams,JU,RC,OC,JU
+JUCO6 ,,,Common Juniper,Juniperus communis L.,JU,RC,OC,JU
+JUCOM2,,,Common Juniper Var Montana,Juniperus communis var. saxatilis,JU,RC,OC,JU
+JUDE2 ,063,,Alligator Juniper,Juniperus deppeana Steud.,JU,RC,OC,JU
+JUNIP ,057,JU,Redcedar/Juniper Spp.,Juniperus L.,JU,RC,OC,JU
+JUMO  ,,,One-Seed Juniper,Juniperus monosperma (Engelm.) Sarg.,JU,RC,OC,JU
+JUPI  ,058,,Pinchots Juniper,Juniperus pinchotii Sudw.,JU,RC,OC,JU
+JUSC2 ,066,,Rocky Mountain Juniper,Juniperus scopulorum Sarg.,JU,RC,OC,JU
+JUVI  ,068,RC,Eastern Redcedar,Juniperus virginiana L.,RC,RC,RC,JU
+JUVIS ,067,,Southern Redcedar,Juniperus virginiana L. var. silicicola (Small) J. Silba,RC,RC,RC,JU
+KALA  ,,,Mountain Laurel,Kalmia latifolia L.,NC,NC,NC,OH
+LARA2 ,988,,White Mangrove,Laguncularia racemosa (L.) C.F. Gaertn.,NC,NC,NC,OH
+LAPO  ,,,Nino De Cota,Laplacea portoricensis (Krug & Urb.) Dyer,NC,NC,NC,OH
+LALA  ,071,TA,Tamarack,Larix laricina (Du Roi) K. Koch,OS,TA,TA,HM
+LARIX ,070,,Larch Spp.,Larix Mill.,OS,TA,TA,HM
+LEFL  ,,,Corkwood,Leitneria floridana Chapm.,NC,NC,NC,OT
+LIBE3 ,,,Northern Spicebush,Lindera benzoin (L.) Blume,NC,NC,NC,OT
+LISU8 ,,,Bog Spicebush,Lindera subcoriacea B.E. Wofford,NC,NC,NC,OT
+LINDE2,,,Spicebush,Lindera Thunb.,NC,NC,NC,OH
+LIST2 ,611,SU,Sweetgum,Liquidambar styraciflua L.,SU,CH,SU,SU
+LITU  ,621,YP,Yellow-Poplar,Liriodendron tulipifera L.,YP,CH,YP,YP
+LYLA3 ,884,,False Tamarind,Lysiloma latisiliquum (L.) Benth.,NC,NC,NC,OT
+MAPO  ,641,OO,Osage-Orange,Maclura pomifera (Raf.) C.K. Schneid.,OO,CH,OO,OH
+MAAC  ,651,CT,Cucumbertree,Magnolia acuminata (L.) L.,CT,CH,CT,CT
+MAAS  ,,,Ashes Magnolia,Magnolia ashei Weath.,CT,CH,MG,MG
+MAFR  ,655,,Mountain Magnolia,Magnolia fraseri Walter,CT,CH,MG,MG
+MAGR4 ,652,MS,Southern Magnolia,Magnolia grandiflora L.,CT,CH,MG,MS
+MAGNO ,650,MG,Magnolia Spp.,Magnolia L.,CT,CH,MG,MG
+MAMA2 ,654,ML,Bigleaf Magnolia,Magnolia macrophylla Michx.,CT,CH,CT,ML
+MAPY  ,657,,Pyramid Magnolia,Magnolia pyramidata Bartram,CT,CH,MG,MG
+MATR  ,658,,Umbrella Magnolia,Magnolia tripetala (L.) L.,CT,CH,MG,MG
+MAVI2 ,653,MV,Sweetbay,Magnolia virginiana L.,MV,CH,MV,MV
+MAAN3 ,662,,Southern Crabapple,Malus angustifolia (Aiton) Michx.,NC,AP,AP,AP
+MACO5 ,663,,Sweet Crabapple,Malus coronaria (L.) Mill.,NC,AP,AP,AP
+MAIO  ,664,,Prairie Crabapple,Malus ioensis (Alph. Wood) Britton,NC,AP,AP,AP
+MALUS ,660,AP,Apple Spp.,Malus Mill.,NC,AP,AP,AP
+MAIN3 ,885,,Mango,Mangifera indica L.,NC,NC,NC,OT
+MASI3 ,,,Beruquillo,Marlierea sintenisii Kiaersk.,NC,NC,NC,OH
+MAEL3 ,,,Puerto Rico Mayten,Maytenus elongata (Urb.) Britton,NC,NC,NC,OH
+MEQU  ,992,,Melaleuca,Melaleuca quinquenervia (Cav.) S.F. Blake,NC,NC,NC,OH
+MEAZ  ,993,,Chinaberry,Melia azedarach L.,NC,NC,NC,OH
+METO3 ,886,,Poisonwood,Metopium toxiferum (L.) Krug & Urb.,NC,NC,NC,OT
+MIFO  ,,,Puerto Rico Johnnyberry,Miconia foveolata Cogn.,NC,NC,NC,OH
+MIPY2 ,,,Ridge Johnnyberry,Miconia pycnoneura Urb.,NC,NC,NC,OH
+MOHO3 ,,,Palo De Cera,Morella holdridgeana (Lundell) Kartesz,NC,NC,NC,OH
+MOAL  ,681,WM,White Mulberry,Morus alba L.,MB,NC,NC,MB
+MORUS ,680,MB,Mulberry Spp.,Morus L.,MB,NC,NC,MB
+MOMI  ,683,,Texas Mulberry,Morus microphylla Buckley,MB,NC,NC,MB
+MONI  ,684,,Black Mulberry,Morus nigra L.,MB,NC,NC,MB
+MORU2 ,682,RY,Red Mulberry,Morus rubra L.,MB,NC,NC,MB
+,,NC,Non-commercial species,Non-commercial species,NC,NC,NC,OT
+NYAQ2 ,691,WT,Water Tupelo,Nyssa aquatica L.,WT,BG,WT,WT
+NYBI  ,694,TS,Swamp Tupelo,Nyssa biflora Walter,TS,BG,BG,TS
+NYSSA ,690,TL,Tupelo Spp.,Nyssa L.,TL,BG,BG,BG
+NYOG  ,692,OG,Ogeechee Tupelo,Nyssa ogeche Bartram ex Marsh.,WT,BG,WT,WT
+NYSY  ,693,BG,Blackgum,Nyssa sylvatica Marsh.,BG,BG,BG,BG
+NYUR2 ,,,Bear Tupelo,Nyssa ursina Small,TL,BG,BG,BG
+OSVI  ,701,HH,E. Hophornbeam,Ostrya virginiana (Mill.) K. Koch,HH,HH,HH,HH
+2TREE ,999,OT,Other,Other ,NC,NC,NC,OT
+,,CH,Other Commercial Hardwoods,Other Commercial Hardwoods,UH,CH,OH,OH
+2TB   ,998,OH,Other Live/Dead Hardwood,Other hardwood,UH,CH,OH,OH
+2TD   ,,,"Tree, Deciduous",Other hardwood,UH,CH,OH,OH
+,,OL,Other lowland species,Other lowland species,OL,CH,OH,OH
+2TE   ,299,,Unknown Live/Dead Conifer,Other softwood,OS,OS,OS,OS
+,298,OS,Other Softwood (old code),Other softwood,OS,OS,OS,OS
+,,UH,Other upland hardwoods,Other upland hardwoods,UH,CH,OH,OH
+OXAR  ,711,SD,Sourwood,Oxydendrum arboreum (L.) DC.,SD,NC,SD,SD
+PATO2 ,712,PW,"Paulownia, Empresstree",Paulownia tomentosa (Thunb.) Siebold & Zucc. ex Steud.,UH,CH,PW,OH
+PEBO  ,721,RA,Redbay,Persea borbonia (L.) Spreng.,NC,NC,NC,RA
+PEHU2 ,,,Silk Bay,Persea humilis Nash,NC,NC,NC,OH
+PERSE ,720,,Bay Spp.,Persea Mill.,NC,NC,NC,RA
+PICEA ,090,PI,Spruce Spp.,Picea A. Dietr.,OS,WS,PI,PI
+PIAB  ,091,NS,Norway Spruce,Picea abies (L.) Karst.,OS,NS,NS,PI
+PIGL  ,094,WS,White Spruce,Picea glauca (Moench) Voss,OS,WS,WS,PI
+PIMA  ,095,BS,Black Spruce,"Picea mariana (Mill.) Britton, Sterns & Poggenb.",OS,BS,BS,PI
+PIPU  ,096,,Blue Spruce,Picea pungens Engelm.,OS,BS,PI,PI
+PIRU  ,097,RS,Red Spruce,Picea rubens Sarg.,OS,BS,RS,PI
+PIAR5 ,,,Arizona Pine,Pinus arizonica Engelm.,OS,OS,OP,OS
+PIBA2 ,105,JP,Jack Pine,Pinus banksiana Lamb.,VP,JP,JP,PU
+PICL  ,107,PU,Sand Pine,Pinus clausa (Chapm. ex Engelm.) Vasey ex Sarg.,VP,JP,OP,PU
+PIEC2 ,110,SP,Shortleaf Pine,Pinus echinata Mill.,SP,RN,SP,SP
+PIED  ,106,,Twoneedle Pinyon,Pinus edulis Engelm.,VP,JP,OP,PU
+PIEL  ,111,SA,Slash Pine,Pinus elliottii Engelm.,LP,RN,LP,SA
+PIELE2,144,,Carribean Pine,Pinus elliottii Engelm. var. elliottii,LP,RN,OP,SA
+PIGL2 ,115,SR,Spruce Pine,Pinus glabra Walter,SP,JP,SP,SR
+PINUS ,100,OP,Pine Spp.,Pinus L.,OS,WP,OP,LP
+PINI  ,136,,Austrian Pine,Pinus nigra Arnold,LP,RN,RN,LP
+,270,,Austrian Pine (old code),Pinus nigra Arnold (old code),LP,RN,RN,LP
+PIPA2 ,121,LL,Longleaf Pine,Pinus palustris Mill.,LP,RN,LP,LL
+PIPO  ,122,PZ,Ponderosa Pine,Pinus ponderosa C. Lawson,LP,RN,RN,LP
+PIPOS ,,,Ponderosa Pine Var. Scopularum,Pinus ponderosa C. Lawson var. scopulorum Engelm.,LP,RN,RN,LP
+PIPU5 ,123,TM,Table Mtn Pine,Pinus pungens Lamb.,VP,JP,TM,TM
+PIRE  ,125,RN,Red Pine,Pinus resinosa Aiton,LP,RN,RN,LP
+,,RP,Red pine,Pinus resinosa Aiton,LP,RP,RN,LP
+PIRI  ,126,PP,Pitch Pine,Pinus rigida Mill.,VP,JP,PP,PP
+PISE  ,128,PD,Pond Pine,Pinus serotina Michx.,LP,JP,PD,PD
+PIST3 ,114,,Southwestern White Pine,Pinus strobiformis Engelm.,WP,WP,WP,WP
+PIST  ,129,WP,Eastern White Pine,Pinus strobus L.,WP,WP,WP,WP
+PISY  ,130,SC,Scotch Pine,Pinus sylvestris L.,VP,SC,SC,PU
+PITA  ,131,LP,Loblolly Pine,Pinus taeda L.,LP,RN,LP,LP
+PIVI2 ,132,VP,Virginia Pine,Pinus virginiana Mill.,VP,JP,VP,VP
+PIPI3 ,887,,Fishpoison Tree,Piscidia piscipula (L.) Sarg.,NC,NC,NC,OT
+PLAQ  ,722,,"Water-Elm, Planertree",Planera aquatica J.F. Gmel.,NC,NC,NC,OH
+PLATA ,729,,Sycamore Spp.,Platanus L.,SY,SY,SY,SY
+PLOC  ,731,SY,Sycamore,Platanus occidentalis L.,SY,SY,SY,SY
+POAC5 ,,,Lanceleaf Cottonwood,Populus ¡Áacuminata Rydb. (pro sp.) [angustifolia ¡Á deltoides],EC,EC,EC,CW
+POAL7 ,752,,Silver Poplar,Populus alba L.,BP,BP,BP,BT
+POAN3 ,749,,Narrowleaf Cottonwood,Populus angustifolia James,EC,EC,EC,CW
+POBA2 ,741,BP,Balsam Poplar,Populus balsamifera L.,BP,BP,BP,BT
+PODE3 ,742,EC,Eastern Cottonwood,Populus deltoides Bartram ex Marsh.,EC,EC,EC,CW
+PODEM ,745,,Plains Cottonwood,Populus deltoides Bartram ex Marsh. ssp. monilifera (Aiton) Eckenwalder,EC,EC,EC,CW
+PODEW ,,,Rio Grande Cottonwood,Populus deltoides Bartram ex Marsh. ssp. wislizeni (S. Watson) Eckenwalder,EC,EC,EC,CW
+POFR2 ,748,,Fremonts Cottonwood,Populus fremontii S. Watson,EC,EC,EC,CW
+POGR4 ,743,BT,Bigtooth Aspen,Populus grandidentata Michx.,BT,BT,BT,BT
+POHE4 ,744,PY,Swamp Cottonwood,Populus heterophylla L.,EC,EC,PY,CW
+POPUL ,740,CW,Cottonwood/Poplar Spp.,Populus L.,EC,EC,EC,CW
+PONI  ,753,,Lombardy Poplar,Populus nigra L.,BP,BP,BP,BT
+POTR5 ,746,QA,Quaking Aspen,Populus tremuloides Michx.,QA,QA,QA,BT
+PRGL2 ,756,,Honey Mesquite,Prosopis glandulosa Torr.,NC,NC,NC,OH
+PROSO ,755,,Mesquite Spp.,Prosopis L.,NC,NC,NC,OH
+PRPU  ,758,,Screwbean Mesquite,Prosopis pubescens Benth.,NC,NC,NC,OH
+PRVE  ,757,,Velvet Mesquite,Prosopis velutina Woot.,NC,NC,NC,OH
+PRAL5 ,769,,Allegheny Plum,Prunus alleghaniensis Porter,NC,PL,PL,AP
+PRAM  ,766,,Wild Plum,Prunus americana Marsh.,NC,PL,PL,AP
+PRAN3 ,770,,Chickasaw Plum,Prunus angustifolia Marsh.,NC,PL,PL,AP
+PRAV  ,771,,"Sweet Cherry, Domesticated",Prunus avium (L.) L.,NC,CC,PR,AP
+PRCE  ,772,,"Sour Cherry, Domesticated",Prunus cerasus L.,NC,CC,PR,AP
+PRDO  ,773,,"European Plum, Domesticated",Prunus domestica L.,NC,PL,PL,AP
+PRUNU ,760,PL,Cherry/Plum Spp.,Prunus L.,NC,PL,PL,AP
+PRMA  ,774,,"Mahaleb Plum, Domesticated",Prunus mahaleb L.,NC,PL,PL,AP
+PRNI  ,765,,Canada Plum,Prunus nigra Aiton,NC,PL,PL,AP
+PRPE2 ,761,PR,Pin Cherry,Prunus pensylvanica L. f.,NC,PR,PR,AP
+PRPE3 ,764,,Peach,Prunus persica (L.) Batsch,NC,PL,PL,AP
+PRSE2 ,762,BC,Black Cherry,Prunus serotina Ehrh.,BC,BC,BC,BC
+PRVI  ,763,CC,Chokecherry,Prunus virginiana L.,NC,CC,PR,AP
+PSME  ,202,,Douglas-Fir,Pseudotsuga menziesii (Mirb.) Franco,OS,OS,OS,OS
+PSMEG ,,,Rocky Mountain Douglas-Fir,Pseudotsuga menziesii (Mirb.) Franco var. glauca (Beissn.) Franco,OS,OS,OS,OS
+PSSI2 ,,,Sintenis¡¯ Guava,Psidium sintenisii (Kiaersk.) Alain,NC,NC,NC,OH
+QUPA4 ,,,Wavyleaf Oak,Quercus ¡Ápauciloba Rydb. (pro sp.) [gambelii ¡Á turbinella],BJ,NC,OK,BJ
+QUAC2 ,,,Mapleleaf Oak,Quercus acerifolia (Palmer) Stoynoff & Hess,BJ,NC,OK,BJ
+QUAL  ,802,WO,White Oak,Quercus alba L.,WO,WO,WO,WO
+QUAR  ,803,,Arizona White Oak,Quercus arizonica Sarg.,BJ,NC,OK,BJ
+QUAR2 ,,,Arkansas Oak,Quercus arkansana Sarg.,BJ,NC,OK,BJ
+QUBI  ,804,SW,Swamp White Oak,Quercus bicolor Willd.,SW,SW,SW,WO
+QUBO2 ,,,Boynton Sand Post Oak,Quercus boyntonii Beadle,PO,BR,PO,PO
+QUCO2 ,806,SO,Scarlet Oak,Quercus coccinea M¨¹nchh.,SO,BO,SO,SO
+QUEL  ,809,NP,Northern Pin Oak,Quercus ellipsoidalis E.J. Hill,PN,NP,PN,SK
+QUEM  ,810,,Emory Oak,Quercus emoryi Torr.,BJ,NC,OK,BJ
+QUFA  ,812,SK,Southern Red Oak,Quercus falcata Michx.,SK,BO,SK,SK
+QUGA  ,814,,Gamble Oak,Quercus gambelii Nutt.,BJ,NC,OK,BJ
+QUGR3 ,,,Gray Oak,Quercus grisea Liebm.,BJ,NC,OK,BJ
+QUHY  ,,,Silverleaf Oak,Quercus hypoleucoides A. Camus,BJ,NC,OK,BJ
+QUIL  ,816,,"Bear Oak, Scrub Oak",Quercus ilicifolia Wangenh.,BJ,NC,OK,BJ
+QUIM  ,817,QI,Shingle Oak,Quercus imbricaria Michx.,QI,BO,QI,WK
+QUIN  ,842,QN,Bluejack Oak,Quercus incana Bartram,BJ,NC,OK,TO
+QUERC ,800,OK,Oak-Deciduous Spp.,Quercus L.,WO,WO,OK,WO
+QULA2 ,819,TO,Turkey Oak,Quercus laevis Walter,BJ,NC,OK,TO
+QULA3 ,820,LK,Laurel Oak,Quercus laurifolia Michx.,WK,BO,WK,LK
+QULY  ,822,OV,Overcup Oak,Quercus lyrata Walter,OV,BR,OK,OV
+QUMA2 ,823,BR,Bur Oak,Quercus macrocarpa Michx.,BR,BR,BR,OV
+QUMA6 ,840,DP,Dwarf Post Oak,Quercus margarettae (Ashe) Small,PO,BR,PO,TO
+QUMA3 ,824,BJ,Blackjack Oak,Quercus marilandica M¨¹nchh.,BJ,NC,OK,BJ
+QUMI  ,825,SN,Swamp Chestnut Oak,Quercus michauxii Nutt.,SN,WO,SN,SN
+QUMI2 ,841,,Dwarf Live Oak,Quercus minima (Sarg.) Small,BJ,NC,OK,TO
+QUMU  ,826,CK,Chinkapin Oak,Quercus muehlenbergii Engelm.,CK,CK,CK,CK
+QUNI  ,827,WK,Water Oak,Quercus nigra L.,WK,BO,WK,WK
+QUNU  ,828,NK,Nutall Oak,Quercus nuttallii,NK,NP,CB,CB
+QUOB  ,829,,Mexican Blue Oak,Quercus oblongifolia Torr.,BJ,NC,OK,BJ
+QUOG  ,844,,Oglethorpe Oak,Quercus oglethorpensis Duncan,BJ,NC,OK,LK
+QUPA5 ,813,CB,Cherrybark Oak,Quercus pagoda Raf.,CB,BO,CB,CB
+QUPA2 ,830,PN,Pin Oak,Quercus palustris M¨¹nchh.,PN,NP,PN,SK
+QUPH  ,831,WL,Willow Oak,Quercus phellos L.,WL,BO,WL,WK
+QUPR  ,845,,Dwarf Chinkapin Oak,Quercus prinoides Willd.,BJ,NC,OK,TO
+QUPR2 ,832,CO,Chestnut Oak,Quercus prinus L.,CO,WO,CO,CO
+QURU  ,833,RO,Northern Red Oak,Quercus rubra L.,RO,RO,RO,RO
+QURU4 ,,,Netleaf Oak,Quercus rugosa N¨¦e,BJ,NC,OK,BJ
+QUSH  ,834,QS,Shumard Oak,Quercus shumardii Buckley,QS,BO,SK,QS
+QUSI2 ,836,DO,Delta Post Oak,Quercus similis Ashe,DO,BR,PO,PO
+QUSIS ,808,,Durand Oak,Quercus sinuata Walter var. sinuata,PO,BR,PO,PO
+QUST  ,835,PO,Post Oak,Quercus stellata Wangenh.,PO,BR,PO,PO
+QUTE  ,,,Texas Red Oak,Quercus texana Buckley,SK,BO,OK,SK
+QUTO2 ,,,Toumey Oak,Quercus toumeyi Sarg.,BJ,NC,OK,BJ
+QUTU2 ,,,Sonoran Scrub Oak,Quercus turbinella Greene,BJ,NC,OK,BJ
+QUVE  ,837,BO,Black Oak,Quercus velutina Lam.,BO,BO,BO,BO
+QUVI  ,838,LO,Live Oak,Quercus virginiana Mill.,BJ,NC,OK,LO
+RAUR  ,,,Tortuga Prieto,Ravenia urbanii Engl. ex Urb.,NC,NC,NC,OH
+RHCA3 ,,,Common Buckthorn,Rhamnus cathartica L.,NC,NC,NC,OT
+RHMA2 ,989,,Mangrove,Rhizophora mangle L.,NC,NC,NC,OH
+RHMA4 ,,,Great Laurel,Rhododendron maximum L.,NC,NC,NC,OH
+RHGL  ,,,Smooth Sumac,Rhus glabra L.,NC,NC,NC,OH
+RHHI2 ,,,Staghorn Sumac,Rhus hirta,NC,NC,NC,OH
+ROHIF8,,,Bristly Locust,Robinia hispida L. var. fertilis (Ashe) R.T. Clausen,BK,BK,BK,BK
+RONE  ,,,New Mexico Locust,Robinia neomexicana A. Gray,BK,BK,BK,BK
+ROPS  ,901,BK,Black Locust,Robinia pseudoacacia L.,BK,BK,BK,BK
+ROVIH2,,,Hartwigs Locust,Robinia viscosa Vent. var. hartwegii (Koehne) Ashe,BK,BK,BK,BK
+ROYST ,909,,Royal Palm Spp.,Roystonea O.F. Cook,NC,NC,NC,OT
+SAPA  ,912,,Cabbage Palmetto,Sabal palmetto (Walter) Lodd. ex Schult. & Schult. f.,NC,NC,NC,OT
+SASE10,929,,Weeping Willow,Salix ¡Ásepulcralis Simonkai [alba ¡Á ?pendulina],WI,WI,BL,WI
+SAAL2 ,927,,White Willow,Salix alba L.,WI,WI,BL,WI
+SAAM2 ,921,,Peachleaf Willow,Salix amygdaloides Andersson,WI,WI,BL,WI
+SACA5 ,925,,Coastal Plain Willow,Salix caroliniana Michx.,WI,WI,BL,WI
+SAERF ,923,DM,Diamond Willow,Salix eriocephala,WI,DM,BL,WI
+SAEX  ,,,Narrowleaf Willow,Salix exigua Nutt.,WI,WI,BL,WI
+SAFL  ,,,Florida Willow,Salix floridana Chapm.,WI,WI,BL,WI
+SAGO  ,,,Gooddings Willow,Salix gooddingii C.R. Ball,WI,WI,BL,WI
+SALIX ,920,WI,Willow Spp.,Salix L.,WI,WI,BL,WI
+SALA6 ,,,Arrroyo Willow,Salix lasiolepis Benth.,WI,WI,BL,WI
+SALUC ,,,Greenleaf Willow,Salix lucida Muhl. ssp. caudata (Nutt.) E. Murray,WI,WI,BL,WI
+SANI  ,922,BL,Black Willow,Salix nigra Marsh.,BL,BL,BL,WI
+SAPL2 ,,,Diamnondleaf Willow,Salix planifolia Pursh,WI,WI,BL,WI
+SAPY  ,926,,Balsam Willow,Salix pyrifolia Andersson,WI,WI,BL,WI
+SASE2 ,,,Autumn Willow,Salix serissima (L.H. Bailey) Fernald,WI,WI,BL,WI
+SATA  ,,,Yewleaf Willow,Salix taxifolia Kunth,WI,WI,BL,WI
+SANIC4,,,Common Elderberry,Sambucus nigra L. ssp. canadensis (L.) R. Bolli,NC,NC,NC,OT
+SARA2 ,,,Red Elderberry,Sambucus racemosa L.,NC,NC,NC,OT
+SARAR3,,,Red Elderberry Var Racemosa,Sambucus racemosa L. var. racemosa,NC,NC,NC,OT
+SASAD ,919,,Western Soapberry,Sapindus saponaria L. var. drummondii (Hook. & Arn.) L.D. Benson,NC,NC,NC,OT
+SAAL5 ,931,SS,Sassafras,Sassafras albidum (Nutt.) Nees,SS,SS,SS,SS
+SCAC2 ,888,,"Schefflera, Octopus Tree",Schefflera actinophylla (Endl.) Harms,NC,NC,NC,OT
+SIFO  ,890,,False Mastic,Sideroxylon foetidissimum Jacq.,NC,NC,NC,OT
+SIDER2,,,Bully,Sideroxylon L.,NC,NC,NC,OH
+SILAL3,381,,"Chittamwood, Gum Bumelia",Sideroxylon lanuginosum Michx. ssp. lanuginosum,NC,NC,NC,OH
+SISA6 ,891,,"White Bully, Willow Bustic",Sideroxylon salicifolium (L.) Lam.,NC,NC,NC,OT
+SITE2 ,,,Tough Bully,Sideroxylon tenax L.,NC,NC,NC,OT
+SIGL3 ,895,,Paradise Tree,Simarouba glauca DC.,NC,NC,NC,OT
+SOAM3 ,935,MA,American Mtn-Ash,Sorbus americana Marsh.,UH,MA,OH,OH
+SOAU  ,936,,European Mtn-Ash,Sorbus aucuparia L.,UH,MA,OH,OH
+SODE3 ,937,,Northern Mountain Ash,Sorbus decora (Sarg.) C.K. Schneid.,UH,MA,OH,OH
+SORBU ,934,,Mountain Ash Spp.,Sorbus L.,UH,MA,OH,OH
+STTR  ,,,American Bladdernut,Staphylea trifolia L.,NC,NC,NC,OH
+SWMA2 ,940,,Mahogany,Swietenia mahagoni (L.) Jacq.,UH,CH,OH,OH
+SYCU  ,896,,Java Plum,Syzygium cumini (L.) Skeels,NC,NC,NC,OT
+TAIN2 ,897,,Tamarind,Tamarindus indica L.,NC,NC,NC,OT
+TAMAR2,991,,Saltcedar,Tamarix L.,NC,NC,NC,OH
+TARA  ,,,Saltcedar Var.,Tamarix ramosissima Ledeb.,NC,NC,NC,OH
+TAAS  ,222,PC,Pondcypress,Taxodium ascendens Brongn.,BY,OS,OC,PC
+TADI2 ,221,BY,Baldcypress,Taxodium distichum (L.) Rich.,BY,OS,OC,BY
+CUPRE ,050,,Cypress Spp.,Taxodium Rich.,JU,RC,OC,JU
+TAFL  ,232,,Florida Yew,Taxus floridana Nutt. ex Chapm.,OS,OS,OS,OS
+TAXUS ,230,,Yew Spp.,Taxus L.,OS,OS,OS,OS
+TEHE3 ,,,Saintedwood,Ternstroemia heptasepala Krug & Urb.,NC,NC,NC,OH
+THMO4 ,913,,Key Thatch Palm,Thrinax morrisii H. Wendl.,NC,NC,NC,OT
+THRA2 ,914,,Florida Thatch Palm,Thrinax radiata Lodd. ex Schult. & Schult. f.,NC,NC,NC,OT
+THUJA ,240,OC,Other cedar,Thuja L.,OS,WC,WC,JU
+THOC2 ,241,WC,Northern White-Cedar,Thuja occidentalis L.,OS,WC,WC,JU
+TIAM  ,951,BW,American Basswood,Tilia americana L.,BW,BW,BW,BW
+TIAMC ,953,,Carolina Basswood,Tilia americana L. var. caroliniana (Mill.) Castigl.,BW,BW,BW,BW
+TIAMH ,952,WB,White Basswood,Tilia americana L. var. heterophylla (Vent.) Louden,BW,BW,WB,BW
+TILIA ,950,,Basswood Spp.,Tilia L.,BW,BW,BW,BW
+TORRE ,250,,Torreya Spp.,Torreya Arn.,OS,OS,OS,OS
+TOTA  ,252,,Florida Torreya,Torreya taxifolia Arn.,OS,OS,OS,OS
+TRSE6 ,994,,Chinese Tallowtree,Triadica sebifera (L.) Small,NC,NC,NC,OH
+TSCA  ,261,EH,Eastern Hemlock,Tsuga canadensis (L.) Carri¨¨re,OS,EH,EH,HM
+TSCA2 ,262,,Carolina Hemlock,Tsuga caroliniana Engelm.,OS,EH,HM,HM
+TSUGA ,260,HM,Hemlock Spp.,Tsuga Carri¨¨re,OS,EH,HM,HM
+ULAL  ,971,WE,Winged Elm,Ulmus alata Michx.,WE,AE,EL,WE
+ULAM  ,972,AE,American Elm,Ulmus americana L.,AE,AE,AE,AE
+ULCR  ,973,,Cedar Elm,Ulmus crassifolia Nutt.,EL,RL,EL,EL
+ULMUS ,970,EL,Elm Spp.,Ulmus L.,EL,AE,EL,EL
+ULPU  ,974,SI,Siberian Elm,Ulmus pumila L.,SI,AE,EL,EL
+ULRU  ,975,RL,Slippery Elm,Ulmus rubra Muhl.,RL,RL,RL,RL
+ULSE  ,976,,September Elm,Ulmus serotina Sarg.,EL,RL,EL,EL
+ULTH  ,977,RE,Rock Elm,Ulmus thomasii Sarg.,RE,RE,EL,EL
+URCH2 ,,,Ortiga,Urera chlorocarpa Urb.,NC,NC,NC,OH
+VAAR  ,,,Farkleberry,Vaccinium arboreum Marsh.,NC,NC,NC,OT
+VEFO  ,995,,Tung-Oil-Tree,Vernicia fordii (Hemsl.) Airy-Shaw,NC,NC,NC,OH
+VIDEL ,,,Southern Arrowwood,Viburnum dentatum L.,NC,NC,NC,OH
+VIBUR ,,,Viburnum,Viburnum L.,NC,NC,NC,OH
+VILE  ,,,Nannyberry,Viburnum lentago L.,NC,NC,NC,OH
+VINUC ,,,With-Rod,Viburnum nudum L. var. cassinoides (L.) Torr. & A. Gray,NC,NC,NC,OH
+VIOPA2,,,American Cranberrybush,Viburnum opulus L. var. americanum Aiton,NC,NC,NC,OH
+VIPR  ,,,Blackhaw,Viburnum prunifolium L.,NC,NC,NC,OH
+VIRU  ,,,Rusty Blackhaw,Viburnum rufidulum Raf.,NC,NC,NC,OT
+VIDE  ,,,Southern Arrowwood,Vicia disperma,NC,NC,NC,OT
+XYSC3 ,,,Schwaneck¡¯S Logwood,Xylosma schwaneckeana (Krug & Urb.) Urb.,NC,NC,NC,OH
+ZAAM  ,,,Common Pricklyash,Zanthoxylum americanum Mill.,NC,NC,NC,OT
+ZANTH ,,,Pricklyash,Zanthoxylum L.,NC,NC,NC,OH

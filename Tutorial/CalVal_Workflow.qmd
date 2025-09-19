@@ -1,0 +1,692 @@
+---
+title: "GEDI Cal/Val Workflow"
+author: "Luke Wertis"
+date: "09/08/2025"
+format: 
+  html:
+    code-fold: true
+    toc: true
+    toc-title: Table of Contents
+    number-sections: true
+---
+
+## Plot and Tree Survey Data
+- The objective of this notebook is to go over the steps needed from start to end to get your plot and tree inventory data structured correctly for creating simulated waveforms over GEDI footprint-sized subplots.
+- The steps illustrated in this notebook are just a single example of an approach used for this specific site, every site is different and will require different methods, but the end result of every site should result in a standardized result that will be easily carried over to the second step and eventually, seamlessly fit in with a larger collection of sites.
+- Overall we are taking steps towards turning your plot into 25m by 25m subplots where all the trees within an individual subplot are correctly pooled together.
+- The steps needed to accomplish this objective can be broken down into 10 key steps
+
+
+# Starting Your New Project
+*Setting up your project folder for the first time.*
+
+1. On the command line navigate to the `/renv` directory within the docker and type `R`, this will open R on the command line, now set the working directory as the GEDI_CalVal folder, `setwd("/workspace/GEDI_CalVal")`.
+
+2. Type `system(command = "Rscript scripts/createProjectDirectory.R {Your directory name}")`, this will create a new folder in the `/data` folder containing the name that you supplied along with 5 ***CSV*** files that we will be filling out and a R script named ***dataManipulate.R***, you can close R and you do not need to save the image.
+
+3. Inside the newly created project directory create an additional folder called `/metadata` to store your original versions of the data.
+
+4. Make a copy of your tree and plot data, naming them *treeData* and *plotData*, ensure that they are in ***CSV*** format and put them in the main folder (not in metadata).
+
+# Filling out dataMatchColumns.csv
+*Defining the variables used in your data and any name changes that need to be made.*
+
+1. We will start with the ***dataMatchColumns.csv*** file. Open this file, the initial file will contain only the following headers **var_in**, **method**, **unit_in**, **var_out**, **notes**.
+
+2. Follow the ***variableDefinition.csv*** (found in the `/config` folder of the gedicalval directory) variable and units column to ensure your columns match the desired name and format. There is a *description* column if you are unsure of what to rename your variable.
+
+3. **var_in** are the column names that you have in your original ***plotData.csv*** and ***treeData.csv***, you will need to ***supply the name of every column header from both files in the var_in column, be carful to ensure that everything matches exactly***.
+
+4. The column *method* is used when the units that you use are different than the required units which are notated in the **variableDefinition.csv** file. If this is the case, in the same `/config` folder is a file called ***variableConversion.csv*** that you will supply the “conversion” value to, otherwise fill in the cell with `NA`.
+
+5. The *unit_in* column is filled out with the units that your original dataset used, if your variable is unitless use `NA`, the variable abbreviation that is needed is supplied in the ***variableDefinition.csv*** file under the header *units*.
+
+6. The *var_out* column has the variable names from ***variableDefinition.csv*** that correspond with your original column names. If your initial column name matches the required column name, you still need to supply that name.
+
+7. The *notes* column is there to help you keep tract of what you are doing, there is no need to fill this in with information, however, you need to ***supply `NA` to every cell that you do not have anything in them.***
+
+# plotDataImportOptions.csv & treeDataImportOptions.csv
+*How R should handle reading in your data.*
+
+1. These two files are very similar and only require a few potential changes.
+
+2. If your data has headers (i.e., column names) leave as `TRUE`.
+
+3. For the 4th row, *separator*, you need to indicate how your ***CSV*** file indicates when a new cell begins, if you are unsure, open your ***CSV*** file using notepad, most commonly a “;” is used to separate data, but be sure that this is the case for your data.
+
+# dataNew.csv
+*Variables missing from your data that need to be included.*
+
+1. This file has a similar effect as ***dataMatchColumn.csv*** but allows for additional information to be added that might be missing from the original data.
+
+2. You will fill out **newVariable** for the variable name and **newValue** for the value that you want to give the variable.
+
+3. In situations when you need to make minor changes to the data that you do not want to handle in the dataManipulate you can handle here as well.
+   ***For example if you need to change the pft.name for each plot in the data you can add plot under the lookupVariable header, the plot number under lookupValue, the column name under newVariable, and the value you want it to have under the newValue column.***
+
+5. Keep in mind that this is applied post ***dataManipulate.R*** has been run so the newVariable value needs to match the standardized version we use instead of the original name.
+
+6. Make sure that any cell that does not have information in it has `NA` in the cell.
+
+# studyMetadata.csv
+*Information on the data acquisition.*
+
+1. This file should be filled out to contain the information about the project itself.
+
+# dataManipulate.R
+*Script for manipulating plot and tree data. This is meant to be handled on your personal workspace nad not inside the docker for your ease of use.*
+
+1. This script is subdivided into **manipulate**, **manipulate_plot**, and **manipulate_tree**. You will need to start with either the plot or tree functions first as the manipulate function is applied to the combined plot and tree data.
+
+2. If you are unsure of the functions to use then reference, `R/geometry.R` which contains all of the functions for manipulating spatial data and uses the library `terra`. `R/metadata.R`, `R/support.R`, and `R/steps.R` supply the specialized functions used to load the data in the format we need it in.
+
+3. One thing to note is that to be efficent with memory, a single MODIS PFT raster was included, which is for the year 2017, the file can be found at `/extra/MODIS_pft`. If you need a different MODIS year, replace the one provided with the verion you need.
+
+```{r}
+#| label: Loading Packages and Functions
+#| fig-cap: "functions used in process"
+#| warning: false
+#| echo: true
+
+setwd("~/GEDI_CalVal")
+source("R/metadata.R")
+source("R/support.R")
+source("R/steps.R")
+source("R/geometry.R")
+
+library(BIOMASS)
+library(plyr)
+library(xml2)
+library(jsonlite)
+library(rlang)
+library(dplyr)
+library(terra)
+library(tidyverse)
+```
+
+# Manipulate_tree
+*Formatting individual trees to meet GEDI cal/val expectations.*
+
+1. ***Every project is going to be different, make sure you have an understanding of how the data was collected and reported***, knowing this will help identify issues in the data that you will be able to address that is not listed below. There are bound to be cases where you will need to rename column values and address issues within the data, this is up to you to handle correctly, just make sure that you are reviewing your alterations.
+
+2. You will want to read in the ***treeDataImportOptions.csv*** file, using `read_data_raw_import_options()`, that you created earlier and your ***treeData.csv*** file, using `read_csv()`. If there are multiple files for this project, remember to uniquely name them and combine the tree data.
+
+3. The tree data needs to have individual tree information which includes the location, if there is a separate file that contains the location of the individual trees, this is the place to read it in and combine with the tree data.
+
+```{r}
+#| label: Reading in Tree Data
+#| fig-cap: "Tree Data"
+#| warning: false
+#| echo: true
+# Load the file that explains how to read in our tree data
+opts <- read_data_raw_import_options("~/GEDI_CalVal/data/A_Practice/treeDataImportOptions.csv")
+  
+# Load in the tree data
+treeData<- read_csv("~/GEDI_CalVal/data/A_Practice/treeData2020-09.csv", header=opts$header, skip=opts$skip, na.strings=opts$na.strings)
+
+# Make sure there are no duplicated columns 
+treeData <- treeData[!duplicated(treeData[,c('individualID', 'eventID')]),]
+
+treeLocation <- read_csv("~/GEDI_CalVal/data/A_Practice/treeLocation.csv", header=opts$header, skip=opts$skip, na.strings=opts$na.strings)
+treeLocation <- treeLocation[!duplicated(treeLocation[,'individualID'], fromLast=TRUE),]
+  
+raw <- dplyr::left_join(treeData, treeLocation)
+```
+
+4. Next ensure that your **DBH measurements** are correct, check for missing values or obviously incorrect measurements. Amend any issues here, any way you choose. Additionally, if you have a minimum DBH that you are working with make sure to remove any cases with a lower value.
+
+```{r}
+#| label: Making specific tweaks
+#| fig-cap: "Specific trouble shooting"
+#| warning: false
+#| echo: true
+# Remove stems under 10cm. There are multiple sub-subplots with smaller stems that we are excluding
+raw <- raw[raw$stemDiameter >= 10,]
+
+# Correct an DBH measurement. DBH and height of DBH measurement switched
+raw$stemDiameter[raw$individualID=='NEON.PLA.D16.ABBY.00862' & raw$eventID=='vst_ABBY_2016' & !is.na(raw$individualID)]<-raw$measurementHeight[raw$individualID=='NEON.PLA.D16.ABBY.00862' & raw$eventID=='vst_ABBY_2016' & !is.na(raw$individualID)]
+raw$measurementHeight[raw$individualID=='NEON.PLA.D16.ABBY.00862' & raw$eventID=='vst_ABBY_2016' & !is.na(raw$individualID)] <- 130
+```
+
+5. If your crown diameter was measured, fill that in for `raw$c.w`
+
+```{r}
+#| label: Crown Width tweaks
+#| fig-cap: "Crown width"
+#| warning: false
+#| echo: true
+# Crown diameter was measured for a subset of trees.
+raw$c.w <- apply(cbind(raw$maxCrownDiameter, raw$ninetyCrownDiameter), 1, mean, na.rm=T)
+```
+
+6. ***Fill out the status value for your data (i.e., `raw$status`), this receives a value of 0 if it is dead and a value of 1 if the tree is alive***. Make sure to reference the column you have that information in and translate to the binary system needed in the status column.
+
+```{r}
+#| label: Live/Dead Status
+#| fig-cap: "Setting the status of the individual trees"
+#| warning: false
+#| echo: true
+# Set live-dead status
+raw$status <- 0
+raw$status[grep('Live', raw$plantStatus)] <- 1
+```
+
+7. Next is formatting the data, use the function `as.Date()` and supply the format that your date is in.
+```{r}
+#| label: Date Format
+#| fig-cap: "Format the date"
+#| warning: false
+#| echo: true
+# Format date
+raw$tree.date <- as.Date(raw$date, format='%Y-%m-%d')
+```
+
+8. ***Next we want to format `raw$species`, this column will need both the genus and species separated by a space***. Any row missing either genus or species receives an NA value for their species. Depending on how the tree data was compiled ***you may need to read in the species information***, if this is the case, remember to use `read_data_raw_import_options()` to read in the instructions for how to handle this particular ***csv*** file and `read_csv()` for the ***speciesData*** file. ***Remember to combine the tree data with the species data.***
+
+```{r}
+#| label: Standardizing species names
+#| fig-cap: "Format individual species"
+#| warning: false
+#| echo: true
+# Remove authority from species names, and set unknown species to NA
+raw$species <- sapply(raw$scientificName, function(x){paste(unlist(strsplit(x, " "))[1:2], collapse=" ")})
+raw$species[raw$taxonRank=="genus" & !is.na(raw$taxonRank)] <- sapply(raw$species[raw$taxonRank=="genus" & !is.na(raw$taxonRank)], function(x){unlist(strsplit(x, " "))[1]})
+raw$species[raw$species=="NA NA" & !is.na(raw$species)] <- NA
+raw$species[raw$species=="Unknown plant" & !is.na(raw$species)] <- NA
+
+# Add species data to the tree data. Includes allom.key
+opts <- read_data_raw_import_options("~/GEDI_CalVal/data/A_Practice/speciesDataImportOptions.csv")
+species.raw <- read_csv("~/GEDI_CalVal/data/A_Practice/speciesData.csv",
+                          header=opts$header, skip=opts$skip, na.strings=opts$na.strings)
+raw <- merge(raw, species.raw, by.x='taxonID', by.y=opts$key, all.x=TRUE, all.y=FALSE)
+  
+raw$species <- raw$ScientificName
+raw$species[raw$species=="NA NA" & !is.na(raw$species)] <- NA
+```
+
+9. If you have allometry information in a separate file read that data in now using `read_csv()`. ***This stage is up to you on how to handle the allometry information, make sure your allom.key and species names in your working data are the same as the allometric dataframe***. The methods for handling this information is going to vary based on the project but the goal is to have the allom.key column correctly align with the tree information.
+
+10. If your tree data is missing allom.key information because of species missing, replace the `NA` with the most common allom.key value in the project. You can determine the most common allom.key value manually or through the use of a function.
+
+```{r}
+#| label: Allometry
+#| fig-cap: "Format allometry"
+#| warning: false
+#| echo: true
+# mode function
+getmode <- function(v) {
+    uniqv <- unique(v)
+    uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+  
+# For trees with missing allom.key because species is missing, replace with the most common allom.key for the project
+raw$allom.key[is.na(raw$allom.key) & is.na(raw$species)] <- getmode(raw$allom.key[!is.na(raw$allom.key)]) 
+```
+
+11. Create a new column named **key** which is the combination of **plotID** and **eventID** separated by a “_”.
+
+```{r}
+#| label: Setting the key
+#| fig-cap: "Format key"
+#| warning: false
+#| echo: true
+# Combine plot and survey for key to combine with plot data
+raw$key <- paste(raw$plotID, raw$eventID, sep='_')
+```
+
+
+# Manipulate_plot
+*Formatting plot to prepare for GEDI footprint sized subplot creation.*
+
+1. ***Every project is going to be different, make sure you have an understanding of how the data was collected and reported***, knowing this will help identify issues in the data that you will be able to address that is not listed below. There are bound to be cases where you will need to rename column values and address issues within the data, this is up to you to handle correctly, just make sure that you are reviewing your alterations.
+
+2. You will load in the ***plotDataImportOptions.csv*** and ***plotData.csv*** in the same manner as the tree data. Use `read_data_raw_import_options()` to read in the ***plotDataImportOptions.csv*** and `read_csv()` for the ***treeData.csv***. ***If you are combining multiple files into a single data frame make sure that all data frames have the same number of columns and that they are named the same.*** You can manipulate the columns during this process. Once the data frames are all matching join them together.
+
+```{r}
+#| label: Read in the Plot data
+#| fig-cap: "Load in Plot Data"
+#| warning: false
+#| echo: true
+opts <- read_data_raw_import_options("~/GEDI_CalVal/data/A_Practice/plotDataImportOptions.csv")
+  
+raw<- read_csv("~/GEDI_CalVal/data/A_Practice/plotData2020-08.csv", 
+               header=opts$header, skip=opts$skip, na.strings=opts$na.strings)  
+```
+
+3. Next is formatting the data, use the function `as.Date()` and supply the format that your date is in, make sure that this is the same format as the ***treeData.csv*** was in.
+
+```{r}
+#| label: Plot data date formatting 
+#| fig-cap: "Date Formatting"
+#| warning: false
+#| echo: true
+# Format date
+raw$date <- as.Date(raw$date, format='%Y-%m-%d')
+```
+
+4. Assign the date and name of the lidar project to the appropriate projects, using **l.date** for the year of the lidar collection and **l.project** for the unique name of the lidar collection. Also ensure that 
+**l.epsg** is in the correct format.
+
+```{r}
+#| label: Structure LiDAR date 
+#| fig-cap: "Settign the year of LiDAR collection, useful when there are repeat flights/measurments"
+#| warning: false
+#| echo: true
+# Assign lidar date and project
+raw$l.date[raw$eventID=='vst_ABBY_2020'] <- 2021
+  
+raw$l.project[raw$eventID=='vst_ABBY_2020'] <- 'neon_abby2021'
+```
+
+5. If **p.epsg**, **Easting**, and **Northing** are not provided in the plotData, there are a few ways to fix the issue.
+   * Use `get_utmwgs84_epsg()` to obtain the epsg code, based on yout lon/lat information. 
+   * If you know your starting epsg (i.e., **src_epsg**), use the p.epsg from `convert_projection()` to get the **Easting** and **Northing** infromation.
+   * If your lon/lat information is based on EPSG:4326, use `geo2utm()` where you only need to provide the lon and lat.
+
+Both methods for obtaining **Easting** and **Northing** return a list, meaning Position[1,] represents **Easting** and Position[2,] is **Northing**
+
+```{r}
+#| label: Setting Plot EPSG 
+#| fig-cap: "formatting the CRS/EPSG of the collection"
+#| warning: false
+#| echo: true
+raw$p.epsg <- get_utmwgs84_epsg(raw$decimalLongitude, raw$decimalLatitude)
+
+# With a known starting epsg and converted UTM epsg
+utmcoords <- mapply(convert_projection,raw$decimalLongitude,raw$decimalLatitude,4326,raw$p.epsg)
+
+# If you are using EPSG:4326 and converting to UTM
+utmcoords <- mapply(geo2utm,raw$decimalLongitude,raw$decimalLatitude)
+```
+
+6. If you need to manually manipulate the location of the plots, this is the place to handle that, this can vary drastically between projects so it is up to you to determine the best way to handle this potential step.
+
+7. Create a new column named key which is the combination of **plotID** and **eventID** separated by a “_”.
+
+```{r}
+#| label: Create key (matching the tree data version)
+#| fig-cap: "formatting key"
+#| warning: false
+#| echo: true
+# Combine plot and survey for key to combine with tree data
+raw$key <- paste(raw$plotID, raw$eventID, sep='_')
+```
+
+# Manipulate
+*Creation of subplots and correct assignment of trees to associated plots.*
+
+This step uses a combined ***treeData.csv*** and ***plotData.csv*** and the join step takes place during the `makeGEDICalVal` script, but to make sure your steps work correctly you can join your ***plotData.csv*** and ***treeData.csv*** together after you have tested them in their individual manipulate functions.
+
+## ***If you created the p.geom values during the manipulate_plot step you can skip the next step.***
+
+1.  If you have a shapefile of the plots read them in using the function `vect()`. Now we will need to create subplots diving up the larger plot to match the dimensions of a GEDI footprint. To accomplish this we will use the function `polygonchopper()`. This function requires an understanding of the plot data and is run in a `mapply()` function so that each plot is run separately. I will attempt to breakdown how to set up this function but again this will vary based on your data. For this function, you will need to supply 7 different values.
+
+    * **polygon:** this is comprised of the individual plots that make up the shapefile, you may only be concerned with a few of the total plots in which case you will need to subset the data, but assuming you are using every geometry in the shapefile you can use `lapply(seq_len(nrow(shape)), function(i) shape[i, ])` with shape being the name of the shapefile.
+    * **ID:** This should be the unique identifier that distinguishes every plot apart from each other and should be in data frame format.
+    * **PlotStatus:** This has the value of plot or subplot status of the individual geometries, if this is not already in the shapefile data you will need to supply it in the function through the use of a list or prior to this function.
+    * **Start_side:** this informs the function on how it will move through the geometries and is also supplied in the form of a list.
+    * **Dimension:** This should be the same regardless of the plot and should be a value of 25, representing the diameter of the GEDI footprint.
+    * **asGrid:** This should remain as TRUE
+    * **proj4string:** this is the crs that will be used on the final output, this should have the same crs as the shapefile, you can use crs(shape) to automate this.
+  
+The result of this function is a list of spatialVectors one for each geometry in the data, we will call **shape_gedi**. Make sure to remove any empty spatialvectors from the list, then combine the list creating a single spatialvector. To ensure only complete subplots are retained you will need to compare the original shape to the output of the polygonChopper.
+
+```{r}
+#| label: shape_gedi 
+#| fig-cap: "read in the subplot information"
+#| warning: false
+#| echo: true
+# This is only to allow for the polygonChopper work flow to be demonstrated. 
+raw <- read.csv("~/GEDI_CalVal/data/A_Practice/shape_gedi_raw.csv")
+```
+
+```{r}
+#| label: Load in plot Shapefile 
+#| fig-cap: "Loading in Shapefiles to work with"
+#| warning: false
+#| echo: true
+# import shapefiles for plots are read WKT
+shape <- vect('~/GEDI_CalVal/data/A_Practice/shapeFiles/AND_A01_2013_050x050m.shp')
+  
+# Divide plots in shapefile into GEDI footprint size rectangles so that when subplot is aggregated with full plot biomass is unique for each footprint
+shape_gedi <- mapply(FUN=polygonChopper, polygon = lapply(seq_len(nrow(shape)), function(i) shape[i, ]), 
+                     ID = as.data.frame(shape)$FullId, 
+                     PlotStatus = as.data.frame(shape)$PSFlag, 
+                     start_side = rep("topright",40),
+                     MoreArgs = list(dimension=25,	asGrid=T, proj4string = crs(shape)))
+
+# Removes empty elements of the list             
+shape_gedi <- shape_gedi[!unlist(lapply(shape_gedi, rlang::is_empty))]
+# Combines all elements of the list into a single spatial vector
+shape_gedi <- do.call(rbind, shape_gedi)
+# Create an unique ID for each plot
+shape_gedi$plotID <- gsub("S","B", shape_gedi$newID,fixed=T)
+```
+
+polygon uses each row of data in the spatial vector "shape" ID is the column that specifies the naming scheme the subplots will be named based on. This can take a while to run.
+
+```{r}
+#| label: Run Shapefile through Polygon chopper
+#| fig-cap: "Polygon chopper step"
+#| warning: false
+#| echo: true
+
+shape <- vect('~/GEDI_CalVal/data/A_Practice/shapeFiles/AND_A01_2013_050x050m.shp')
+  
+# Divide plots in shapefile into GEDI footprint size rectangles so that when subplot is aggregated with full plot biomass is unique for each footprint
+shape_gedi <- mapply(FUN=polygonChopper, 
+                     polygon = lapply(seq_len(nrow(shape)), function(i) shape[i, ]), 
+                     ID = as.data.frame(shape)$FullId, 
+                     PlotStatus = as.data.frame(shape)$PSFlag, 
+                     start_side = rep("topright",40),
+                     MoreArgs = list(dimension=25,	asGrid=T, proj4string = crs(shape)))
+shape_gedi <- shape_gedi[!unlist(lapply(shape_gedi, rlang::is_empty))]
+shape_gedi <- do.call(rbind, shape_gedi)
+```
+
+```{r}
+#| label: Plot vs. GEDI sized subplots
+#| fig-cap: "An example plot showing the change made from the original plot shape to the GEDI sized subplots after the polygonChopper step"
+#| warning: false
+#| echo: false
+
+# Set layout to 1 row, 2 columns
+par(mfrow = c(1, 2))
+
+# Left plot
+plot(shape[1,])
+
+# Right plot
+plot(shape_gedi[shape_gedi$Id == 1, ])
+
+# Reset plotting layout
+par(mfrow = c(1, 1))
+```
+
+2. We want to make sure the tree points fall within the subplots, any points falling outside the bounds of the subplot boundaries will need to be removed, you can use the function `terra::relate(relation = “within” -or- "intersects")` to make select only the trees in the polygons.
+
+3. Using **shape_gedi**, assign the plot+tree dataset with the appropriate ID based on which geometry each row belongs to.
+
+```{r}
+#| label: Ensure overlap between plot and tree data
+#| fig-cap: "Checking for overlap"
+#| warning: false
+#| echo: true
+
+# Convert trees into a spatial vector
+tree_loc <- vect(raw%>%dplyr::select(UTM.Easting,UTM.Northing), geom = c("UTM.Easting", "UTM.Northing"), crs = crs(shape))
+
+#Only keep plots with trees
+plot_tree_intersect  <- shape_gedi[tree_loc] %>% as.data.frame()
+
+plot_tree_intersect <- terra::relate(shape_gedi, tree_loc, relation = "intersects") %>%
+    t() %>% as.data.frame()
+
+# Assigns the TRUE/FALSE data.frame the name of the plots to determine which plot has tree(s) within it.
+colnames(plot_tree_intersect) <- shape_gedi$ID
+# Converts the data.frame into a matrix
+plot_tree_intersect <- plot_tree_intersect %>% as.matrix()
+# Removes rows of raw not found in plot_tree_intersect
+raw <- raw[apply(plot_tree_intersect, 1, any),]
+# Removes rows of plot_tree_intersect without a tree within the plot
+plot_tree_intersect <- plot_tree_intersect[apply(plot_tree_intersect, 1, any),]
+# Assigns the newID with the value of the plot the tree is found within
+for(i in colnames(plot_tree_intersect)){
+   raw$newID[plot_tree_intersect[,i]] <- i
+}
+```
+
+```{r}
+#| label: Plot vs. GEDI subplots side by side
+#| fig-cap: "Showing the difference between the original plot and GEDI subplots when the stem map is overlayed. This stem map corresponds with the m.agb metric that will be generated at the end of this process, with the m.agb coming from the individual stems within each individual grid."
+#| warning: false
+#| echo: false
+
+# Set layout to 1 row, 2 columns
+par(mfrow = c(1, 2))
+
+# Left plot
+plot(shape[1, ], main = "Original Plot")
+plot(tree_loc, add = TRUE, col = "forestgreen")
+
+# Right plot
+plot(shape_gedi[shape_gedi$Id == 1, ], main = "GEDI Subplots")
+plot(tree_loc, add = TRUE, col = "forestgreen")
+
+# Reset plotting layout
+par(mfrow = c(1, 1))
+```
+
+4. Next we will need to find the lon and lat of the center for each of the “plot” geometries of **shape_gedi** and turn this into a data.frame. we will then make sure the lon/lat are in degrees and not UTM, if they are in UTM use `epsg2geo()`, converting to the epsg you specified in your .csv file. The output of the previous function will be matrix, we will want this as a data.frame along with the **plotID** for each lon/lat combination. This will then be merged with the **shape_gedi** data resulting in two additional columns, **longitude** and **latitude**.
+
+```{r}
+#| label: Setting plot center points
+#| fig-cap: "Center points are where the simulated GEDI footprint will be centered"
+#| warning: false
+#| echo: true
+#Find centroid of plot and calculate longitude and latitude
+cent <- centroids(shape_gedi) %>% crds() 
+# Converts to a data frame
+cent <- as.data.frame(cent)
+# We only want to retain the plots in this case, removing the subplots
+cent <- cent[shape_gedi$PlotStatus == 'plot',]
+# Supplying the x, y, and EPSG we need our lon/lat coordinates in
+cent <- mapply(epsg2geo,cent[,1],cent[,2],32723)
+# Create a data frame from the multiple data sources
+cent <- data.frame(PlotID = (shape_gedi[shape_gedi$PlotStatus=='plot'])$PlotID, longitude=cent[1,], latitude = cent[2,], stringsAsFactors = FALSE)
+# Bring in the lon/lat information to the original spatial vector
+shape_gedi <- terra::merge(x=shape_gedi[c("newID", "oldID", "PlotStatus", "PlotID")], y= cent, by='PlotID')  
+
+```
+
+```{r}
+#| label: GEDI subplots with the center point
+#| fig-cap: "cent represents the location where the simulated GEDI waveform will be centered."
+#| warning: false
+#| echo: false
+#| 
+shape <- vect('~/GEDI_CalVal/data/A_Practice/shapeFiles/AND_A01_2013_050x050m.shp')
+
+shape <- shape[shape$Id == 1, ]
+# Divide plots in shapefile into GEDI footprint size rectangles so that when subplot is aggregated with full plot biomass is unique for each footprint
+shape_gedi <- mapply(FUN=polygonChopper, 
+                     polygon = lapply(seq_len(nrow(shape)), function(i) shape[i, ]), 
+                     ID = as.data.frame(shape)$FullId, 
+                     PlotStatus = as.data.frame(shape)$PSFlag, 
+                     start_side = rep("topright",40),
+                     MoreArgs = list(dimension=25,	asGrid=T, proj4string = crs(shape)))
+shape_gedi <- shape_gedi[!unlist(lapply(shape_gedi, rlang::is_empty))]
+shape_gedi <- do.call(rbind, shape_gedi) %>% project(paste0("EPSG:4326"))
+
+plot_centers <- vect(cent, geom = c("longitude","latitude"), crs(shape_gedi))
+
+plot(shape_gedi[shape_gedi$Id == 1, ]);plot(plot_centers, add = T)
+
+```
+
+5. We then need to obtain the WKT for both **p.geom** and **sp.geom**.
+
+6. Merge **shape_gedi** with the plot+tree data.
+
+```{r}
+#| label: get the plots geometry in WKT format
+#| fig-cap: "Plot geometry"
+#| warning: false
+#| echo: true
+
+# Add p.geom and sp.geom from shapefile
+# plotID are the shape_gedi rows with a Plotstatus value of plot and we pull those specific rows plotID value
+p.geom <- data.frame('PlotID' = values(shape_gedi[shape_gedi$PlotStatus =='plot'])["PlotID"],
+# p.geom is the WKT of the geometry for the shape_gedi rows PlotStatus with a value of plot  
+                     'p.geom' = geom(shape_gedi, wkt=T, list=T)[shape_gedi$PlotStatus =='plot'], stringsAsFactors = FALSE)
+
+# obtain all the newID and sp.geom WKT from the shape_gedi 
+sp.geom <- data.frame('newID' = shape_gedi$newID,
+                      'sp.geom' = geom(shape_gedi, wkt=T, list=T), stringsAsFactors = FALSE)
+
+# combine the p.geom and sp.geom with the shape_gedi data
+shape_gedi <- terra::merge(x=shape_gedi[c("newID", "oldID", "PlotStatus", "PlotID")], y= p.geom, by='PlotID')
+shape_gedi <- terra::merge(x=shape_gedi[c("newID", "oldID", "PlotStatus", "PlotID", "p.geom")], y= sp.geom, by='newID')
+
+# ensure the newID is a character
+shape_gedi$newID <- as.character(shape_gedi$newID)
+
+# Fixing issues with duplicated column names
+colnames(raw)[duplicated(colnames(raw))] <- paste(colnames(raw)[duplicated(colnames(raw))], '.y', sep="")
+
+# add in the shape_gedi data to the treeData+plotData data frame
+raw <- terra::merge(x = shape_gedi, y = raw, by = "newID", all.x = TRUE) %>% data.frame()	 
+```
+
+## ***If you already have p.geom information in your starting data.frame this is where you will pick back up with the steps and if you used shape_gedi the next few steps will not apply to you.***
+
+1. If tree locations are represented by anything other than the exact location of where the tree is located we need to make the proper adjustments to update the tree locations. We need to convert our lon/lat data into UTM. 
+
+```{r}
+#| label: p.geom information
+#| fig-cap: "when we already had geometry information and did not need to run the polygon chopper"
+#| warning: false
+#| echo: true
+raw <- read.csv("~/GEDI_CalVal/data/A_Practice/p_geom_raw.csv")
+
+# Converting lat/lon into UTM list
+utmcoord <- t(mapply(geo2utm, raw$decimalLongitude, raw$decimalLatitude))
+
+# Updating tree locations based on a combination of site-specific measurements
+raw$x <- utmcoord[,1] + raw$stemDistance * sin((raw$stemAzimuth)*pi/180)
+raw$y <- utmcoord[,2] + raw$stemDistance * cos((raw$stemAzimuth)*pi/180)
+```
+
+2. Even if we did not need to update the tree locations we will still need to convert the lon/lat into UTM to obtain the p.geom for each plot.
+
+```{r}
+#| label: Function for updating p.geom WKT
+#| fig-cap: "updating WKT for UTM"
+#| warning: false
+#| echo: true
+utmcoord <- t(mapply(geo2utm, raw$decimalLongitude, raw$decimalLatitude))
+
+## plot geometry function, used below
+write.p.geom <- function(coord.x, coord.y, dim){
+    sw.x <- coord.x - dim/2
+    sw.y <- coord.y - dim/2
+    nw.x <- coord.x - dim/2
+    nw.y <- coord.y + dim/2
+    ne.x <- coord.x + dim/2
+    ne.y <- coord.y + dim/2
+    se.x <- coord.x + dim/2
+    se.y <- coord.y - dim/2
+    poly <- terra::vect(as.character(paste('POLYGON((', sw.x, sw.y, ',',
+                                           nw.x, nw.y, ',',
+                                           ne.x, ne.y, ',',
+                                           se.x, se.y, ',',
+                                           sw.x, sw.y, '))', sep = ' ')))
+    #p.geom <- rgeos::writeWKT(poly)
+    p.geom <- geom(poly, wkt=T, list=T)
+}
+
+# Creating WKT for the plot geometry
+raw$p.geom <- mapply(write.p.geom, utmcoord[,1], utmcoord[,2], MoreArgs = list(dim=40))
+
+```
+
+3. If your **totalSampledAreaTrees** is 400 than this represents a single 20 x 20m subplot which is our ideal plot size, they will receive a subplot value of “center” if the **totalSampledAreaTrees** is a 40m x 40m plot than it will need to be divided into quadrants. This applies for all plot sizes, you need to understand the dimensions of your plot to accurately segment the plots into 20x20m subplots. The subplot values other than **center** can be **sw**, **se**, **ne**, **nw**.
+
+```{r}
+#| label: An approach for creating subplots
+#| fig-cap: "possible subplot approach"
+#| warning: false
+#| echo: true
+# Within 40x40 m plot, there are 1-2 20x20m subplots. 
+# Single subplots are in the center of the plot.
+# If there are two subplots, they are in two quadrants of the plot.
+raw$subplot <- raw$subplotID
+raw$subplot[raw$totalSampledAreaTrees==400] <- 'center'
+raw$subplot[raw$subplot%in%c(21,31)] <- 'sw' # This requires a knowledge of the plots in your data
+raw$subplot[raw$subplot%in%c(23,32)] <- 'se' # This requires a knowledge of the plots in your data
+raw$subplot[raw$subplot%in%c(39,40)] <- 'nw' # This requires a knowledge of the plots in your data
+raw$subplot[raw$subplot==41] <- 'ne' # This requires a knowledge of the plots in your data
+
+#Create subplot geometries for each subplot group, you might not have to do this, again understand the data you are working with 
+raw$sp.geom[raw$subplot=='sw' & !is.na(raw$subplot)] <- mapply(write.p.geom, utmcoord[,1][raw$subplot=='sw' & !is.na(raw$subplot)]-10, 
+                                                                 utmcoord[,2][raw$subplot=='sw' & !is.na(raw$subplot)]-10, MoreArgs = list(dim=20))
+raw$sp.geom[raw$subplot=='se' & !is.na(raw$subplot)] <- mapply(write.p.geom, utmcoord[,1][raw$subplot=='se' & !is.na(raw$subplot)]+10,
+                                                                 utmcoord[,2][raw$subplot=='se' & !is.na(raw$subplot)]-10, MoreArgs = list(dim=20))
+raw$sp.geom[raw$subplot=='nw' & !is.na(raw$subplot)] <- mapply(write.p.geom, utmcoord[,1][raw$subplot=='nw' & !is.na(raw$subplot)]-10, 
+                                                                 utmcoord[,2][raw$subplot=='nw' & !is.na(raw$subplot)]+10, MoreArgs = list(dim=20))
+raw$sp.geom[raw$subplot=='ne' & !is.na(raw$subplot)] <- mapply(write.p.geom, utmcoord[,1][raw$subplot=='ne' & !is.na(raw$subplot)]+10, 
+                                                                 utmcoord[,2][raw$subplot=='ne' & !is.na(raw$subplot)]+10, MoreArgs = list(dim=20))
+raw$sp.geom[raw$subplot=='center' & !is.na(raw$subplot)] <- mapply(write.p.geom, utmcoord[,1][raw$subplot=='center' & !is.na(raw$subplot)], 
+                                                                     utmcoord[,2][raw$subplot=='center' & !is.na(raw$subplot)], MoreArgs = list(dim=20))
+
+```
+
+## ***Now both approaches to the manipulate function will share the remaining steps.***
+
+1. Look over your combined data.frame and see if there are any columns that are still empty, for the most part these will be relatively easy to fill in, most of these values should be in the **dataNew.csv** or an ancillary file.
+
+2. Also double check your data to make sure you do not have any rows that are missing key pieces of information which could mean that these rows need to be removed.
+
+3. To ensure that everything is running correctly, you can run the entire script line-by-line, the end result of the 3 manipulate functions is not the same as the overall finished product of the `makeGEDICalVal` script but is very indicative of if the overall function will run without errors.
+
+***Below are examples of possible values/approaches you will need to finish filling out your data*** 
+
+```{r}
+#| label: Possible additional information you need to add
+#| fig-cap: "Not all information can be covered in our demo, these are some additional information bits to add"
+#| warning: false
+#| echo: true
+raw$p.origin <- "C"  # add that this is the center
+raw$sp.shape <- "R"  # Insert the shape information on the plot
+  
+# Add other constant fields
+raw$epsg <- 32723  
+  
+# Add essential information
+raw$region <- "SA" # Add the geographic region in the world
+raw$dft <-  "DA" # Add the plant funtional type information
+raw$vegetation <- "TropRF" # Add the vegetation type 
+  
+# Get live/dead status
+#raw$status <-  as.numeric(raw$Dead == FALSE) # assign a 1 if the tree is alive
+  
+# Add the allometric key
+raw$allom.key <- 1
+#raw$allom.key[(raw$Htot > 0) & !is.na(raw$Htot)] <- 67
+  
+# Add constants
+raw$d.ht <- 1.30 # add the height at which the dbh measurement was taken
+raw$p.mindiam <- 0.35
+raw$sp.mindiam <- 0.10  
+  
+ # Plot extent information
+raw$p.shape <- "R"  # Insert the shape information on the plot
+raw$p.majoraxis <- 25 # Store the extent of the plot
+raw$p.minoraxis <- 25 # Store the extent of the plot
+  
+raw$subplot <- "largeTree" # Subplot identifier
+raw$subplot[raw$DBH < 35] <- "smallTree"
+raw$sp.majoraxis <- 25 # Store the extent of the plot
+raw$sp.minoraxis <- 25 # Store the extent of the plot
+raw$sp.majoraxis[raw$DBH < 35] <- 25 # Store the extent of the plot
+raw$sp.minoraxis[raw$DBH < 35] <- 5 # Store the extent of the plot  raw$sp.area <- 5*50
+  
+raw$p.area <- sapply(raw$p.geom, FUN = function(x){terra::expanse(terra::vect(x))})
+raw$sp.area <- sapply(raw$sp.geom, FUN = function(x){terra::expanse(terra::vect(x))})
+
+# Calculating crown location  
+#raw$crown <- pmax(c(raw$RN + raw$RS),c(raw$RE + raw$RW))
+  
+raw$p.sample <- 1   
+
+raw$survey <- 2013
+```
+
+# makeGEDICalVal
+*Running the completed script.*
+
+* Once you have finished the steps above you will return to the command line and just like the `system(command = "Rscript scripts/createProjectDirectory.R")` you will run `R`, `setwd("/workspace/GEDI_CalVal/")`, `system(command = "Rscript scripts/makeGEDICalVal.R -b -i {your directory}"")`. ***The output file using the Rscript can only handle a single project at a time and will output a .rds file with the date stamp of the file creation, you will need to go into the **/shiny** folder and add the project name between*** `gedicalval_` and `the date string_r01.rds`. This will take a while to run and if there are any errors there will be an error message in the command window indicating what function caused the script to fail, if the script failed to compile and no error message was given, check the scripts in the `/R` folder, primarily, `geometry.R` and `postprocess.R` and make sure there is a function named `browser()` that is not commented out for each function, this will tell you which function failed. However, when using the functions not from the command line you will want to have the `browser()` functions commented out (i.e., #). The issue will not be in the R scripts that hold the functions that are used but rather in the `dataManipulate.R` script, the error message will indicate which function on your end was not set up correctly, it is then up to you to identify the location of the error in your script and attempt to fix whatever was wrong. Save your script and rerun the `makeGEDICalVal.R` command. This step can be a lot of trial and error but hopefully, everything will be set up correctly and there will be minimal issues.
+
+* The final output of a successfully run project is a **.yml** file in your main calval directory and a **.rds** file in the shiny folder. The .rds file holds multiple data sets, **treedata**, **plotdata**, **gedidata**, **metadata**, **dictionary**, **allometry**, **lidar**, and **footprint**, along with five other pieces of information, **fp_radius**, **fp_spacing**, **tk_spacing**, **montecarlo**, and **nruns**.
+ * 
+This ends the plot data normalization and ingestion portion of this workflow, the next steps will focus on converting your LiDAR data from continuous point cloud to discrete waveforms fitted over your subplots to match a GEDI footprint, directions can be found in the [Simulating GEDI Waveforms](Simulating_GEDI_Waveforms.html) document.

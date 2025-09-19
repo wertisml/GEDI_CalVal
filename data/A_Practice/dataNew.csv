@@ -1,0 +1,15 @@
+lookupVariable,lookupValue,newVariable,newValue,source
+NA,NA,region,US,NA
+NA,NA,vegetation,TempF,NA
+NA,NA,p.sample,0,NA
+NA,NA,p.stemmap,1,NA
+NA,NA,private,0,NA
+NA,NA,p.epsg,32610,NA
+NA,NA,l.epsg,32610,NA
+NA,NA,p.origin,C,NA
+NA,NA,p.mindiam,0.1,NA
+NA,NA,p.orientation,0,NA
+NA,NA,p.shape,R,NA
+NA,NA,p.majoraxis,40,NA
+NA,NA,p.minoraxis,40,NA
+NA,NA,p.mindiam,0.1,NA

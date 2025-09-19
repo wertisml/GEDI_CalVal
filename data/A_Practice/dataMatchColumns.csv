@@ -1,0 +1,23 @@
+var_in,method,unit_in,var_out,notes
+plotID,NA,NA,plot,NA
+eventID,NA,NA,survey,NA
+decimalLatitude,NA,deg,latitude,NA
+decimalLongitude,NA,deg,longitude,NA
+date,NA,NA,date,Set in dataManipulate.R
+totalSampledAreaTrees,NA,m2,p.area,NA
+individualID,NA,NA,tree,NA
+status,NA,NA,status,Set in dataManipulate.R
+stemDiameter,NA,cm,d.stem,NA
+measurementHeight,NA,cm,d.ht,NA
+height,NA,m,h.t,NA
+c.w,NA,m,c.w,Mean of max diameter and diameter perpendicular to max diameter
+subplot,NA,NA,subplot,NA
+l.date,NA,NA,l.date,Set in dataManipulate.R
+l.project,NA,NA,l.project,Set in dataManipulate.R
+tree.date,NA,NA,tree.date,Set in dataManipulate.R
+allom.key,NA,NA,allom.key,Set in dataManipulate.R via speciesData
+species,NA,NA,species,Set in dataManipulate.R
+p.geom,NA,NA,p.geom,Set in dataManipulate.R
+x,NA,m,x,Set in dataManipulate.R
+y,NA,m,y,Set in dataManipulate.R
+sp.geom,NA,NA,sp.geom,Set in dataManipulate.R

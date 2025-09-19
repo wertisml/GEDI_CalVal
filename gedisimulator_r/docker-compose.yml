@@ -1,0 +1,9 @@
+services:
+  gedisimulator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gedisimulator:v1.0
+    container_name: gedisimulator
+    stdin_open: true
+    tty: true

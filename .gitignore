@@ -1,0 +1,27 @@
+# R data and history
+*.RData
+*.Rhistory
+*.Ruserdata
+
+# R project files
+.Rproj.user/
+
+# R Markdown generated files
+*.utf8.md
+*.knit.md
+*.log
+*.out
+*.toc
+*.aux
+*.synctex.gz
+
+# Temporary files
+*.tmp
+*.bak
+
+# Mac OS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+

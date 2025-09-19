@@ -1,0 +1,90 @@
+lookupProject,newVariable,newValue,source
+australia_smapex,citation,Tanase et al. 2014 Forest Biomass Estimation at High Spatial Resolution Radar vs. Lidar sensors; Tanase et al. 2014 Airborne multi-temporal L-band polarimetric SAR data for biomass estimation in semi-arid forests,Christoph Rudiger
+borneo_mawas,affiliation.details,"Jet Propulsion Laboratory, California Institute of Technology, 4800 Oak Grove Drive, Pasadena, CA 91109, USA",Antonio Ferraz
+borneo_rmurezal,affiliation.details,"Jet Propulsion Laboratory, California Institute of Technology, 4800 Oak Grove Drive, Pasadena, CA 91109, USA",Antonio Ferraz
+borneo_rodemas,affiliation.details,"Jet Propulsion Laboratory, California Institute of Technology, 4800 Oak Grove Drive, Pasadena, CA 91109, USA",Antonio Ferraz
+borneo_sindolumber,affiliation.details,"Jet Propulsion Laboratory, California Institute of Technology, 4800 Oak Grove Drive, Pasadena, CA 91109, USA",Antonio Ferraz
+borneo_sumalindo,affiliation.details,"Jet Propulsion Laboratory, California Institute of Technology, 4800 Oak Grove Drive, Pasadena, CA 91109, USA",Antonio Ferraz
+borneo_timberdana,affiliation.details,"Jet Propulsion Laboratory, California Institute of Technology, 4800 Oak Grove Drive, Pasadena, CA 91109, USA",Antonio Ferraz
+borneo_tuanam,affiliation.details,"Jet Propulsion Laboratory, California Institute of Technology, 4800 Oak Grove Drive, Pasadena, CA 91109, USA",Antonio Ferraz
+borneo_usfs,affiliation.details,"Jet Propulsion Laboratory, California Institute of Technology, 4800 Oak Grove Drive, Pasadena, CA 91109, USA",Antonio Ferraz
+england_newforest,affiliation.details,"Dr Ross Hill, Bournemouth University; Dr Matthew Sumnall, formerly Bournemouth University, and now Virginia Polytechnic Institute and State University",Ross Hill
+frenchguiana_chave,citation,"Labriere, N., Tao, S., Chave, J., Scipal, K., Le Toan, T., Abernethy, K., ... & Davies, S. J. (2018). In situ reference datasets from the TropiSAR and AfriSAR campaigns in support of upcoming spaceborne biomass missions.?IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, (99), 1-11. DOI: 10.1109/JSTARS.2018.2851606. https://ieeexplore.ieee.org/document/8417912",Nicolas Labriere
+gabon_ird,citation,"Labriere, N., Tao, S., Chave, J., Scipal, K., Le Toan, T., Abernethy, K., ... & Davies, S. J. (2018). In situ reference datasets from the TropiSAR and AfriSAR campaigns in support of upcoming spaceborne biomass missions. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, (99), 1-11. DOI: 10.1109/JSTARS.2018.2851606. https://ieeexplore.ieee.org/document/8417912",Nicolas Barbier
+mexico_nfi,citation,"Urbazaev, M., Thiel, C., Cremer, F., Dubayah, R., Migliavacca, M., Reichstein, M., & Schmullius, C. (2018). Estimation of forest aboveground biomass and uncertainties by integration of field measurements, airborne LiDAR, and SAR and optical satellite data in Mexico.?Carbon balance and management,?13(1), 5. https://doi.org/10.1186/s13021-018-0093-5",Laura Duncanson
+peru_tambopata,affiliation.details,"Dr. Ross Hill, Bournemouth University, UK; Dr. Chris Hopkinson, University of Lethbridge, Canada; Dr Doreen Boyd, University of Nottingham, UK",Ross Hill
+usa_cflra,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_clearcreek,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_colville,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_damon,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_dcef,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_fernan,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_fitsum,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_moscowmtn,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_nezperce,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_pref,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_pref_fia,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_slatecreek,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_stanley,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_stjoe,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_tepeecreek,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_upperlolo,email.contact,patrick.fekety@colostate.edu,Patrick Fekety
+usa_cflra,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+usa_clearcreek,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+usa_colville,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+usa_damon,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+usa_dcef,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+usa_fernan,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+usa_fitsum,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+usa_moscowmtn,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+usa_nezperce,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+usa_pref,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+usa_pref_fia,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+usa_slatecreek,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+usa_stanley,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+usa_stjoe,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+usa_tepeecreek,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+usa_upperlolo,tree.status.details,Live trees: 0-5; dead trees: 6-9 ,Patrick Fekety
+germany_traunstein,lidar.date,8/25/2016,Nikolai Knapp
+peru_tambopata,field.date,9/30/2011,Oliver Phillips
+peru_tambopata,lidar.date,6/7/2009,"Hill, R. A., Boyd, D. S., & Hopkinson, C. (2011). Relationship between canopy height and Landsat ETM+ response in lowland Amazonian rainforest. Remote Sensing Letters, 2(3), 203-212. http://dx.doi.org/10.1080/01431161.2010.510810"
+peru_tambopata,lidar.sensor,Leica ALS50-II,"Hill, R. A., Boyd, D. S., & Hopkinson, C. (2011). Relationship between canopy height and Landsat ETM+ response in lowland Amazonian rainforest. Remote Sensing Letters, 2(3), 203-212. http://dx.doi.org/10.1080/01431161.2010.510811"
+peru_tambopata,lidar.alt,1600 m,"Hill, R. A., Boyd, D. S., & Hopkinson, C. (2011). Relationship between canopy height and Landsat ETM+ response in lowland Amazonian rainforest. Remote Sensing Letters, 2(3), 203-212. http://dx.doi.org/10.1080/01431161.2010.510812"
+peru_tambopata,lidar.classification,"Level 1 - fully or semi-automated batch processing of the point cloud data into the following classes: ground, vegetation, buildings/structures, low/high points and noise, water","Hill, R. A., Boyd, D. S., & Hopkinson, C. (2011). Relationship between canopy height and Landsat ETM+ response in lowland Amazonian rainforest. Remote Sensing Letters, 2(3), 203-212. http://dx.doi.org/10.1080/01431161.2010.510813"
+peru_tambopata,lidar.qc,Yes,"Hill, R. A., Boyd, D. S., & Hopkinson, C. (2011). Relationship between canopy height and Landsat ETM+ response in lowland Amazonian rainforest. Remote Sensing Letters, 2(3), 203-212. http://dx.doi.org/10.1080/01431161.2010.510814"
+peru_tambopata,lidar.qc.details,"A Landsat 7 ETM+ scene for path 002, row 069 acquired on 28 July 2009 was downloaded from the U.S. Geological Survey (USGS) Earth Explorer website (http://edcsns17.cr.usgs.gov/EarthExplorer/). This image was acquired in SLC-off mode, because of the
+failure in 2003 of the Scan Line Corrector (SLC), which compensates for the forward
+motion of the Landsat 7 satellite. The result is that, outside of the central 26 km of the
+scene, there are narrow strips of missing data. This image was processed by the USGS to
+what is termed Standard Terrain Correction (Level 1T), using ground control points (from
+the GLS2005 data set) and elevation data (typically SRTM (shuttle radar topography
+mission)). Radiometric calibration is part of the Level 1 Product Generation System
+(LPGS) applied to Landsat 7 ETM+ data, using detector gain parameters that are updated
+on a 90-day cycle. The post-calibration dynamic range for each band is scaled over an 8-bit
+range. No atmospheric correction is applied in this process and the no-data areas are not
+in-filled.","Hill, R. A., Boyd, D. S., & Hopkinson, C. (2011). Relationship between canopy height and Landsat ETM+ response in lowland Amazonian rainforest. Remote Sensing Letters, 2(3), 203-212. http://dx.doi.org/10.1080/01431161.2010.510815"
+peru_tambopata,citation,"Hill, R. A., Boyd, D. S., & Hopkinson, C. (2011). Relationship between canopy height and Landsat ETM+ response in lowland Amazonian rainforest. Remote Sensing Letters, 2(3), 203-212. http://dx.doi.org/10.1080/01431161.2010.510810; Boyd, D. S., Hill, R. A., Hopkinson, C., & Baker, T. R. (2013). Landscape?\scale forest disturbance regimes in southern Peruvian Amazonia. Ecological applications, 23(7), 1588-1602. https://doi.org/10.1890/12-0371.1",Ross Hill
+spain_valsaincircle,email.contact,rubenvalpue@gmail.com,Ruben Valbuena
+spain_valsaincircle,institution,Bangor University,Ruben Valbuena
+spain_valsaincircle,citation,"Valbuena R., Packalen P., Garc??a-Abril A., Meht?talo L. & Maltamo M. (2013) Characterizing Forest Structural Types and Shelterwood Dynamics from Lorenz-based Indicators Predicted by Airborne Laser Scanning. Canadian Journal of Forest Research 43: 1063-1074.; Valbuena, R., Maltamo, M., Mart??n Fern??ndez, S., Packalen P., Pascual C., & Nabuurs, G.J. (2013) Patterns of Covariance between Airborne Laser Scanning Metrics and Lorenz Curve Descriptors of Tree Size Inequality. Canadian Journal of Remote Sensing 39 (S1): S18-S31.; Valbuena, R., De Blas, A., Mart??n Fern??ndez, S., Maltamo, M., Nabuurs, G.J., & Manzanera, J.A. (2013) Within-Species Benefits of Back-projecting Laser Scanner and Multispectral Sensors in Monospecific P. sylvestris Forests. European Journal of Remote Sensing 46: 401-416.; Manzanera J.A., Garc",Ruben Valbuena
+spain_valsainrect,citation,"Valbuena R., Mauro F., Rodriguez-Solano R. and Manzanera J.A. (2012) Partial Least Squares for Discriminating Variance Components in GNSS Accuracy Obtained Under Scots Pine Canopies. Forest Science. 58(2): 139-153; Mauro F., Valbuena R., Manzanera J.A. and Garca-Abril A. (2011) Influence of Global Navigation Satellite System Errors in Positioning Inventory Plots for Tree-Height Distribution Studies. Canadian journal of Forest Research 41(1): 11-23.; Valbuena R., Mauro F., Rodrguez-Solano R. and Manzanera J.A. (2010) Accuracy and Precision of GPS Receivers under Forest Canopies in a Mountainous Environment. Spanish Journal of Agricultural Research 8(4): 1047-1057.; Valbuena R., Mauro F., Arjonilla F.J. and Manzanera J.A. (2011) Comparing Airborne Laser Scanning-Imagery Fusion Methods Based on Geometric Accuracy in Forested Areas. Remote Sensing of Environment 115(8): 1942-1956.",Ruben Valbuena
+spain_valsainrect,email.contact,rubenvalpue@gmail.com,Ruben Valbuena
+spain_valsainrect,institution,Bangor University,Ruben Valbuena
+usa_cflra,institution,Colorado State University,Patrick Fekety
+usa_clearcreek,institution,Colorado State University,Patrick Fekety
+usa_colville,institution,Colorado State University,Patrick Fekety
+usa_damon,institution,Colorado State University,Patrick Fekety
+usa_dcef,institution,Colorado State University,Patrick Fekety
+usa_fernan,institution,Colorado State University,Patrick Fekety
+usa_fitsum,institution,Colorado State University,Patrick Fekety
+usa_moscowmtn,institution,Colorado State University,Patrick Fekety
+usa_nezperce,institution,Colorado State University,Patrick Fekety
+usa_pref,institution,Colorado State University,Patrick Fekety
+usa_pref_fia,institution,Colorado State University,Patrick Fekety
+usa_slatecreek,institution,Colorado State University,Patrick Fekety
+usa_stanley,institution,Colorado State University,Patrick Fekety
+usa_stjoe,institution,Colorado State University,Patrick Fekety
+usa_tepeecreek,institution,Colorado State University,Patrick Fekety
+usa_upperlolo,institution,Colorado State University,Patrick Fekety
+usa_cflra,citation,"Lidar data acquisition and processing completed by the National Center for Airborne Laser Mapping (NCALM - http://www.ncalm.org). NCALM funding provided by NSF's Division of Earth Sciences, Instrumentation and Facilities Program. EAR-1043051.
+https://doi.org/10.5069/G9H41PB3",Patrick Fekety

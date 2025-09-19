@@ -1,0 +1,282 @@
+\documentclass[11pt]{article}
+\usepackage{float}
+\usepackage{palatino}
+\pagestyle{plain}
+\usepackage{geometry}
+\geometry{a4paper, textwidth=160mm, textheight=240mm}
+\usepackage{caption}
+\usepackage[comma,authoryear]{natbib}
+\usepackage[table]{xcolor}
+\usepackage{longtable}
+\usepackage{titling}
+
+\setlength{\droptitle}{-5em}
+
+
+\begin{document}
+%\SweaveOpts{concordance=TRUE}
+
+
+\author{GEDI Science Definition Team}
+
+<<makeContent, echo=FALSE, warning=FALSE, error=FALSE, message=TRUE>>=
+	suppressWarnings(suppressMessages(library(data.table)))
+	suppressWarnings(suppressMessages(library(xtable)))
+
+	simpleCap <- function(x) {
+		paste(toupper(substring(x, 1,1)), substring(x, 2),
+		sep="", collapse=" ")
+	}
+	
+	# Load the plot data
+	varDef <- read.csv('../config/variableDefinitions.csv', stringsAsFactors=F)
+  ii <- varDef$group %in% c("key","plot","subplot","lidar")   
+	plotVarDef <- varDef[ii,c(1,2,11)]
+	plotVarDef <- plotVarDef[order(plotVarDef$variable),]
+	
+  # Load the tree data
+  ii <- varDef$group %in% c("key","tree")
+	treeVarDef <- varDef[ii,c(1,2,11)]
+	treeVarDef <- treeVarDef[order(treeVarDef$variable),]
+    
+  # Load the footprint data
+	fpDef <- read.csv('../config/footprintDefinitions.csv', stringsAsFactors=F)    
+	fpDef <- fpDef[,c(1,2,11)]	
+    fpDef <- rbind(fpDef, varDef[,c(1,2,11)])
+	
+  # Load the allometric data
+	allomDef <- read.csv('../config/allometricDefinitions.csv', stringsAsFactors=F)
+	allomDef <- allomDef[,c(1,2,3,4,6)]
+	
+	# Formatting allomDef
+	# Replace abbreviated allometric names with citation
+	refs <- c(
+		"Chave et al. (2014)",
+		"Chave et al. (2014)",
+		"Jenkins et al. (2003)",
+		"Paul et al. (2016)",
+		"Muukkonen (2007)",
+		"Moore (2010)",
+		"Beets et al. (2011)",
+		"Forrester et al. (2017)"
+	)
+
+	names <- unique(allomDef$allom.name)
+	for(i in 1:length(names)){
+		allomDef$allom.name[allomDef$allom.name == names[i]] <- refs[i]
+	}
+
+	
+	# standardize pft format
+	allomDef$allom.pft <- gsub("temperate-", "", allomDef$allom.pft)
+	allomDef$allom.pft <- gsub("-", " ", allomDef$allom.pft)
+	allomDef$allom.pft <- gsub("_", " ", allomDef$allom.pft)
+	allomDef$allom.pft[allomDef$allom.pft=='aa'] <- 'aspen / alder / cottonwood / willow'
+	allomDef$allom.pft[allomDef$allom.pft=='mb'] <- 'soft maple / birch'
+	allomDef$allom.pft[allomDef$allom.pft=='mh'] <- 'mixed hardwood'
+	allomDef$allom.pft[allomDef$allom.pft=='mo'] <- 'hard maple'
+	allomDef$allom.pft[allomDef$allom.pft=='cl'] <- 'cedar / larch'
+	allomDef$allom.pft[allomDef$allom.pft=='df'] <- 'Douglas-fir'
+	allomDef$allom.pft[allomDef$allom.pft=='tf'] <- 'true fir / hemlock'
+	allomDef$allom.pft[allomDef$allom.pft=='pi'] <- 'pine'
+	allomDef$allom.pft[allomDef$allom.pft=='sp'] <- 'spruce'
+	allomDef$allom.pft[allomDef$allom.pft=='wo'] <- 'woodland species (juniper / oak / mesquite)'
+	allomDef$allom.pft[1] <- 'Pan-tropical diameter-height relationship'
+	allomDef$allom.pft[2] <- 'Local diameter-height relationship'
+	allomDef$allom.pft[3:50] <- sapply(allomDef$allom.pft[3:50], simpleCap)
+	allomDef$allom.pft[29] <- 'Alnus glutinosa or A. incana'
+	allomDef$allom.pft[45] <- 'Quercus petraea or Q. robur'
+
+	# changing column names for allomDef
+	colnames(allomDef) <- c('allom.key', 'Source', 'Region', 'Type', 'Max stem diameter (m)')
+	
+	# Variables to include from the data descriptor  
+    plotVarInclude <- c("project","plot","subplot","survey","private","date","region","vegetation","map","mat","pft.name","latitude","longitude","p.sample","p.stemmap","p.origin","p.orientation","p.shape",
+    "p.majoraxis","p.minoraxis","p.geom","p.epsg","p.area","p.mindiam","sp.geom","sp.ix","sp.iy","sp.shape","sp.area","sp.mindiam","agb","agb.valid","agb.lower","agb.upper","agbd.ha",
+    "agbd.ha.lower","agbd.ha.upper","sn","snd.ha","sba","sba.ha","swsg.ba","h.t.max","l.project","l.instr","l.epsg","l.date")
+       
+    treeVarInclude <- c("project","plot","subplot","survey","date","tree.date","family","species","SpeciesJenkins","pft","wsg","wsg.sd","tree","stem","x","y","z","status","allom.key","a.stem","h.t","h.t.mod","d.stem",
+    "d.stem.valid","d.ht","c.w","m.agb")
+	
+    fpVarInclude <- c("project","plot","survey","subplot","date","agb","agb.valid",
+    "agbd.ha","sn","snd.ha","sba","sba.ha","swsg.ba","h.t.max",
+    "l.project","l.instr","l.epsg","l.date","beamDense","zenith","noise","power","obstime","g.x","g.y",
+    "rhReal0-100")
+	
+    plotVarDef <- plotVarDef[plotVarDef$variable%in%plotVarInclude,]
+    plotVarDef$variable[plotVarDef$variable == "SpeciesJenkins"] <- "species.code"
+    
+	  treeVarDef <- treeVarDef[treeVarDef$variable%in%treeVarInclude,]
+	
+    fpDef <- fpDef[(fpDef$variable%in%fpVarInclude),]
+    fpDef$variable[fpDef$variable == "rhReal10-100"] <- "rhReal0-100"
+    fpDef$variable[fpDef$variable == "beamDense"] <- "l.beamdensity"
+    fpDef$variable[fpDef$variable == "zenith"] <- "l.zenith"
+    fpDef$variable[fpDef$variable == "g.x"] <- "easting"
+    fpDef$variable[fpDef$variable == "g.y"] <- "northing"
+    fpDef$description[fpDef$variable == "rhReal0-100"] <- 'Relative height metric, 100%, using "true" ground from ALS data'
+    fpDef$variable[fpDef$variable == "rhReal0-100"] <- "rhReal100"
+
+	fpDef <- fpDef[order(fpDef$variable),]
+
+    colnames(plotVarDef) <- c('Variable', 'Units', 'Description')
+	  colnames(treeVarDef) <- c('Variable', 'Units', 'Description')
+	  colnames(fpDef) <- c('Variable', 'Units', 'Description')
+
+@
+\title{GEDI Forest Structure and Biomass Database:\\ Data descriptor}
+\maketitle
+
+
+
+
+
+<<plotVarDef, warning=FALSE, error=FALSE, echo=FALSE, message=FALSE, results='asis'>>=
+
+	## Inserting the field sampling metadata
+
+	options(xtable.comment=FALSE)
+	rws <- c(seq(1, (nrow(plotVarDef)-1), by = 2),0)
+	command <- c(rep("\\rowcolor[gray]{0.8} ", length(rws)-1),
+		paste0("\\hline\n\\endhead\n",
+		"\\hline\n",
+		"\\multicolumn{", dim(plotVarDef)[2], "}{l}",
+		"{\\scriptsize{Continued on next page}}\n",
+		"\\endfoot\n",
+		"\\endlastfoot\n"))
+
+	size <- 8
+	sizeNew <- paste0("\\fontsize{", size,"pt}{", size+1, "pt}\\selectfont") 
+	
+	
+	print.xtable(xtable(plotVarDef,label = "tab:plotVarDef",
+		caption="Plot data variable description",
+		align = c('p','p{1.0in}','p{0.5in}','p{4.0in}')),
+		tabular.environment = "longtable",
+		caption.placement="top",
+		include.rownames=FALSE,
+		size=sizeNew,
+		add.to.row = list(pos = as.list(rws), command = command))
+@
+
+\newpage
+
+<<treeVarDef, warning=FALSE, error=FALSE, echo=FALSE, message=FALSE, results='asis'>>=
+
+	## Inserting the field sampling metadata
+
+	options(xtable.comment=FALSE)
+	rws <- c(seq(1, (nrow(treeVarDef)-1), by = 2),0)
+	command <- c(rep("\\rowcolor[gray]{0.8} ", length(rws)-1),
+		paste0("\\hline\n\\endhead\n",
+		"\\hline\n",
+		"\\multicolumn{", dim(treeVarDef)[2], "}{l}",
+		"{\\scriptsize{Continued on next page}}\n",
+		"\\endfoot\n",
+		"\\endlastfoot\n"))
+
+	size <- 8
+	sizeNew <- paste0("\\fontsize{", size,"pt}{", size+1, "pt}\\selectfont") 
+	
+	
+	print.xtable(xtable(treeVarDef,label = "tab:treeVarDef",
+		caption="Tree data variable description",
+		align = c('p','p{1.0in}','p{0.5in}','p{4.0in}')),
+		tabular.environment = "longtable",
+		caption.placement="top",
+		include.rownames=FALSE,
+		size=sizeNew,
+		add.to.row = list(pos = as.list(rws), command = command))
+@
+
+\newpage
+
+<<fpDef, warning=FALSE, error=FALSE, echo=FALSE, message=FALSE, results='asis'>>=
+
+	## Inserting the field sampling metadata
+
+	options(xtable.comment=FALSE)
+	rws <- c(seq(1, (nrow(fpDef)-1), by = 2),0)
+	command <- c(rep("\\rowcolor[gray]{0.8} ", length(rws)-1),
+		paste0("\\hline\n\\endhead\n",
+		"\\hline\n",
+		"\\multicolumn{", dim(fpDef)[2], "}{l}",
+		"{\\scriptsize{Continued on next page}}\n",
+		"\\endfoot\n",
+		"\\endlastfoot\n"))
+
+	size <- 8
+	sizeNew <- paste0("\\fontsize{", size,"pt}{", size+1, "pt}\\selectfont") 
+	
+	
+	print.xtable(xtable(fpDef,label = "tab:fpDef",
+		caption="GEDI footprint data variable description",
+		align = c('p','p{1.0in}','p{0.5in}','p{4.0in}')),
+		tabular.environment = "longtable",
+		caption.placement="top",
+		include.rownames=FALSE,
+		size=sizeNew,
+		add.to.row = list(pos = as.list(rws), command = command))
+@
+
+\newpage
+
+<<allomDef, warning=FALSE, error=FALSE, echo=FALSE, message=FALSE, results='asis'>>=
+
+	## Inserting the field sampling metadata
+
+	options(xtable.comment=FALSE)
+	rws <- c(seq(1, (nrow(allomDef)-1), by = 2),0)
+	command <- c(rep("\\rowcolor[gray]{0.8} ", length(rws)-1),
+		paste0("\\hline\n\\endhead\n",
+		"\\hline\n",
+		"\\multicolumn{", dim(allomDef)[2], "}{l}",
+		"{\\scriptsize{Continued on next page}}\n",
+		"\\endfoot\n",
+		"\\endlastfoot\n"))
+
+
+	size <- 8
+	sizeNew <- paste0("\\fontsize{", size,"pt}{", size+1, "pt}\\selectfont") 
+	
+	
+	print.xtable(xtable(allomDef,label = "tab:allomDef",
+		caption="Allometric equation look-up table",
+		align = c('p','p{0.5in}','p{1.2in}','p{0.8in}','p{1.5in}','p{0.5in}')),
+		tabular.environment = "longtable",
+		caption.placement="top",
+		include.rownames=FALSE,
+		size=sizeNew,
+		add.to.row = list(pos = as.list(rws), command = command))
+@
+
+\newpage
+\section*{References}
+<<allom.ref, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE>>=
+	# Add allometry citation
+
+	refs <- c(
+	"Chave, J., R\\'{e}jou-M\\'{e}chain, M., B\\'{u}rquez, A., Chidumayo, E., Colgan, M. S., Delitti, W. B., ... and Henry, M. (2014). Improved allometric models to estimate the aboveground biomass of tropical trees. Global change biology, 20(10), 3177-3190.\n",
+	"Jenkins, J. C., Chojnacky, D. C., Heath, L. S., and Birdsey, R. A. (2003). National-scale biomass estimators for United States tree species. Forest science, 49(1), 12-35.\n",
+	"Paul, K. I., Roxburgh, S. H., Chave, J., England, J. R., Zerihun, A., Specht, A., ... and Huxtable, D. (2016). Testing the generality of above-ground biomass allometry across plant functional types at the continent scale. Global change biology, 22(6), 2106-2124.\n",
+	"Muukkonen, P. (2007). Generalized allometric volume and biomass equations for some tree species in Europe. European Journal of Forest Research, 126(2), 157-166.\n",
+	"Moore, J. R. (2010). Allometric equations to predict the total above-ground biomass of radiata pine trees. Annals of Forest Science, 67(8), 806.\n",
+	"Beets, P. N., Reutebuch, S., Kimberley, M. O., Oliver, G. R., Pearce, S. H., and McGaughey, R. J. (2011). Leaf area index, biomass carbon and growth rate of radiata pine genetic types and relationships with LiDAR. Forests, 2(3), 637-659.\n",
+	"Forrester, D. I., Tachauer, I. H. H., Annighoefer, P., Barbeito, I., Pretzsch, H., Ruiz-Peinado, R., ... and Saha, S. (2017). Generalized biomass and leaf area allometric equations for European tree species incorporating stand structure, tree age and climate. Forest ecology and management, 396, 160-175.\n"
+	)
+
+	
+	
+	reference <- paste(refs, collapse='\n \\setlength{\\parindent}{-0.2in}
+\\setlength{\\leftskip}{0.2in}
+\\setlength{\\parskip}{8pt} ')
+	
+
+	
+@
+% References 
+
+\hangindent=0.2in \Sexpr{reference}
+
+
+\end{document}

@@ -1,0 +1,9 @@
+"SpeciesJenkins","FIACode","SpeciesCode","FVSCode","PlantsSymbol","CommonName","ScientificName","allom.key","allom.name","allom.region","allom.model","d.stem.max","p1","p2","p3","p4","p5","p6","p7","p8","p9","p10","p11","p12"
+"aa",351,"ALRU2","ALRU2","RA","red alder","Alnus rubra ",3,"jenkins2003","USA",1,0.7,-2.2094,2.3867,0.507441,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"df",202,"PSME","PSME","DF","Douglas-fir","Pseudotsuga menziesii ",8,"jenkins2003","USA",1,2.1,-2.2304,2.4435,0.218712,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"mb",312,"ACMA3","ACMA3","BM","bigleaf maple","Acer macrophyllum ",4,"jenkins2003","USA",1,0.66,-1.9123,2.3651,0.491685,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"mh",768,"PREM","PREM","CH","bitter cherry","Prunus emarginata  ",5,"jenkins2003","USA",1,0.56,-2.48,2.4835,0.360458,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"mh",NA,"ACCI","ACCI","VN","vine maple","Acer circinatum",5,"jenkins2003","USA",1,0.56,-2.48,2.4835,0.360458,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"mh",NA,"PSMEM","PSMEM","","Douglas-fir","Pseudotsuga menziesii var. menziesii",5,"jenkins2003","USA",1,0.56,-2.48,2.4835,0.360458,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"mh",NA,NA,NA,NA,NA,NA,5,"jenkins2003","USA",1,0.56,-2.48,2.4835,0.360458,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"tf",263,"TSHE","TSHE","WH","western hemlock","Tsuga heterophylla ",9,"jenkins2003","USA",1,2.3,-2.5384,2.4814,0.182329,NA,NA,NA,NA,NA,NA,NA,NA,NA

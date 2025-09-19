@@ -1,0 +1,591 @@
+\documentclass[11pt]{article}
+\usepackage{float}
+\usepackage{palatino}
+\pagestyle{plain}
+\usepackage{geometry}
+\geometry{a4paper, textwidth=160mm, textheight=240mm}
+\usepackage{caption}
+\usepackage[comma,authoryear]{natbib}
+\usepackage[table]{xcolor}
+\usepackage{lscape}
+\usepackage{tabularx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+
+\begin{document}
+
+
+\author{GEDI Science Team}
+
+<<makeContent, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE>>=
+	suppressWarnings(suppressMessages(library(data.table)))
+	suppressWarnings(suppressMessages(library(xtable)))
+	suppressWarnings(suppressMessages(library(plyr)))
+	suppressWarnings(suppressMessages(library(ggplot2)))
+	suppressWarnings(suppressMessages(library(scales)))
+	suppressWarnings(suppressMessages(library(ggmap)))
+	suppressWarnings(suppressMessages(library(rjson)))
+	suppressWarnings(suppressMessages(library(gtable)))
+	suppressWarnings(suppressMessages(library(BIOMASS)))
+	suppressWarnings(suppressMessages(library(grid)))
+	suppressWarnings(suppressMessages(library(gridExtra)))
+	suppressWarnings(suppressMessages(library(dplyr)))
+	suppressWarnings(suppressMessages(library(xml2)))
+	suppressWarnings(suppressMessages(library(pracma)))
+	suppressWarnings(suppressMessages(library(rhdf5)))
+	source("../R/support.R")
+ 
+# Load the data from most recent RDS file
+
+#	rds.files <- list.files(path="../shiny", pattern="^gedicalval_........_r..\\.rds$")
+#rds.files <- list.files(path="../shiny", pattern=paste("^gedicalval_", reportproject, "_........_r..\\.rds$", sep=""))
+
+	#rds.file.full <- list.files(path="../shiny", pattern="^gedicalval_20210512_r03\\.rds$")
+	#rds.file.full <- list.files(path="../shiny", pattern="^gedicalval_20221111_r03\\.rds$")
+	#rds.file.full <- "base_allometries/gedi_fsbd_public_20230823.rds"
+	rds.file.full <- list.files(path="../shiny", pattern="^gedicalval_20231011_r03\\.rds$")
+
+rds.files <- list.files(path="../shiny", pattern=paste("^gedicalval_", reportproject, "_........_r03\\.rds$", sep=""))
+
+if ( length(rds.files) > 0 ) {
+  rds.file <- rds.files[length(rds.files)]
+} else {
+  rds.file <- "gedicalval.rds"
+}
+#print(rds.file)
+#print(rds.file.full)
+
+gedicalval <- readRDS(paste('..','shiny', rds.file, sep=.Platform$file.sep))
+gedicalval.full <- readRDS(paste('..','shiny', rds.file.full, sep=.Platform$file.sep))
+
+
+dictionary <- rbind(gedicalval$dictionary,gedicalval$footprint)
+
+# Read the metadata
+metadata <- metadata_xml_to_dataframe(paste('../data/', reportproject, '/studyMetadata.xml', sep=""))
+invisible(list2env(metadata,.GlobalEnv)) # Creates gedi.metadata and submitted.metadata
+
+metadataDefinitions <- read_csv('../config/metadataDefinitions.csv')
+
+meta <- gedicalval$metadata
+idx <- meta$project == reportproject
+
+
+
+
+gedi.projectname <- gsub("_", "\\_", reportproject, fixed = TRUE)
+
+Projectname <- gedi.metadata$project
+Projectname <- gsub(pattern="_", replacement = " ", as.character(Projectname), fixed = TRUE)
+Projectname <- gsub(pattern="project", replacement = "", as.character(Projectname),  fixed = TRUE)
+
+if(!is.na(Projectname)){
+  overview <- paste('This report presents source information, metadata and summary data for the ', gedi.projectname,' project in the GEDI Forest Structure and Biomass Database (FSBD). 
+							These are derived from data contributed from the "', Projectname, '" project.', sep="")
+} else {
+  overview <- paste('This report presents source information, metadata and summary data for the ', gedi.projectname,' project in the GEDI Forest Structure and Biomass Database (FSBD).', sep="")	
+}
+
+#Create data frame of data custodian information
+custodian.df <- data.frame(Contact=gedi.metadata$contact,
+                           Email=gedi.metadata$email,
+                           Project=gedi.metadata$project,
+                           Affiliation=gedi.metadata$source)
+
+#Add minimum plot diameter to the sampling metadata
+project.data <- subset(gedicalval$plotdata, project == reportproject)
+if(any(!is.na(project.data$sp.mindiam))){
+  p.mindiam <- paste(unique(project.data$sp.mindiam), collapse=', ')
+} else{
+  p.mindiam <- paste(unique(project.data$p.mindiam), collapse=', ')
+}
+
+#Check if biomass is from GEDI or data providers
+tree.data <- subset(gedicalval$treedata, project == reportproject)
+
+if(any(!is.na(tree.data$d.stem))){
+  biomass.source <- "Calculated by GEDI from tree-level data"
+} else{
+  biomass.source <- "Calculated by data provider"
+}
+
+gedi.metadata <- as.data.frame(t(apply(gedi.metadata, 2, as.character)), stringsAsFactors = FALSE)
+#Create data frame of field sampling
+sampling.df <- as.data.frame(matrix(c('Region', 'Sampling strategy', 'Stem measurement', 
+                                      'Height measurement', 'Location measurement', 'Minimum tree diameter (m)',
+                                      'Source of biomass estimates',
+                                      gedi.metadata$region,
+                                      gedi.metadata$sampling.strategy,
+                                      gedi.metadata$stem.measurement,
+                                      gedi.metadata$height.measurement,
+                                      gedi.metadata$location.measurement,
+                                      p.mindiam, biomass.source), ncol = 2, nrow=7), stringsAsFactors=FALSE)
+
+colnames(sampling.df) <- c('Item','Value')
+	
+
+
+	project.data <- subset(gedicalval$plotdata, project == reportproject)
+
+	# Create data frame of lidar metadata
+	ii <- !duplicated(project.data[,dictionary$variable[dictionary$group=='lidar']]) & !is.na(project.data$l.project)
+	lidar.df <- project.data[ii,dictionary$variable[dictionary$group=='lidar']]
+	lidar.df$l.epsg <- as.character(as.integer(lidar.df$l.epsg)	)
+	colnames(lidar.df) <- c('Aquisition', 'Instrument', 'EPSG code', 'Date')
+
+
+@
+\title{GEDI Forest Structure and Biomass Database: \Sexpr{gedi.projectname} report}
+\maketitle
+\section*{Project overview}
+\noindent \Sexpr{overview}\\
+
+<<custtab, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, results='asis'>>=
+
+	## Inserting the custodian metadata
+	custodian.df <- t(custodian.df)
+	
+	options(xtable.comment=FALSE)
+	rws <- seq(1, (nrow(custodian.df)-1), by = 2)
+	col <- rep("\\rowcolor[gray]{0.8} ", length(rws))
+	
+	print.xtable(xtable(custodian.df,label = "tab:custodiantab",
+		caption=paste("Data custodian details for the",gedi.projectname,"project.", sep=" "),
+		 align=c('l','p{5.4in}')),
+		 tabular.environment="tabularx",
+		caption.placement="top",
+		include.colnames=FALSE,
+		include.rownames=TRUE,
+		size="\\fontsize{8pt}{10pt}\\selectfont",
+		width="\\textwidth",
+		add.to.row = list(pos = as.list(rws), command = col))
+		
+
+project.description <- "Place holder for summary of project and dataset. Overall description of what was collected, how and why. General description of study site."
+
+#if(!is.na(gedi.metadata$project.description)){
+#  project.description <- gedi.metadata$project.description
+#} 
+
+@
+
+\section*{Project description}
+\noindent \Sexpr{project.description}\\
+
+
+
+\begin{figure}[H]
+  \centering
+<<globalmap, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, fig.height=4, fig.path = paste("./reports/figure/",reportproject,"_",sep=""),  dev=c('png', 'postscript'), dpi=300>>=
+	## Map of the world, with points for each plot
+	## Focal project is in red, other projects in black
+	source("report_scripts/global_map.R", local=knitr::knit_global())
+	gg
+@
+  \caption{Locations of sites from the \Sexpr{gedi.projectname} project (red) relative to all contributed sites (black).}
+  \label{fig:globalmap}
+\end{figure}
+
+
+\pagebreak
+\section*{Inventory data}
+
+<<inventoryinfo, include = FALSE, echo = FALSE, warning=TRUE, error=FALSE, results='asis'>>=
+	source("report_scripts/inventory_info.R", local=knitr::knit_global())
+@
+\noindent \Sexpr{inventorytext}\\
+
+
+<<samplingtab, echo=FALSE, results='asis'>>=
+
+	## Inserting the field sampling metadata
+
+	options(xtable.comment=FALSE)
+	rws <- seq(1, (nrow(sampling.df)-1), by = 2)
+	col <- rep("\\rowcolor[gray]{0.8} ", length(rws))
+
+	print.xtable(xtable(sampling.df,label = "tab:samplingtab",
+		caption=paste("Data sampling details for the",gedi.projectname,"project.", sep=" "),
+		align = c('l','p{1.5in}','p{4.5in}')),
+		caption.placement="top",
+		include.rownames=FALSE,
+		tabular.environment="tabularx",
+		size="\\fontsize{8pt}{10pt}\\selectfont",
+		width="\\textwidth",
+		add.to.row = list(pos = as.list(rws), command = col))
+@
+
+
+\begin{figure}[H]
+  \centering
+<<localmap, include = TRUE, echo=FALSE, warning=TRUE, error=FALSE, message=FALSE, fig.height=4, fig.path = paste("./reports/figure/",reportproject,"_",sep=""),  dev=c('png', 'postscript'), dpi=300>>=
+	
+	## Map of project area
+	# source("report_scripts/local_map.R", local=knitr::knit_global())
+
+	
+	gg
+@
+  \caption{Locations of plots in the \Sexpr{gedi.projectname} project.}
+  \label{fig:localmap}
+\end{figure}
+		
+\begin{figure}[H]
+  \centering
+<<AGBDhist, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, fig.height=4, fig.path = paste("./reports/figure/",reportproject,"_",sep=""),  dev=c('png', 'postscript'), dpi=300>>=
+	source("report_scripts/agbd_histogram.R", local=knitr::knit_global())
+
+
+	
+@
+  \caption{\Sexpr{caption}}
+  \label{fig:AGBDhist}
+\end{figure}
+
+\newif\ifPositive
+
+<<condition, include=TRUE, echo = FALSE, results = "asis">>=
+
+	# Set condition for height-diameter plot.
+	# If height or diameter data is absent, this plot will not appear
+	tree.data <- subset(gedicalval$treedata, (project == reportproject))
+		  
+		  
+	ii <- !is.na(tree.data[,'h.t']) & !is.na(tree.data[,'d.stem']) & (tree.data[,'status']==1 | is.na(tree.data[,'status']))
+	
+	if(any(ii)){
+		cat("\\Positivetrue")
+	} else {
+		cat("\\Positivefalse")
+	}
+@
+
+\ifPositive
+\begin{figure}[H]
+  \centering
+<<HDplot, echo=FALSE, warning=TRUE, error=TRUE, message=FALSE, fig.height=4, fig.path = paste("./reports/figure/",reportproject,"_",sep=""),  dev=c('png', 'postscript'), dpi=300>>=
+	
+	# Plot of tree height vs. diameter for the focal project
+	tree.data <- subset(gedicalval$treedata, (project == reportproject))
+	ii <- !is.na(tree.data[,'h.t']) & !is.na(tree.data[,'d.stem']) & (tree.data[,'status']==1 | is.na(tree.data[,'status']))
+	m <- BIOMASS::modelHD(D=tree.data$d.stem[ii], H=tree.data$h.t[ii], method='log1', drawGraph=FALSE)
+	intercept <- m$model$coefficients[1]
+	coef <- m$model$coefficients[2]
+
+	gg <- ggplot()
+	gg <- gg + geom_point(data=tree.data[ii,], 
+				aes(x=d.stem, y=h.t), 
+				size=1, alpha=0.5, color="black")
+	if(any(!is.na(tree.data$h.t.mod[ii]))){
+		gg <- gg + geom_line(data=tree.data[ii,], 
+				aes_string(x='d.stem', y='h.t.mod'), 
+				size=1, alpha=1, color="red")
+	}
+	gg <- gg + labs(x='Diameter (m)',y='Height (m)') + theme_bw()
+	gg <- gg + annotate('text', x = 0.4, y = 80, size=2.5, label = paste0('log(H) = ',round(intercept,2),' + ', round(coef,2),'*log(D)\nRSE = ',round(m$RSE,2), sep=''))
+	gg
+			
+@
+
+  \caption{Tree height vs. tree diameter for the \Sexpr{gedi.projectname} project}
+  \label{fig:HDplot}
+\end{figure}
+\fi
+
+<<alsstats, echo=FALSE, warning=TRUE, error=FALSE, message=FALSE, results='asis'>>=
+	fpdata <- subset(gedicalval$fpdata, (project == reportproject))
+
+	n.plots.als <- nrow(unique(fpdata[!is.na(fpdata$rhReal98),][c('project','plot','survey')]))
+	#print(n.plots.als)
+	n.subplots.als <- nrow(unique(fpdata[!is.na(fpdata$rhReal98),][c('project','plot','subplot','survey')]))
+	#print(n.subplots.als)
+	
+	source("report_scripts/footprint_filter_table.R", local=knitr::knit_global())
+	n.filtered.fp <- table.out[12,2]
+@	
+
+
+
+\pagebreak
+\section*{Airborne lidar data}
+
+The airborne laser scanning (ALS) point cloud data from the "\Sexpr{source_project}" project are described in Table \ref{tab:ALStab} 
+and were used to simulate GEDI waveforms coincident with the aforementioned in situ inventory data (Figure \ref{fig:footprintplot}).
+At the time of this report, simulated GEDI waveforms have been generated for \Sexpr{n.subplots.als} subplot(s) across \Sexpr{n.plots.als} plot(s),
+resulting in \Sexpr{n.filtered.fp} simulated GEDI waveforms after quality filtering (see Table \ref{tab:filtertab}).
+This simulator has been validated across a range of forest types and ALS instruments using measured waveforms from 
+NASA’s Land, Vegetation and Ice Sensor (LVIS). Figure \ref{fig:footprintplot} illustrates an example of a simulated waveform and derived relative height metrics. 
+Relationships between these relative height metrics and the in situ AGBD estimates are shown in Figure \ref{fig:AGBDplot}. 
+It is important to note that these bivariate relationships are not indicative of GEDI aboveground biomass model performance. 
+This presentation of the data are for visual interpretation and quality control of the project data in context of the entire GEDI FSBD.
+
+<<ALStab, echo=FALSE, results='asis'>>=
+
+	
+	# Insert table of lidar metadata
+	options(xtable.comment=FALSE)
+	print.xtable(xtable(lidar.df,label="tab:ALStab",
+		caption=paste("Lidar survey details for the",gedi.projectname,"project.", sep=" "), 
+		align = c('l','p{1.5in}','p{1.5in}','p{1.5in}','p{1.5in}')),
+		caption.placement="top",
+		include.rownames=FALSE,
+		tabular.environment="tabularx",
+		size="\\fontsize{8pt}{10pt}\\selectfont",
+		width="\\textwidth")
+@
+
+\begin{figure}[H]
+  \centering
+<<footprintplot, include=TRUE, echo=FALSE, warning=FALSE, error=TRUE, message=FALSE,  fig.height=6, fig.path = paste("./reports/figure/",reportproject,"_",sep=""),  dev=c('png', 'postscript'), dpi=300>>=
+	# Figure showing GEDI footprint and simulated ALS data
+	# One panel shows plot geometry and the placement of GEDI footprints within the plot
+	# One panel shows plot geometry and the stemmap. Stemmap panel is only shown if stemmap exists
+	# One panel shows profile of RH metrics
+
+	source("report_scripts/footprint_plot.R", local=knitr::knit_global())
+
+@
+  \caption{\Sexpr{caption}}
+  \label{fig:footprintplot}
+\end{figure}
+
+
+\pagebreak
+
+\begin{figure}[H]
+  \centering
+<<heightplot, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, fig.path = paste("./reports/figure/",reportproject,"_",sep=""),  dev=c('png', 'postscript'), dpi=300>>=
+
+	## Figure of relative height metric versus max tree height
+		
+	source("report_scripts/height_filter_plot.R", local=knitr::knit_global())
+	gg.h.t
+
+@
+  \caption{Relative height metric (left: 98th percentile, right: 50th percentile) versus maximum in situ tree height at the 25-m scale of the GEDI footprint
+  for the \Sexpr{gedi.projectname} project. Filled points represent footprints that pass the height filter; open points will be excluded from analysis.}
+  \label{fig:heightplot}
+\end{figure}
+
+
+\pagebreak
+
+\begin{figure}[H]
+  \centering
+<<AGBDplot, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, fig.height=8, fig.path = paste("./reports/figure/",reportproject,"_",sep=""),  dev=c('png', 'postscript'), dpi=300>>=
+
+	## Figure of relative height metric versus aboveground biomass
+		
+	source("report_scripts/footprint_filter_table.R", local=knitr::knit_global())
+	source("report_scripts/agbd_plot.R", local=knitr::knit_global())
+
+
+@
+  \caption{Relative height metric (left: 98th percentile, right: 50th percentile) versus aboveground biomass density at the 25-m scale of the GEDI footprint
+  for the \Sexpr{gedi.projectname} project (red)
+	relative to all contributed sites (gray). Open red points will be filtered out of calibration models (see table below).}
+  \label{fig:AGBDplot}
+\end{figure}
+
+\pagebreak
+
+
+<<filtertab, include=TRUE, echo=FALSE, warning=FALSE, error=TRUE, message=FALSE, results='asis'>>=
+	# Insert table of how many footprints are being filtered out.
+	
+	source("report_scripts/footprint_filter_table.R", local=knitr::knit_global())
+	filter.df <- table.out
+	
+	#print(str(filter.df))
+	
+	#print(dim(filter.df))
+	#	print(filter.df)
+	#temp <- subset(gedicalval$fpdata, (project == reportproject) & !is.na(l.project) & (obstime=='Night') & (power==9.0))
+	#print(unique(temp$p.stemmap))
+	
+	options(xtable.comment=FALSE)	
+	rws <- seq(1, (nrow(filter.df)-1), by = 2)
+	col <- rep("\\rowcolor[gray]{0.8} ", length(rws))
+	
+	print.xtable(xtable(filter.df,label="tab:filtertab",
+		caption=paste("Footprint filter details for the",gedi.projectname,"project.", sep=" "), 
+		digits = c(0,0,0,0),
+		align = c('l','p{1.0in}','p{0.6in}','p{4.0in}')),
+		caption.placement="top",
+		include.rownames=FALSE,
+		tabular.environment="tabularx",
+		size="\\fontsize{8pt}{10pt}\\selectfont",
+		width="\\textwidth",
+		add.to.row = list(pos = as.list(rws), command = col))
+@
+
+\pagebreak
+
+
+
+\begin{figure}[H]
+  \centering
+<<AGBDplot_strat, include=FALSE, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, fig.height=8, fig.path = paste("./reports/figure/",reportproject,"_",sep=""),  dev=c('png', 'postscript'), dpi=300>>=
+
+	## Figure of relative height metric versus aboveground biomass
+		
+	#source("report_scripts/footprint_filter_table.R", local=knitr::knit_global())
+#	source("report_scripts/agbd_plot_strat.R", local=knitr::knit_global())
+
+
+@
+%  \caption{}
+%  \label{fig:AGBDplot_strat}
+\end{figure}
+
+
+
+
+%\pagebreak
+
+
+\section*{Contact}
+
+\noindent Please direct any questions about this report to nasagedi@umd.edu.
+%\noindent John Armston: armston@umd.edu\\
+%\noindent Laura Duncanson: laura.i.duncanson@nasa.gov\\
+%\noindent Jim Kellner: james\_r\_kellner@brown.edu\\
+%\noindent David Minor: minord@umd.edu\\
+
+\newif\ifPositive
+
+
+<<condition2, include=TRUE, echo = FALSE, warning=FALSE, error=FALSE, message=FALSE, results = "asis">>=
+	# Set condition for references.
+	# If data provider calculated biomass, and did not provide any other reference, no references will appear.
+
+	if(biomass.source!="Calculated by data provider" | exists('submitted.metadata')){
+		cat("\\Positivetrue")
+	} else {
+		cat("\\Positivefalse")
+	}
+@
+
+\ifPositive
+\section*{References}
+
+%Duncanson, Armston, Kellner et al., Developing globally representative aboveground biomass models for NASA's GEDI mission. In preparation.\\
+%\\
+%Kellner, Armston, Duncanson et al., NASA GEDI L4A footprint level biomass model parameterization and geographic transferability. In preparation.\\
+%\\
+%Steven Hancock, John Armston, Michelle Hofton, J. Bryan Blair, Xiaoli Sun, Hao Tang, James R Kellner, Ralph Dubayah. The GEDI simulator: A large-footprint waveform lidar simulator for calibration and validation of spaceborne missions. In preparation.
+%\\
+<<allom.ref, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE>>=
+	# Add allometry citation
+	tree.data <- subset(gedicalval$treedata, (project == reportproject))
+	allom.key <- unique(tree.data$allom.key)
+	start <- c(1,3,13,21,25,26,27)
+	end<- c(2,12,20,24,25,26,50)
+	refs <- c(
+	"Chave, J., R\\'{e}jou-M\\'{e}chain, M., B\\'{u}rquez, A., Chidumayo, E., Colgan, M. S., Delitti, W. B., ... and Henry, M. (2014). Improved allometric models to estimate the aboveground biomass of tropical trees. Global change biology, 20(10), 3177-3190.\n",
+	"Jenkins, J. C., Chojnacky, D. C., Heath, L. S., and Birdsey, R. A. (2003). National-scale biomass estimators for United States tree species. Forest science, 49(1), 12-35.\n",
+	"Paul, K. I., Roxburgh, S. H., Chave, J., England, J. R., Zerihun, A., Specht, A., ... and Huxtable, D. (2016). Testing the generality of above-ground biomass allometry across plant functional types at the continent scale. Global change biology, 22(6), 2106-2124.\n",
+	"Muukkonen, P. (2007). Generalized allometric volume and biomass equations for some tree species in Europe. European Journal of Forest Research, 126(2), 157-166.\n",
+	"Moore, J. R. (2010). Allometric equations to predict the total above-ground biomass of radiata pine trees. Annals of Forest Science, 67(8), 806.\n",
+	"Beets, P. N., Reutebuch, S., Kimberley, M. O., Oliver, G. R., Pearce, S. H., and McGaughey, R. J. (2011). Leaf area index, biomass carbon and growth rate of radiata pine genetic types and relationships with LiDAR. Forests, 2(3), 637-659.\n",
+	"Forrester, D. I., Tachauer, I. H. H., Annighoefer, P., Barbeito, I., Pretzsch, H., Ruiz-Peinado, R., ... and Saha, S. (2017). Generalized biomass and leaf area allometric equations for European tree species incorporating stand structure, tree age and climate. Forest ecology and management, 396, 160-175.\n"
+	)
+
+
+	refs <- as.data.frame(cbind(start, end, as.data.frame(refs, stringsAsFactors=F)))
+	ii <- rep(FALSE, nrow(refs))
+
+	for(i in 1:nrow(refs))
+		ii[i] <- any(allom.key%in%as.numeric(refs$start[i]):as.numeric(refs$end[i]))
+	
+	
+	reference <- paste(refs$refs[ii], collapse='\n \\setlength{\\parindent}{-0.2in}
+\\setlength{\\leftskip}{0.2in}
+\\setlength{\\parskip}{8pt} ')
+	
+	citation <- ""
+	if(exists('submitted.metadata')){
+		if(any(!is.na(submitted.metadata$citation))){
+			citation <- gsub(";", "\\par ", as.character(submitted.metadata$citation), fixed=TRUE)
+			citation <- gsub("&", "and", as.character(citation), fixed=TRUE)
+			}
+	}
+	
+@
+% References 
+\hangindent=0.2in \Sexpr{reference}
+
+\setlength{\parindent}{-0.2in}
+\setlength{\leftskip}{0.2in}
+\setlength{\parskip}{8pt}
+
+\Sexpr{citation}
+
+\fi
+
+\newpage
+\begin{landscape}
+<<metatab, include=FALSE, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE, results='asis'>>=
+
+	if(exists('submitted.metadata')){
+		submitted.metadata <- t(submitted.metadata)
+		submitted.metadata <- cbind('variable' = rownames(submitted.metadata), submitted.metadata)
+		submitted.metadata <- as.data.frame(apply(submitted.metadata, 2, as.character))
+		submitted.metadata <- dplyr::left_join(metadataDefinitions, submitted.metadata, by = "variable" )
+		colnames(submitted.metadata)[3:ncol(submitted.metadata)] <- c("Item", rep("Value", ncol(submitted.metadata)-3))
+		
+		simpleCap <- function(x) {
+			paste(toupper(substring(x, 1,1)), substring(x, 2),
+			sep="", collapse=" ")
+		}
+		submitted.metadata$Item <- sapply(submitted.metadata$Item, simpleCap)
+		
+		options(xtable.comment=FALSE)
+		rws <- seq(1, (nrow(submitted.metadata)-1), by = 2)
+		col <- rep("\\rowcolor[gray]{0.8} ", length(rws))
+
+		## Inserting the data provider survey metadata
+		colwidth <- paste("p{", 8/(ncol(submitted.metadata[,-c(1:2)])), "in}", sep="")
+		options(xtable.comment=FALSE)
+		key.metadata <- submitted.metadata[submitted.metadata[,2]=='key',-c(1:2)]
+		rws <- seq(1, (nrow(key.metadata)-1), by = 2)
+		col <- rep("\\rowcolor[gray]{0.8} ", length(rws))
+		print.xtable(xtable(submitted.metadata[submitted.metadata[,2]=='key',-c(1:2)],
+			caption=paste("Custodian metadata submitted by the data provider for the",gedi.projectname,"project.", sep=" "),
+			align=c('p',rep(colwidth,ncol(submitted.metadata[,-c(1:2)]))),
+			),
+			caption.placement="top",
+			include.rownames=FALSE,
+			size="\\fontsize{5pt}{10pt}\\selectfont",
+			add.to.row = list(pos = as.list(rws), command = col))
+
+		field.metadata <- submitted.metadata[submitted.metadata[,2]=='field',-c(1:2)]
+		rws <- seq(1, (nrow(field.metadata)-1), by = 2)
+		col <- rep("\\rowcolor[gray]{0.8} ", length(rws))			
+		print.xtable(xtable(field.metadata,
+			caption=paste("Field metadata submitted by the data provider for the",gedi.projectname,"project.", sep=" "),
+			align=c('p',rep(colwidth,ncol(field.metadata))),
+			),
+			caption.placement="top",
+			include.rownames=FALSE,
+			size="\\fontsize{5pt}{10pt}\\selectfont",
+			add.to.row = list(pos = as.list(rws), command = col))
+
+		lidar.metadata <- submitted.metadata[submitted.metadata[,2]=='lidar',-c(1:2)]
+		rws <- seq(1, (nrow(lidar.metadata)-1), by = 2)
+		col <- rep("\\rowcolor[gray]{0.8} ", length(rws))			
+		print.xtable(xtable(lidar.metadata,
+			caption=paste("Lidar metadata submitted by the data provider for the",gedi.projectname,"project.", sep=" "),
+			align=c('p',rep(colwidth,ncol(lidar.metadata))),
+			),
+			caption.placement="top",
+			include.rownames=FALSE,
+			size="\\fontsize{5pt}{10pt}\\selectfont",
+			add.to.row = list(pos = as.list(rws), command = col))
+	}
+@
+\end{landscape}
+
+\end{document}

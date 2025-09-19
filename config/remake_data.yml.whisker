@@ -1,0 +1,51 @@
+# remake_data.yml.whisker
+targets:
+  variable_definitions:
+    command: read_csv("config/variableDefinitions.csv")
+  allometric_definitions:
+    command: read_csv("config/allometricDefinitions.csv")
+  lidar_definitions:
+    command: read_csv("config/lidarDefinitions.csv")
+  footprint_definitions:
+    command: read_csv("config/footprintDefinitions.csv")
+  conversions:
+    command: read_csv("config/variableConversion.csv")
+  wsg_database:
+    command: read_csv("extra/GlobalWoodDensityDatabase_try3.csv")
+
+{{#study_names}}
+  {{study_name}}:
+    command: >
+      load_study("data/{{study_name}}/plotDataImportOptions.csv",
+                 "data/{{study_name}}/treeDataImportOptions.csv",
+                 "data/{{study_name}}/dataManipulate.R",
+                 "data/{{study_name}}/dataMatchColumns.csv",
+                 "data/{{study_name}}/dataNew.csv",
+                 "data/{{study_name}}/studyMetadata.csv",
+                 variable_definitions,
+                 allometric_definitions,
+                 lidar_definitions,
+                 wsg_database,
+                 conversions,
+                 {{fp_radius}},
+                 {{fp_spacing}},
+                 {{tk_spacing}},
+                 {{montecarlo}},
+                 {{nruns}})
+{{/study_names}}
+
+  gedicalval:
+    command: >
+      combine_gedicalval(
+{{#study_names}}
+        {{study_name}},
+{{/study_names}}
+        variable_definitions=variable_definitions,
+        allometric_definitions=allometric_definitions,
+        lidar_definitions=lidar_definitions,
+        footprint_definitions=footprint_definitions,
+        fp_radius={{fp_radius}},
+        fp_spacing={{fp_spacing}},
+        tk_spacing={{tk_spacing}},
+        montecarlo={{montecarlo}},
+        nruns={{nruns}})

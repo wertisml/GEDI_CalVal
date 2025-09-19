@@ -1,0 +1,392 @@
+ï..Region,Site,Area..ha.,project,l.instr,l.epsg,l.date,contact,email,repository,publication
+africa,amani,"13,203.07",tanzania_amani,Leica ALS70,32736,12/25/2012,Terje Gobakken,terje.gobakken@nmbu.no,,
+africa,csir_agincourt,"3,439.91",NA,Optech ALTM M300,32736,6/5/2018,Laven Naidoo,LNaidoo@csir.co.za,,
+africa,csir_dnyala,"5,347.96",southafrica_lowveld,Optech ALTM M300,32735,3/15/2018,Laven Naidoo,LNaidoo@csir.co.za,,
+africa,csir_ireagh,"5,803.66",NA,Optech ALTM M300,32736,6/30/2018,Laven Naidoo,LNaidoo@csir.co.za,,
+africa,csir_justicia,"7,785.53",southafrica_lowveld,Optech ALTM M300,32736,6/30/2018,Laven Naidoo,LNaidoo@csir.co.za,,
+africa,csir_venetia,"5,643.16",southafrica_lowveld,Optech ALTM M300,32735,3/15/2018,Laven Naidoo,LNaidoo@csir.co.za,,
+africa,csir_welverdient,"12,141.83",southafrica_lowveld,Optech ALTM M300,32736,6/30/2018,Laven Naidoo,LNaidoo@csir.co.za,,
+africa,drc_ghent_field_32634,299.93,NA,Optech ALTM 3100,32634,2/1/2015,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,
+africa,drc_ghent_field_32635,"12,406.44",drc_kearsley,Optech ALTM 3100,32635,2/2/2015,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,
+africa,drc_ghent_field_32733,"24,499.38",drc_bastin_malebo,Optech ALTM 3100,32733,2/3/2015,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,
+africa,drc_ghent_field_32734,"31,360.09",NA,Optech ALTM 3100,32734,2/4/2015,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,
+africa,drc_ghent_field_32735,480.7,NA,Optech ALTM 3100,32735,2/5/2015,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,
+africa,gsfc_mozambique,"12,073.57",NA,NA,32736,5/16/2014,Lola Fatoyinbo,lola.fatoyinbo@nasa.gov,,
+africa,jpl_lope,576.01,gabon_lope; gabon_lope2,RIEGL VQ-480i,32732,7/31/2015,Sassan Saatchi,sasan.s.saatchi@jpl.nasa.gov,,
+africa,jpl_mabounie,"18,272.13",gabon_ird,RIEGL LMS-Q560,32732,2007,Sassan Saatchi,sasan.s.saatchi@jpl.nasa.gov,,
+africa,jpl_mondah,"21,066.65",gabon_mondah,RIEGL LMS-Q560,32632,2011,Sassan Saatchi,sasan.s.saatchi@jpl.nasa.gov,,
+africa,jpl_rabi,"1,202.65",gabon_rabi,RIEGL VQ-480i,32732,7/31/2015,Sassan Saatchi,sasan.s.saatchi@jpl.nasa.gov,,
+africa,tanzania_wwf_germany,"454,218.32",tanzania_liwale,Leica ALS70,32736,3/7/2012,Erik Næsset,erik.naesset@nmbu.no,,
+asia,cuilai_china,109.81,china_cuilai,Riegl LMS-Q280i,32650,2005,,,,
+asia,khaoyai_thailand,"3,148.19",thailand_khaoyai,RIEGL LMS Q680i,32647,4/10/2017,Maxime Réjou-Méchain,maxime.rejou@ird.fr,,
+asia,nagano_japan,7.13,japan_nagano,NA,2450,10/30/2008,,,,
+asia,zhangye_china,0.7,china_zhangye,Riegl LMS-Q560,32647,2008,,,,
+australia,ara_smapex,"6,875.65",australia_smapex,Riegl LMS Q-560,28355,9/22/2011,Alessandra Monerris-Belda,Sandra.Monerris-Belda@monash.edu,,
+australia,chowilla,"3,656.23",NA,Riegl LMS-Q560,28354,2/1/2012,,,https://portal.tern.org.au/airborne-hyperspectral-lidar-field-sites/23248,"Quadros, N. and Keyseres, J., 2018, Chapter 16: Airborne LiDAR Acquisition and Validation in TERN Effective Field Calibration and Validation Practices"
+australia,credo,"2,498.80",NA,Riegl LMS-Q560,28351,5/15/2012,,,https://portal.tern.org.au/airborne-hyperspectral-lidar-field-sites/23248,"Quadros, N. and Keyseres, J., 2018, Chapter 16: Airborne LiDAR Acquisition and Validation in TERN Effective Field Calibration and Validation Practices"
+australia,g_aguilarNP,"4,265.83",NA,NA,28356,10/5/2013,,,https://portal.tern.org.au/airborne-hyperspectral-lidar-field-sites/23248,"Quadros, N. and Keyseres, J., 2018, Chapter 16: Airborne LiDAR Acquisition and Validation in TERN Effective Field Calibration and Validation Practices"
+australia,gold01,43.08,NA,NA,28356,10/5/2013,,,https://portal.tern.org.au/airborne-hyperspectral-lidar-field-sites/23248,"Quadros, N. and Keyseres, J., 2018, Chapter 16: Airborne LiDAR Acquisition and Validation in TERN Effective Field Calibration and Validation Practices"
+australia,jrsrp_ilcp2015,298.21,australia_ilcp2015,RIEGL LMS-Q560 and RIEGL LMS-Q680i,28355,2015,Jorg M. Hacker,jorg.hacker@airborneresearch.org.au,,
+australia,karawatha,"1,505.70",NA,NA,28356,10/5/2013,,,https://portal.tern.org.au/airborne-hyperspectral-lidar-field-sites/23248,"Quadros, N. and Keyseres, J., 2018, Chapter 16: Airborne LiDAR Acquisition and Validation in TERN Effective Field Calibration and Validation Practices"
+australia,litchfield,"2,499.62",NA,NA,28352,6/2/2013,,,https://portal.tern.org.au/airborne-hyperspectral-lidar-field-sites/23248,"Quadros, N. and Keyseres, J., 2018, Chapter 16: Airborne LiDAR Acquisition and Validation in TERN Effective Field Calibration and Validation Practices"
+australia,newzealand_forestservice,666.46,newzealand_forestservice,Optech Orion M200,2193,6/12/2015,Jonathan Dash,jonathan.dash@scionresearch.com,,
+australia,oeh_ausplotsforests,100.08,australia_ausplotsforests,RIEGL LMS-Q560 and Leica ALS50-II,28356,NA,,,,
+australia,rushworth_forests,"2,499.92",NA,Riegl LMS-Q560,28355,4/15/2012,,,https://portal.tern.org.au/airborne-hyperspectral-lidar-field-sites/23248,"Quadros, N. and Keyseres, J., 2018, Chapter 16: Airborne LiDAR Acquisition and Validation in TERN Effective Field Calibration and Validation Practices"
+australia,tern_alice_mulga,"4,880.08",NA,NA,28353,9/20/2014,,,https://portal.tern.org.au/airborne-hyperspectral-lidar-field-sites/23248,"Quadros, N. and Keyseres, J., 2018, Chapter 16: Airborne LiDAR Acquisition and Validation in TERN Effective Field Calibration and Validation Practices"
+australia,tern_robson,36.44,australia_robsoncreek,Riegl VZQ560 and Leica ALS60,28355,9/14/2012,,,https://portal.tern.org.au/airborne-hyperspectral-lidar-field-sites/23248,"Quadros, N. and Keyseres, J., 2018, Chapter 16: Airborne LiDAR Acquisition and Validation in TERN Effective Field Calibration and Validation Practices"
+australia,tern_robson_whole,"3,151.00",NA,Riegl LMS-Q560,28355,9/14/2012,,,https://portal.tern.org.au/airborne-hyperspectral-lidar-field-sites/23248,"Quadros, N. and Keyseres, J., 2018, Chapter 16: Airborne LiDAR Acquisition and Validation in TERN Effective Field Calibration and Validation Practices"
+australia,warra,"3,386.43",australia_ausplotsforests,RIEGL LMS-Q560 and Leica ALS50-II,28355,5/31/2014,,,https://portal.tern.org.au/airborne-hyperspectral-lidar-field-sites/23248,"Quadros, N. and Keyseres, J., 2018, Chapter 16: Airborne LiDAR Acquisition and Validation in TERN Effective Field Calibration and Validation Practices"
+australia,watts_creek,"2,501.12",NA,Riegl LMS-Q560,28355,4/14/2012,,,https://portal.tern.org.au/airborne-hyperspectral-lidar-field-sites/23248,"Quadros, N. and Keyseres, J., 2018, Chapter 16: Airborne LiDAR Acquisition and Validation in TERN Effective Field Calibration and Validation Practices"
+australia,whroo,100,NA,Riegl LMS-Q560,28355,4/15/2012,,,https://portal.tern.org.au/airborne-hyperspectral-lidar-field-sites/23248,"Quadros, N. and Keyseres, J., 2018, Chapter 16: Airborne LiDAR Acquisition and Validation in TERN Effective Field Calibration and Validation Practices"
+australia,zigzag_creek,"2,501.09",NA,Riegl LMS-Q560,28355,4/17/2012,,,https://portal.tern.org.au/airborne-hyperspectral-lidar-field-sites/23248,"Quadros, N. and Keyseres, J., 2018, Chapter 16: Airborne LiDAR Acquisition and Validation in TERN Effective Field Calibration and Validation Practices"
+centralamerica,costarica_laselva2019,232.62,NA,RIEGL VUX-1,32616,2019,Jim Kellner,kellner@brown.edu,,
+centralamerica,gliht_mexico_nfi_32612,"250,882.89",mexico_nfi,Riegl VQ-480,32612,6/30/2013,,,https://gliht.gsfc.nasa.gov/,"Cook, B. D., L. W. Corp, R. F. Nelson, E. M. Middleton, D. C. Morton, J. T. McCorkel, J. G. Masek, K. J. Ranson, V. Ly, and P. M. Montesano. 2013.  NASA Goddard's Lidar, Hyperspectral and Thermal (G-LiHT) airborne imager. Remote Sensing 5:4045-4066, doi:10.3390/rs5084045."
+centralamerica,gliht_mexico_nfi_32613,"188,083.21",mexico_nfi,Riegl VQ-480,32613,5/31/2013,,,https://gliht.gsfc.nasa.gov/,"Cook, B. D., L. W. Corp, R. F. Nelson, E. M. Middleton, D. C. Morton, J. T. McCorkel, J. G. Masek, K. J. Ranson, V. Ly, and P. M. Montesano. 2013.  NASA Goddard's Lidar, Hyperspectral and Thermal (G-LiHT) airborne imager. Remote Sensing 5:4045-4066, doi:10.3390/rs5084045."
+centralamerica,gliht_mexico_nfi_32614,"426,558.97",mexico_nfi,Riegl VQ-480,32614,5/31/2013,,,https://gliht.gsfc.nasa.gov/,"Cook, B. D., L. W. Corp, R. F. Nelson, E. M. Middleton, D. C. Morton, J. T. McCorkel, J. G. Masek, K. J. Ranson, V. Ly, and P. M. Montesano. 2013.  NASA Goddard's Lidar, Hyperspectral and Thermal (G-LiHT) airborne imager. Remote Sensing 5:4045-4066, doi:10.3390/rs5084045."
+centralamerica,gliht_mexico_nfi_32615,"314,864.65",mexico_nfi,Riegl VQ-480,32615,5/31/2013,,,https://gliht.gsfc.nasa.gov/,"Cook, B. D., L. W. Corp, R. F. Nelson, E. M. Middleton, D. C. Morton, J. T. McCorkel, J. G. Masek, K. J. Ranson, V. Ly, and P. M. Montesano. 2013.  NASA Goddard's Lidar, Hyperspectral and Thermal (G-LiHT) airborne imager. Remote Sensing 5:4045-4066, doi:10.3390/rs5084045."
+centralamerica,gliht_mexico_nfi_32616,"240,781.29",mexico_nfi,Riegl VQ-480,32616,5/31/2013,,,https://gliht.gsfc.nasa.gov/,"Cook, B. D., L. W. Corp, R. F. Nelson, E. M. Middleton, D. C. Morton, J. T. McCorkel, J. G. Masek, K. J. Ranson, V. Ly, and P. M. Montesano. 2013.  NASA Goddard's Lidar, Hyperspectral and Thermal (G-LiHT) airborne imager. Remote Sensing 5:4045-4066, doi:10.3390/rs5084045."
+centralamerica,nasa_laselva,"11,465.33",costarica_chazdon; costarica_laselva,Leica ALS50,32616,3/14/2006,Jim Kellner,kellner@brown.edu,,"Kellner, J. R., Clark, D. B., & Hofton, M. A. (2009). Canopy height and ground elevation in a mixed?land?use lowland Neotropical rain forest landscape: Ecological Archives E090?233. Ecology, 90(11), 3274-3274."
+centralamerica,nasa_laselva_1997,"1,487.53",costarica_chazdon; costarica_laselva,FLI-MAP,32616,9/30/1997,,,,"Clark, M. L., Clark, D. B., & Roberts, D. A. (2004). Small-footprint lidar estimation of sub-canopy elevation and tree height in a tropical rain forest landscape. Remote Sensing of Environment, 91(1), 68-89."
+centralamerica,nasa_laselva_2006,"11,465.33",NA,Leica ALS50,32616,3/14/2006,Jim Kellner,kellner@brown.edu,,"Kellner, J. R., Clark, D. B., & Hofton, M. A. (2009). Canopy height and ground elevation in a mixed?land?use lowland Neotropical rain forest landscape: Ecological Archives E090?233. Ecology, 90(11), 3274-3274."
+centralamerica,nasa_laselva_2009,"5,661.06",costarica_chazdon; costarica_laselva,Optech ALTM 3100,32616,2009,Jim Kellner,kellner@brown.edu,,"Clark, D. B., Ferraz, A., Clark, D. A., Kellner, J. R., Letcher, S. G., & Saatchi, S. (2019). Diversity, distribution and dynamics of large trees across an old-growth lowland tropical rain forest landscape. PloS one, 14(11), e0224896."
+centralamerica,stri_bci,"2,312.56",panama_bci,Optech Gemini,32617,9/10/2009,Jim Kellner,kellner@brown.edu,,"Dalling, J. W., Schnitzer, S. A., Baldeck, C., Harms, K. E., John, R., Mangan, S. A., ... & Hubbell, S. P. (2012). Resource?based habitat associations in a neotropical liana community. Journal of Ecology, 100(5), 1174-1182."
+centralamerica,whrc_mexico_walker,57.91,NA,NA,NA,NA,,,,
+europe,dalponte_trentino,501.6,italy_trentino,Riegl LMS-Q680i,32632,9/9/2012,Michele Dalponte,michele.dalponte@fmach.it,,"Dalponte, M., & Coomes, D. A. (2016). Tree?centric mapping of forest carbon density from airborne laser scanning and hyperspectral data. Methods in ecology and evolution, 7(10), 1236-1245."
+europe,dalponte_trentino,501.6,italy_trentino,Optech ALTM 3100EA,32632,2007,Michele Dalponte,michele.dalponte@fmach.it,,"Dalponte, M., & Coomes, D. A. (2016). Tree?centric mapping of forest carbon density from airborne laser scanning and hyperspectral data. Methods in ecology and evolution, 7(10), 1236-1245."
+europe,dalponte_trentino,501.6,italy_trentino,Riegl LMS-Q680i,32632,2011,Michele Dalponte,michele.dalponte@fmach.it,,"Dalponte, M., & Coomes, D. A. (2016). Tree?centric mapping of forest carbon density from airborne laser scanning and hyperspectral data. Methods in ecology and evolution, 7(10), 1236-1245."
+europe,demiguel_soriaii,12.51,spain_soria_ii,ALS60 II,25830,4/30/2010,Sergio de-Miguel,sergio.demiguel@pvcf.udl.cat,,
+europe,froscham,0,NA,NA,NA,NA,,,,
+europe,hill_newforest,"4,174.88",england_newforest,Leica ALS50-II,27700,7/6/2010,Ross Hill,rhill@bournemouth.ac.uk,,"Sumnall, M.J., Hill, R.A. & Hinsley, S.A. (2016) Comparison of small-footprint discrete return and full waveform airborne lidar data for estimating multiple forest variables. Remote Sensing of Environment, 173, 214-223."
+europe,huuth_traunstein,42.92,germany_traunstein,Riegl Q-680i,32633,8/25/2016,Nikolai Knapp,nikolai.knapp@ufz.de,,
+europe,icos_bialowieza,355.11,poland_bialowieza,Riegl Q-680i,2180,6/3/2015,Krzysztof Stere?czak,k.sterenczak@ibles.waw.pl,,
+europe,italy_sella,250.68,italy_sella,Optech ALTM 3100,32632,7/16/2008,Chiara Torresan,chiara.torresan@crea.gov.it,,"Corona, P., Fattorini, L., Franceschi, S., Scrinzi, G., Torresan, C., 2014. Estimation of standing wood volume in forest compartments by exploiting airborne laser scanning information: model-based, design-based, and hybrid perspectives. Can. J. For. Res. 44: 1303¨C1311 (2014) dx.doi.org/10.1139/cjfr-2014-0203"
+europe,kellner_pfynwald,126.76,NA,NA,NA,NA,Jim Kellner,kellner@brown.edu,,
+europe,kljun_loobos,"9,719.44",netherlands_loobos,Leica ALS50-II,32631,NA,Natascha Kljun,natascha.kljun@cec.lu.se,,"Los, S. O., Rosette, J. A., Kljun, N., North, P. R. J., Chasmer, L., Suárez, J. C., ... & Berni, J. A. J. (2012). Vegetation height and cover fraction between 60 S and 60 N from ICESat GLAS data. Geoscientific Model Development, 5(2), 413-432."
+europe,kljun_tharandt,"2,661.71",germany_kljun_tharandt,Leica ALS50-II,32633,NA,Natascha Kljun,natascha.kljun@cec.lu.se,,"Los, S. O., Rosette, J. A., Kljun, N., North, P. R. J., Chasmer, L., Suárez, J. C., ... & Berni, J. A. J. (2012). Vegetation height and cover fraction between 60 S and 60 N from ICESat GLAS data. Geoscientific Model Development, 5(2), 413-432."
+europe,rami_jarvselja,2.15,estonia_rami,Leica ALS50-II,3301,7/30/2009,Jan Pisek,janpisek@gmail.com,,"Lang, Mait, Tauri Arumäe, Diana Laarmann, and Andres Kiviste. 2017. “Estimation of Change in Forest Height Growth.” Forestry Studies in China 67 (1): 5–16."
+europe,silvanet_valsain,451.46,spain_valsaincircle; spain_valsainrect,Leica ALS50-II,25830,9/10/2006,Rubén Valbuena,r.valbuena@bangor.ac.uk,,"Valbuena, R., Packalen, P., Mehtätalo, L., García-Abril, A., & Maltamo, M. (2013). Characterizing forest structural types and shelterwood dynamics from Lorenz-based indicators predicted by airborne laser scanning. Canadian Journal of Forest Research, 43(11), 1063-1074."
+europe,skidmore_bayerischer,"42,081.08",germany_bavariaforest,Riegl Q-680i,32633,6/30/2017,Andrew Skidmore; Marco Heurich,a.k.skidmore@utwente.nl; marco.heurich@npv-bw.bayern.de,,"Krzystek, P., Serebryanyk, A., Schnörr, C., ?ervenka, J., & Heurich, M. (2020). Large-scale mapping of tree species and dead trees in šumava national park and bavarian forest national park using lidar and multispectral imagery. Remote Sensing, 12(4), 661."
+europe,spain_extremadura,144.7,spain_extremadura,Leica ALS80,25830,4/1/2019,Adrián Pascual,apascual@umd.edu,,
+europe,spain_monfrague,6.99,spain_monfrague,Leica ALS50,25830,11/30/2010,Sergio de-Miguel,sergio.demiguel@pvcf.udl.cat,,"Fernández-Landa, A. (2015). LiDAR remote sensing applied to forest resources assessment (Doctoral dissertation, Montes)."
+europe,spain_valsaindemiguel,34.57,spain_valsaindemiguel,Leica ALS50,25830,6/30/2009,Sergio de-Miguel,sergio.demiguel@pvcf.udl.cat,,"Fernández-Landa, A. (2015). LiDAR remote sensing applied to forest resources assessment (Doctoral dissertation, Montes)."
+europe,sweden_skog2018,"17,430.00",sweden_nfi,Leica ALS80-HP-8238,3006,2018,,,https://www.lantmateriet.se/sv/geodata/Geodataportalen/,
+europe,tellus_sw_uk,"815,281.30",NA,Leica ALS50-II,32630,6/24/2014,David Coomes,dac18@cam.ac.uk,,
+europe,ucl_wytham,"15,161.40",NA,NA,27700,NA,,,,
+europe,veg3D_laegeren,15.6,switzerland_laegeren,Riegl Q-680i,21781,3/30/2014,Felix Morsdorf,felix.morsdorf@geo.uzh.ch,,"Kükenbrink, D., Schneider, F. D., Leiterer, R., Schaepman, M. E., & Morsdorf, F. (2017). Quantification of hidden canopy volume of airborne laser scanning data using a voxel traversal algorithm. Remote Sensing of Environment, 194, 424-436."
+europe,zofin_180416,196.12,czechrepublic_zofin,Riegl VUX-1,5514,4/16/2018,Jim Kellner,kellner@brown.edu,,"Kellner, J. R., Armston, J., Birrer, M., Cushman, K. C., Duncanson, L., Eck, C., ... & Zgraggen, C. (2019). New opportunities for forest remote sensing through ultra-high-density drone lidar. Surveys in Geophysics, 40(4), 959-977."
+europe,zofin_180607,176.02,NA,Riegl VUX-1,5514,6/7/2018,Jim Kellner,kellner@brown.edu,,"Kellner, J. R., Armston, J., Birrer, M., Cushman, K. C., Duncanson, L., Eck, C., ... & Zgraggen, C. (2019). New opportunities for forest remote sensing through ultra-high-density drone lidar. Surveys in Geophysics, 40(4), 959-977."
+seasia,boyd_danum,"10,129.10",NA,Leica ALS50-II,32650,10/1/2014,Doreen Boyd,doreen.boyd@nottingham.ac.uk,,
+seasia,boyd_selangor,"50,834.01",malaysia_boyd,Leica ALS50-II,32647,11/30/2014,Doreen Boyd,doreen.boyd@nottingham.ac.uk,,"Brown, C., Boyd, D. S., Sjögersten, S., Clewley, D., Evers, S. L., & Aplin, P. (2018). Tropical peatland vegetation structure and biomass: Optimal exploitation of airborne laser scanning. Remote Sensing, 10(5), 671."
+seasia,cambridge_sepilok,"2,719.06",borneo_sepilok,Leica ALS50-II,32650,11/30/2014,David Coomes; David Burslem,dac18@cam.ac.uk; d.burslem@abdn.ac.uk,,"Jucker, T., Bongalov, B., Burslem, D. F., Nilus, R., Dalponte, M., Lewis, S. L., ... & Coomes, D. A. (2018). Topography shapes the structure, composition and function of tropical forest landscapes. Ecology letters, 21(7), 989-1000."
+seasia,disney_danum,355.84,NA,Leica ALS50-II,32650,10/23/2014,Mathias Disney,m.disney@ucl.ac.uk,,
+seasia,jpl_borneo_001,501.36,borneo_sindolumber,Leica ALS80,32750,1/30/2017,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,"Ferraz, António, Sassan Saatchi, Clément Mallet, Stéphane Jacquemoud, Gonçalves Gil, Carlos Alberto Silva, Paula Soares, Margarida Tomé, and Luisa Pereira. 2016. “Airborne Lidar Estimation of Aboveground Forest Biomass in the Absence of Field Inventory.” Remote Sensing 8 (8): 653."
+seasia,jpl_borneo_004,"5,347.79",borneo_usfs,Leica ALS80,32649,1/30/2017,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,"Ferraz, António, Sassan Saatchi, Clément Mallet, Stéphane Jacquemoud, Gonçalves Gil, Carlos Alberto Silva, Paula Soares, Margarida Tomé, and Luisa Pereira. 2016. “Airborne Lidar Estimation of Aboveground Forest Biomass in the Absence of Field Inventory.” Remote Sensing 8 (8): 653."
+seasia,jpl_borneo_005,"3,802.78",borneo_timberdana,Leica ALS80,32750,1/30/2017,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,"Ferraz, António, Sassan Saatchi, Clément Mallet, Stéphane Jacquemoud, Gonçalves Gil, Carlos Alberto Silva, Paula Soares, Margarida Tomé, and Luisa Pereira. 2016. “Airborne Lidar Estimation of Aboveground Forest Biomass in the Absence of Field Inventory.” Remote Sensing 8 (8): 653."
+seasia,jpl_borneo_008,"6,947.69",borneo_rodamas,Leica ALS80,32650,1/30/2017,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,"Ferraz, António, Sassan Saatchi, Clément Mallet, Stéphane Jacquemoud, Gonçalves Gil, Carlos Alberto Silva, Paula Soares, Margarida Tomé, and Luisa Pereira. 2016. “Airborne Lidar Estimation of Aboveground Forest Biomass in the Absence of Field Inventory.” Remote Sensing 8 (8): 653."
+seasia,jpl_borneo_013,904.72,borneo_mawas,Leica ALS80,32750,1/30/2017,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,"Ferraz, António, Sassan Saatchi, Clément Mallet, Stéphane Jacquemoud, Gonçalves Gil, Carlos Alberto Silva, Paula Soares, Margarida Tomé, and Luisa Pereira. 2016. “Airborne Lidar Estimation of Aboveground Forest Biomass in the Absence of Field Inventory.” Remote Sensing 8 (8): 653."
+seasia,jpl_borneo_040,"1,662.40",borneo_usfs,Leica ALS80,32749,1/30/2017,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,"Ferraz, António, Sassan Saatchi, Clément Mallet, Stéphane Jacquemoud, Gonçalves Gil, Carlos Alberto Silva, Paula Soares, Margarida Tomé, and Luisa Pereira. 2016. “Airborne Lidar Estimation of Aboveground Forest Biomass in the Absence of Field Inventory.” Remote Sensing 8 (8): 653."
+seasia,jpl_borneo_119,"3,126.80",borneo_tuanam,Leica ALS80,32750,1/30/2017,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,"Ferraz, António, Sassan Saatchi, Clément Mallet, Stéphane Jacquemoud, Gonçalves Gil, Carlos Alberto Silva, Paula Soares, Margarida Tomé, and Luisa Pereira. 2016. “Airborne Lidar Estimation of Aboveground Forest Biomass in the Absence of Field Inventory.” Remote Sensing 8 (8): 653."
+seasia,jpl_borneo_138,"1,381.94",borneo_usfs,Leica ALS80,32749,1/30/2017,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,"Ferraz, António, Sassan Saatchi, Clément Mallet, Stéphane Jacquemoud, Gonçalves Gil, Carlos Alberto Silva, Paula Soares, Margarida Tomé, and Luisa Pereira. 2016. “Airborne Lidar Estimation of Aboveground Forest Biomass in the Absence of Field Inventory.” Remote Sensing 8 (8): 653."
+seasia,jpl_borneo_139,846.18,borneo_sumalindo,Leica ALS80,32650,1/30/2017,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,"Ferraz, António, Sassan Saatchi, Clément Mallet, Stéphane Jacquemoud, Gonçalves Gil, Carlos Alberto Silva, Paula Soares, Margarida Tomé, and Luisa Pereira. 2016. “Airborne Lidar Estimation of Aboveground Forest Biomass in the Absence of Field Inventory.” Remote Sensing 8 (8): 653."
+seasia,jpl_borneo_144,"2,557.62",borneo_rmurezal,Leica ALS80,32749,1/30/2017,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,"Ferraz, António, Sassan Saatchi, Clément Mallet, Stéphane Jacquemoud, Gonçalves Gil, Carlos Alberto Silva, Paula Soares, Margarida Tomé, and Luisa Pereira. 2016. “Airborne Lidar Estimation of Aboveground Forest Biomass in the Absence of Field Inventory.” Remote Sensing 8 (8): 653."
+seasia,jpl_borneo_219,"8,570.88",NA,Leica ALS80,32750,1/30/2017,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,"Ferraz, António, Sassan Saatchi, Clément Mallet, Stéphane Jacquemoud, Gonçalves Gil, Carlos Alberto Silva, Paula Soares, Margarida Tomé, and Luisa Pereira. 2016. “Airborne Lidar Estimation of Aboveground Forest Biomass in the Absence of Field Inventory.” Remote Sensing 8 (8): 653."
+seasia,malaysia_davidcoomes,"10,129.10",malaysia_danumcoomes,Leica ALS50-II,32650,11/2/2017,Mark Cutler; David Coomes,m.e.j.cutler@dundee.ac.uk; dac18@cam.ac.uk,,
+seasia,whrc_indonesia_walker,33.03,indonesia_walker,NA,32650,6/24/2014,Wayne Walker,wwalker@whrc.org,,"Griscom, B., Ellis, P., & Putz, F. E. (2014). Carbon emissions performance of commercial logging in East Kalimantan, Indonesia. Global change biology, 20(3), 923-937"
+southamerica,chave_nourages,"2,441.44",frenchguiana_chave,Riegl LMS-Q560,32622,3/31/2012,Jérôme Chave,jerome.chave@univ-tlse3.fr,,"Labriere, N., Tao, S., Chave, J., Scipal, K., Le Toan, T., Abernethy, K., ... & Saatchi, S. (2018). In situ reference datasets from the TropiSAR and AfriSAR campaigns in support of upcoming spaceborne biomass missions. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 11(10), 3617-3627."
+southamerica,chave_paracou,"1,257.00",frenchguiana_chave,Riegl LMS-280i,32622,9/1/2009,Jérôme Chave,jerome.chave@univ-tlse3.fr,,"Labriere, N., Tao, S., Chave, J., Scipal, K., Le Toan, T., Abernethy, K., ... & Saatchi, S. (2018). In situ reference datasets from the TropiSAR and AfriSAR campaigns in support of upcoming spaceborne biomass missions. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 11(10), 3617-3627."
+southamerica,embrapa_brazil_2020_and_a01,"1,052.15",NA,Optech ALTM Orion H300,31983,10/22/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_bon_a01,820.66,NA,Optech ALTM Orion H300,31979,9/28/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_cau_a01,"1,274.98",NA,Optech ALTM Orion H300,31982,10/23/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_duc_a01,"1,321.43",NA,Optech ALTM Orion H300,31981,10/10/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_fn1_a01,"1,543.65",NA,Optech ALTM Orion H300,31982,9/25/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_fn2_a01,"1,543.19",NA,Optech ALTM Orion H300,31981,9/26/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_hum_a01,601.18,NA,Optech ALTM Orion H300,31979,9/27/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_jar_a01a,561.13,NA,Optech ALTM Orion H300,31982,10/20/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_jar_a01b,868.09,NA,Optech ALTM Orion H300,31982,10/20/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_jar_a01c,874.83,NA,Optech ALTM Orion H300,31982,10/20/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_jar_a01d,890.02,NA,Optech ALTM Orion H300,31982,10/20/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_par_a01,"1,128.44",NA,Optech ALTM Orion H300,31983,10/24/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_rib_a01,"1,325.91",NA,Optech ALTM Orion H300,31979,9/28/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_st1_a01,"2,659.42",NA,Optech ALTM Orion H300,31981,10/26/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_st2_a01,"2,644.63",NA,Optech ALTM Orion H300,31981,10/29/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_tal_a01,684.86,NA,Optech ALTM Orion H300,31979,9/28/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_tan_a01,"1,172.63",NA,Optech ALTM Orion H300,31982,9/23/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_tap_a01,"1,127.35",NA,Optech ALTM Orion H300,31981,10/25/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_tap_a04,767.7,NA,Optech ALTM Orion H300,31981,10/25/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_tap_a05,85.02,NA,Optech ALTM Orion H300,31981,10/12/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_2020_tap_a06,146.18,NA,Optech ALTM Orion H300,31981,10/12/2020,Michael Keller,mkeller.co2@gmail.com,,
+southamerica,embrapa_brazil_keller_2008_cui,621.96,NA,Leica ALS50-II,32720,6/22/2008,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/f35ebc47-6602-4af9-a9b3-4d660ffee8c5,
+southamerica,embrapa_brazil_keller_2008_duc,"1,855.71",NA,Leica ALS50-II,32720,6/24/2008,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/6ab89055-5f79-4fc0-9e8e-fcd997390f8f,
+southamerica,embrapa_brazil_keller_2008_pre,"1,155.04",NA,Leica ALS50-II,32720,6/22/2008,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/ffe5171a-59f0-42c3-8551-cad8a6784fd8,
+southamerica,embrapa_brazil_keller_2008_tap,"1,323.25",NA,Leica ALS50-II,32721,7/3/2008,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/f0f37690-4cd3-44df-bdd8-69e36aa13e79,
+southamerica,embrapa_brazil_keller_2011_ant,"1,001.04",NA,Optech ALTM 3100,31979,11/25/2011,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/3da138cf-661c-4d2f-93bf-a8d75117df51,
+southamerica,embrapa_brazil_keller_2011_cot,"1,026.75",NA,Optech ALTM 3100,31981,11/14/2011,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/30293dd1-801d-4b5a-bb2e-e4bce6e845d0,
+southamerica,embrapa_brazil_keller_2011_jam,"1,000.63",NA,Optech ALTM 3100,31980,11/20/2011,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/1582bba0-1eee-4c87-b1e9-d888636b67ba,
+southamerica,embrapa_brazil_keller_2012_cau,"1,221.03",brazil_cau20122014,Optech ALTM 3100,31982,7/29/2012,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/7ae34c83-3b75-43b7-992a-822bad5414a6,
+southamerica,embrapa_brazil_keller_2012_duc,"1,237.30",NA,Optech ALTM 3100,31981,2/17/2012,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/4c65b6de-25e4-4d91-8015-d79b4c973534,
+southamerica,embrapa_brazil_keller_2012_sdm,"1,129.27",NA,Optech ALTM 3100,31983,4/11/2012,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/592a857f-9e3f-46b8-9774-5973bcf0cabb,
+southamerica,embrapa_brazil_keller_2012_sfx,"2,261.31",brazil_sfx2011; brazil_sfx2012,Optech ALTM 3100,31982,9/6/2012,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/a3bb4f79-ef32-4b28-8295-2d963a1044e5,
+southamerica,embrapa_brazil_keller_2012_tan,"1,081.84",brazil_tan2012,Optech ALTM 3100,31982,8/4/2012,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/4ea1d55a-fb4c-49cf-bb78-192136307420,
+southamerica,embrapa_brazil_keller_2012_tap,"2,193.85",NA,Optech ALTM 3100,31981,9/4/2012,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/db302dc9-3e3b-442e-98a6-4ed4163a8ca6,
+southamerica,embrapa_brazil_keller_2013_and,999.76,brazil_and2013,Optech Orion,31983,6/22/2014,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/465c4897-a586-4270-9232-c65ee346fcd0,
+southamerica,embrapa_brazil_keller_2013_bon,780.96,brazil_bon2014,Optech Orion,31979,9/16/2013,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/9e45ff2c-427d-48ec-a252-b6fb9c519ff4,
+southamerica,embrapa_brazil_keller_2013_cag,"1,258.01",NA,Optech Orion,31982,12/26/2013,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/355d9e5f-4d37-4855-97cf-e85ffa060b90,
+southamerica,embrapa_brazil_keller_2013_fn1,"1,043.36",NA,Optech Orion,31982,8/15/2013,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/ad364160-6076-46b3-84a7-457419f61b5a,
+southamerica,embrapa_brazil_keller_2013_fn2,"1,042.96",NA,Optech Orion,31982,8/15/2013,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/42fca3ef-ba02-4992-b25f-a40bca98ced8,
+southamerica,embrapa_brazil_keller_2013_fna,"1,131.44",brazil_fna2013,Optech Orion,31981,8/13/2013,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/b3d6585d-7ade-4a64-8baf-feec61768f00,
+southamerica,embrapa_brazil_keller_2013_fst,"1,346.44",brazil_fst2013,Optech Orion,31981,8/22/2013,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/094b6f50-2c0e-478a-9d5d-e48d13be4add,
+southamerica,embrapa_brazil_keller_2013_hum,539.59,brazil_hum2014,Optech Orion,31979,9/15/2013,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/af42b430-fe12-4045-98d1-44304c42b2c0,
+southamerica,embrapa_brazil_keller_2013_jam,"1,653.59",brazil_jam2013,Optech Orion,31980,9/20/2013,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/67dd1511-3088-4721-9016-510c5f0c0961,
+southamerica,embrapa_brazil_keller_2013_par,"1,062.36",NA,Optech Orion,31983,6/18/2014,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/8dc6400f-23b0-4c83-a48a-7596a902ada5,
+southamerica,embrapa_brazil_keller_2013_st1,"2,163.11",NA,Optech Orion,31981,7/3/2014,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/c52a2c00-8ed7-4c0c-9366-e7d5facd1ced,
+southamerica,embrapa_brazil_keller_2013_st2,"2,151.26",NA,Optech Orion,31981,6/15/2014,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/ca02d0b5-959b-40b9-a22d-30b8cc00ef23,
+southamerica,embrapa_brazil_keller_2013_tac,"1,301.68",brazil_tac2014,Optech Orion,31982,9/2/2013,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/1acdce2c-264f-4b8d-ae5d-1d7d5d14afba,
+southamerica,embrapa_brazil_keller_2013_tal,650.73,brazil_tal2014,Optech Orion,31979,5/29/2014,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/190f55bc-3fea-432e-b197-3d0c4864172e,
+southamerica,embrapa_brazil_keller_2013_tap,"1,130.67",NA,Optech Orion,31981,9/10/2013,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/c41c8541-8f4e-4fcf-8f2a-cf5ba6a2fd3d,
+southamerica,embrapa_brazil_keller_2014_ba3,696.83,NA,Optech Orion,31980,4/4/2015,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/2f10b906-65bf-46ec-b617-80db15452064,
+southamerica,embrapa_brazil_keller_2014_bar,773.34,NA,Optech Orion,31980,4/4/2015,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/fc649878-1f64-4369-af0a-e3e30853e10e,
+southamerica,embrapa_brazil_keller_2014_can,"1,000.01",NA,Optech Orion,31983,10/4/2014,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/f60019ac-749e-4343-8ab0-c517db3abf47,
+southamerica,embrapa_brazil_keller_2014_cau,"1,221.42",NA,Optech Orion,31982,12/27/2014,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/8873fdd8-561a-4fea-b7bb-5e1c29536b69,
+southamerica,embrapa_brazil_keller_2014_fn3,"7,059.92",NA,Optech Orion,31981,7/6/2014,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/d13c982c-3de4-450d-93c8-9133d5231817,
+southamerica,embrapa_brazil_keller_2014_fnb,"1,190.30",NA,Optech Orion,31981,7/1/2015,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/a12c2729-71f3-4a3d-ac4e-746e9c414c56,
+southamerica,embrapa_brazil_keller_2014_fst,"1,603.96",NA,Optech Orion,32721,10/26/2014,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/749c99d1-bd5e-4625-a075-46801cd6eb84,
+southamerica,embrapa_brazil_keller_2014_go1,"1,057.25",NA,Optech Orion,31982,7/7/2015,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/c8a06ed4-e725-4674-b999-f7141d2643c4,
+southamerica,embrapa_brazil_keller_2014_jam,"2,154.12",NA,Optech Orion,32720,10/9/2014,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/2d344c1e-13d7-4365-ad31-b37fb9902e94,
+southamerica,embrapa_brazil_keller_2014_rib,674.88,NA,Optech Orion,31979,4/14/2015,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/a5e59f01-c6fc-4d44-a6d1-846ec3c542e8,
+southamerica,embrapa_brazil_keller_2014_san,460.17,NA,Optech Orion,31981,5/1/2015,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/062144b9-69a8-420c-9d35-360d313f7adc,
+southamerica,embrapa_brazil_keller_2014_st3,"6,104.10",NA,Optech Orion,31981,5/1/2015,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/39f6df78-0dde-49ca-9e51-35fdf93f28b0,
+southamerica,embrapa_brazil_keller_2014_tan,399.75,NA,Optech Orion,31981,11/1/2014,Michael Keller,mkeller.co2@gmail.com,https://www.paisagenslidar.cnptia.embrapa.br/geonetwork/srv/por/catalog.search#/metadata/82aa594b-30d5-4c70-83e2-f71809a6f703,
+southamerica,hill_peru,"15,918.19",peru_tambopata,Leica ALS50 II,32719,6/7/2009,Ross Hill,rhill@bournemouth.ac.uk,,"Boyd, D. S., Hill, R. A., Hopkinson, C., & Baker, T. R. (2013). Landscape?scale forest disturbance regimes in southern Peruvian Amazonia. Ecological applications, 23(7), 1588-1602."
+southamerica,inpe_brazil_gorgens,"6,367.81",NA,Trimble Harrier 68i,31979,10/9/2015,Eric Görgens,,,
+southamerica,jpl_wb_colombia,"94,357.34",colombia_choco,Optech ALTM 3033,32618,11/30/2013,Sassan Saatchi,sasan.s.saatchi@jpl.nasa.gov,,"Meyer, V., Saatchi, S., Ferraz, A., Xu, L., Duque, A., García, M., & Chave, J. (2019). Forest degradation and biomass loss along the Chocó region of Colombia. Carbon balance and management, 14(1), 1-15."
+usa,aso_sierra_nevada,"758,825.05",NA,NA,NA,NA,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,
+usa,aso_sierra_nevada_snowoff,"753,106.52",NA,NA,NA,NA,Antonio Ferraz,Antonio.A.Ferraz@jpl.nasa.gov,,
+usa,boschetti_idaho_clearcreek,"21,763.92",usa_clearcreek; usa_clearcreekselway,Leica ALS60,26911,10/30/2009,Luigi Boschetti,luigi@uidaho.edu,,"Sanchez-Lopez, N., Boschetti, L., & Hudak, A. T. (2020). Reconstruction of the disturbance history of a temperate coniferous forest through stand-level analysis of airborne LiDAR data. Forestry: An International Journal of Forest Research, 93(1), 38-55."
+usa,boschetti_idaho_selway,"66,999.17",usa_clearcreekselway,Leica ALS60,26911,7/31/2012,Luigi Boschetti,luigi@uidaho.edu,,"Sanchez-Lopez, N., Boschetti, L., & Hudak, A. T. (2020). Reconstruction of the disturbance history of a temperate coniferous forest through stand-level analysis of airborne LiDAR data. Forestry: An International Journal of Forest Research, 93(1), 38-55."
+usa,canada_2010_26917,8.36,canada_transect,Optech ALTM 3100,26917,8/31/2010,Joanne White,joanne.white@canada.ca,,"Wulder, M. A., White, J. C., Bater, C. W., Coops, N. C., Hopkinson, C., & Chen, G. (2012). Lidar plots—A new large-area data collection option: Context, concepts, and case study. Canadian Journal of Remote Sensing, 38(5), 600-618."
+usa,canada_2010_32608,"224,141.80",NA,Optech ALTM 3100,32608,8/31/2010,Joanne White,joanne.white@canada.ca,,"Wulder, M. A., White, J. C., Bater, C. W., Coops, N. C., Hopkinson, C., & Chen, G. (2012). Lidar plots—A new large-area data collection option: Context, concepts, and case study. Canadian Journal of Remote Sensing, 38(5), 600-618."
+usa,canada_2010_32609,"389,572.45",NA,Optech ALTM 3100,32609,8/31/2010,Joanne White,joanne.white@canada.ca,,"Wulder, M. A., White, J. C., Bater, C. W., Coops, N. C., Hopkinson, C., & Chen, G. (2012). Lidar plots—A new large-area data collection option: Context, concepts, and case study. Canadian Journal of Remote Sensing, 38(5), 600-618."
+usa,canada_2010_32610,"121,149.01",canada_transect,Optech ALTM 3100,32610,8/31/2010,Joanne White,joanne.white@canada.ca,,"Wulder, M. A., White, J. C., Bater, C. W., Coops, N. C., Hopkinson, C., & Chen, G. (2012). Lidar plots—A new large-area data collection option: Context, concepts, and case study. Canadian Journal of Remote Sensing, 38(5), 600-618."
+usa,canada_2010_32612,"68,332.19",NA,Optech ALTM 3100,32612,8/31/2010,Joanne White,joanne.white@canada.ca,,"Wulder, M. A., White, J. C., Bater, C. W., Coops, N. C., Hopkinson, C., & Chen, G. (2012). Lidar plots—A new large-area data collection option: Context, concepts, and case study. Canadian Journal of Remote Sensing, 38(5), 600-618."
+usa,canada_2010_32613,"311,580.07",NA,Optech ALTM 3100,32613,8/31/2010,Joanne White,joanne.white@canada.ca,,"Wulder, M. A., White, J. C., Bater, C. W., Coops, N. C., Hopkinson, C., & Chen, G. (2012). Lidar plots—A new large-area data collection option: Context, concepts, and case study. Canadian Journal of Remote Sensing, 38(5), 600-618."
+usa,canada_2010_32614,"154,857.36",NA,Optech ALTM 3100,32614,8/31/2010,Joanne White,joanne.white@canada.ca,,"Wulder, M. A., White, J. C., Bater, C. W., Coops, N. C., Hopkinson, C., & Chen, G. (2012). Lidar plots—A new large-area data collection option: Context, concepts, and case study. Canadian Journal of Remote Sensing, 38(5), 600-618."
+usa,canada_2010_32618,"15,426.41",canada_transect,Optech ALTM 3100,32618,8/31/2010,Joanne White,joanne.white@canada.ca,,"Wulder, M. A., White, J. C., Bater, C. W., Coops, N. C., Hopkinson, C., & Chen, G. (2012). Lidar plots—A new large-area data collection option: Context, concepts, and case study. Canadian Journal of Remote Sensing, 38(5), 600-618."
+usa,canada_2010_32619,"27,076.62",canada_transect,Optech ALTM 3100,32619,8/31/2010,Joanne White,joanne.white@canada.ca,,"Wulder, M. A., White, J. C., Bater, C. W., Coops, N. C., Hopkinson, C., & Chen, G. (2012). Lidar plots—A new large-area data collection option: Context, concepts, and case study. Canadian Journal of Remote Sensing, 38(5), 600-618."
+usa,canada_petawawa2012,"13,386.64",canada_petawawa,Riegl Q-680i,32618,9/1/2012,Joanne White,joanne.white@canada.ca,,"White, J. C., Chen, H., Woods, M. E., Low, B., & Nasonova, S. (2019). The Petawawa Research Forest: Establishment of a remote sensing supersite. The Forestry Chronicle, 95(3), 149-156."
+usa,cascadeeastzone,356.52,usa_cascadeeastzone,Leica ALS50-II,26911,9/1/2008,Patrick Fekety,patrick.fekety@colostate.edu,https://www.idaholidar.org/data/south-fork-salmon-and-secesh-rivers/,
+usa,cflra_clearcreek,77.47,usa_cflra,Leica ALS60,26911,10/16/2009,Patrick Fekety,patrick.fekety@colostate.edu,https://portal.opentopography.org/lidarDataset?opentopoID=OTLAS.042012.26911.6,
+usa,cflra_crookedriver,96.81,usa_cflra,Leica ALS50-II and Leica ALS60,26911,2012,Patrick Fekety,patrick.fekety@colostate.edu,,"Becker, R. M., & Keefe, R. F. (2020). Prediction of fuel loading following mastication treatments in forest stands in North Idaho, USA. Sustainability, 12(17), 7025."
+usa,cflra_dutchoven,37.77,usa_cflra,Leica ALS70,26911,10/31/2014,Patrick Fekety,patrick.fekety@colostate.edu,,https://coast.noaa.gov/data/Documents/Metadata/USIEI/2015_USFS_Idaho_Montana_Forests_Final_Data_Report_Opt.pdf
+usa,cflra_lolocreekeldoradocreek,96.83,usa_cflra,Leica ALS50-II and Leica ALS60,26911,2012,Patrick Fekety,patrick.fekety@colostate.edu,,
+usa,cflra_powell,241.78,usa_cflra,Leica ALS50-II and Leica ALS60,26911,9/23/2011,Patrick Fekety,patrick.fekety@colostate.edu,https://www.idaholidar.org/data/,
+usa,cflra_selwayriverelkcreek,173.72,usa_cflra,Leica ALS50-II and Leica ALS60,26911,2012,Patrick Fekety,patrick.fekety@colostate.edu,,
+usa,cflra_twincreek,19.36,usa_cflra,Optech Gemini,26911,8/31/2009,Patrick Fekety,patrick.fekety@colostate.edu,https://www.idaholidar.org/data/clearwater-national-forest/,
+usa,cflra_waldepeteking,38.73,usa_cflra,Leica ALS50-II,26911,9/29/2010,Patrick Fekety,patrick.fekety@colostate.edu,https://www.idaholidar.org/data/WaldePlacerPeteKing2021,
+usa,dcef_nfp_2009,155.97,usa_dcef,Leica ALS50-II,26911,7/30/2011,Patrick Fekety,patrick.fekety@colostate.edu,https://www.fs.usda.gov/rds/archive/Catalog/RDS-2020-0042,
+usa,dcef_nfp_2010,278.08,usa_dcef,Leica ALS50-II,26911,7/30/2011,Patrick Fekety,patrick.fekety@colostate.edu,https://www.fs.usda.gov/rds/archive/Catalog/RDS-2020-0042,
+usa,dcef_nfp_2011,334.38,usa_dcef,Leica ALS50-II,26911,7/30/2011,Patrick Fekety,patrick.fekety@colostate.edu,https://www.fs.usda.gov/rds/archive/Catalog/RDS-2020-0042,
+usa,falkowski_damon_2007,991.26,usa_damon,Leica ALS50-II,26911,9/16/2007,Patrick Fekety,patrick.fekety@colostate.edu,https://portal.opentopography.org/lidarDataset?opentopoID=OTLAS.032012.26911.3,
+usa,fergusonfire_20180722,"56,189.23",NA,NA,3310,7/22/2018,Jonathan Greenberg,jgreenberg@unr.edu,,
+usa,fergusonfire_20180916,"56,218.69",NA,NA,3310,9/16/2018,Jonathan Greenberg,jgreenberg@unr.edu,,
+usa,fernan_fernan,192.48,usa_fernan,Leica ALS70 and Leica ALS80,26911,2/13/2015,Patrick Fekety,patrick.fekety@colostate.edu,,
+usa,fernan_tepeepottercreek,460.65,usa_fernan,Leica ALS70,26911,12/14/2014,Patrick Fekety,patrick.fekety@colostate.edu,,
+usa,fitsum_southforksalmon,298.39,usa_fitsum,Leica ALS50-II,26911,9/1/2008,Patrick Fekety,patrick.fekety@colostate.edu,https://portal.opentopography.org/lidarDataset?opentopoID=OTLAS.042012.26911.4,
+usa,gliht_32605ak2014,"2,985,551.92",usa_bnzlter; usa_cafi,NA,32605,8/17/2014,,,https://gliht.gsfc.nasa.gov/,"Cook, B. D., L. W. Corp, R. F. Nelson, E. M. Middleton, D. C. Morton, J. T. McCorkel, J. G. Masek, K. J. Ranson, and V. Ly. 2013. NASA Goddard's Lidar, Hyperspectral and Thermal (G-LiHT) airborne imager. Remote Sensing 5:4045-4066, doi:10.3390/rs5084045"
+usa,gliht_32605ak2018,"110,434.60",usa_cafi,NA,32605,7/31/2018,,,https://gliht.gsfc.nasa.gov/,"Cook, B. D., L. W. Corp, R. F. Nelson, E. M. Middleton, D. C. Morton, J. T. McCorkel, J. G. Masek, K. J. Ranson, and V. Ly. 2013. NASA Goddard's Lidar, Hyperspectral and Thermal (G-LiHT) airborne imager. Remote Sensing 5:4045-4066, doi:10.3390/rs5084045"
+usa,gliht_32606ak2014,"2,632,975.04",usa_bnzlter; usa_cafi; usa_murphydome,NA,32606,8/17/2014,,,https://gliht.gsfc.nasa.gov/,"Cook, B. D., L. W. Corp, R. F. Nelson, E. M. Middleton, D. C. Morton, J. T. McCorkel, J. G. Masek, K. J. Ranson, and V. Ly. 2013. NASA Goddard's Lidar, Hyperspectral and Thermal (G-LiHT) airborne imager. Remote Sensing 5:4045-4066, doi:10.3390/rs5084045"
+usa,gliht_32606ak2018,"155,697.83",usa_cafi,NA,32606,7/31/2018,,,https://gliht.gsfc.nasa.gov/,"Cook, B. D., L. W. Corp, R. F. Nelson, E. M. Middleton, D. C. Morton, J. T. McCorkel, J. G. Masek, K. J. Ranson, and V. Ly. 2013. NASA Goddard's Lidar, Hyperspectral and Thermal (G-LiHT) airborne imager. Remote Sensing 5:4045-4066, doi:10.3390/rs5084045"
+usa,gliht_32607ak2014,"751,062.26",usa_cafi,NA,32607,8/17/2014,,,https://gliht.gsfc.nasa.gov/,"Cook, B. D., L. W. Corp, R. F. Nelson, E. M. Middleton, D. C. Morton, J. T. McCorkel, J. G. Masek, K. J. Ranson, and V. Ly. 2013. NASA Goddard's Lidar, Hyperspectral and Thermal (G-LiHT) airborne imager. Remote Sensing 5:4045-4066, doi:10.3390/rs5084045"
+usa,ltbmu_20180710,"142,122.97",NA,NA,3310,7/10/2018,Jonathan Greenberg,jgreenberg@unr.edu,,
+usa,moscowmtn_2003,"1,536.82",usa_moscowmtn,Leica ALS40,26911,8/14/2003,,,https://www.idaholidar.org/data/moscow-mountain/,
+usa,moscowmtn_2007,70.2,usa_moscowmtn,Leica ALS50-II,26911,7/1/2007,,,https://www.fs.usda.gov/rds/archive/Catalog/RDS-2019-0045,
+usa,moscowmtn_2009,"1,542.92",usa_moscowmtn,Leica ALS50-II,26911,6/30/2009,,,https://www.fs.usda.gov/rds/archive/Catalog/RDS-2019-0045,
+usa,nasa_howland,"5,380.80",NA,NA,32619,6/30/2012,,,,
+usa,nasa_howland_2009,"1,874.14",NA,Optech ALTM 3100,32619,9/1/2009,,,,
+usa,nasa_hubbard,"4,293.65",usa_newengland,Optech ALTM 3100,32619,9/1/2009,,,,
+usa,nasa_ma,"2,324.27",usa_newengland,NA,32618,9/1/2009,,,,
+usa,nasa_me,"1,874.14",usa_newengland,NA,32619,9/1/2009,,,,
+usa,nasa_sierra,"1,579.64",usa_sierra,Optech Gemini,26911,9/1/2008,,,,
+usa,nasa_sonoma,"54,781.33",usa_sonoma,Leica ALS50 and ALS70,32610,2/25/2014,,,,
+usa,nasa_sonoma_whole,"440,987.05",usa_sonoma2017_frp; usa_sonoma2017_vrp; usa_sonoma2018,Leica ALS50 and ALS70,32610,2/25/2014,,,,
+usa,neon_abby,"14,453.19",usa_neonabby,Optech ALTM Gemini,32610,6/22/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_abby2018,"14,152.33",usa_neonabby,Riegl Q780,32610,7/14/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_abby2019,"9,137.81",usa_neonabby,NA,32610,7/14/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_abby2021,"13,214.53",usa_neonabby,Optech Galaxy Prime,32610,7/24/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_barr2019,"21,429.90",NA,Optech ALTM Gemini,32604,7/12/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_bart,"15,760.72",usa_neonbart,Optech ALTM Gemini,32619,6/3/2014,,,https://data.neonscience.org/data-products/explore,
+usa,neon_bart2016,"16,144.40",usa_neonbart,Optech ALTM Gemini,32619,8/27/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_bart2017,"5,815.93",usa_neonbart,Optech ALTM Gemini,32619,8/14/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_bart2018,"4,586.59",usa_neonbart,Optech ALTM Gemini,32619,9/8/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_bart2019,"12,362.13",usa_neonbart,Optech ALTM Gemini,32619,8/25/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_blan2016,"18,963.68",usa_neonblan,Optech ALTM Gemini,32617,7/27/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_blan2017,"18,377.09",usa_neonblan,Optech ALTM Gemini,32617,7/30/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_blan2019,"16,017.39",usa_neonblan,Optech ALTM Gemini,32617,5/28/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_blan2021,"16,458.48",usa_neonblan,Optech Galaxy Prime,32617,8/13/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_bldr_postflood,"21,740.17",NA,NA,32613,2013,,,,
+usa,neon_bldr_preflood,"24,828.07",NA,NA,32613,2013,,,,
+usa,neon_bona2017,"22,013.14",usa_bnzlter; usa_neonbona,Optech ALTM Gemini,32606,8/5/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_bona2018,"22,046.09",NA,Optech ALTM Gemini,32606,6/24/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_bona2019,"23,209.11",usa_neonbona,Optech ALTM Gemini,32606,7/31/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_bona2021,"25,281.08",usa_neonbona,Riegl Q780,32606,8/4/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_clbj2017,"14,350.59",usa_neonclbj,Optech ALTM Gemini,32614,5/1/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_clbj2018,"17,265.49",usa_neonclbj,Riegl Q780,32614,4/23/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_clbj2019,"17,124.46",usa_neonclbj,Riegl Q780,32614,4/19/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_clbj2021,"13,568.68",usa_neonclbj,,32614,6/25/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_cper,"9,062.02",usa_neoncper,Optech ALTM Gemini,32613,6/25/2013,,,https://data.neonscience.org/data-products/explore,
+usa,neon_cper2017,"12,997.86",usa_neoncper,,32613,5/24/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_dcfs2016,"35,403.52",usa_neondcfs,Optech ALTM Gemini,32614,6/30/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_deju2017,"19,173.05",usa_bnzlter; usa_neondeju,Optech ALTM Gemini,32606,8/6/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_deju2018,"22,028.43",NA,Optech ALTM Gemini,32606,7/28/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_deju2019,"20,775.38",usa_neondeju,Optech ALTM Gemini,32606,8/12/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_deju2021,"23,727.61",usa_neondeju,Riegl Q780,32606,7/31/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_dela2015,"13,204.77",usa_neondela,Optech ALTM Gemini,32616,7/22/2015,,,https://data.neonscience.org/data-products/explore,
+usa,neon_dela2016,"16,357.90",usa_neondela,Optech ALTM Gemini,32616,5/8/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_dela2017,"12,097.03",usa_neondela,Optech ALTM Gemini,32616,5/26/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_dela2018,"14,413.00",usa_neondela,Riegl Q780,32616,4/30/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_dela2019,"12,436.13",usa_neondela,Optech ALTM Gemini,32616,4/29/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_dela2021,"12,662.56",usa_neondela,Riegl Q780,32616,5/7/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_dsny,"18,940.31",usa_neondsny,Optech ALTM Gemini,32617,5/30/2014,,,https://data.neonscience.org/data-products/explore,
+usa,neon_dsny2016,"20,060.99",usa_neondsny,Optech ALTM Gemini,32617,10/1/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_dsny2017,"12,100.58",usa_neondsny,Optech ALTM Gemini,32617,9/28/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_dsny2018,"3,417.57",NA,Optech ALTM Gemini,32617,10/14/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_grsm,"20,786.83",usa_neongrsm,Riegl Q780,32617,6/6/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_grsm2015,"41,666.72",usa_neongrsm,Optech ALTM Gemini,32617,8/16/2015,,,https://data.neonscience.org/data-products/explore,
+usa,neon_grsm2016,"44,961.98",usa_neongrsm,Optech ALTM Gemini,32617,6/10/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_grsm2017,"48,703.35",usa_neongrsm,Optech ALTM Gemini,32617,10/19/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_guan2018,"14,218.60",usa_neonguan,Optech ALTM Gemini,32619,5/20/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_harv,"31,389.62",usa_neonharv; usa_harvard,,32618,6/1/2014,,,https://data.neonscience.org/data-products/explore,
+usa,neon_harv2016,"34,963.65",usa_neonharv,Optech ALTM Gemini,32618,8/20/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_harv2017,"30,075.97",usa_neonharv,Optech ALTM Gemini,32618,8/23/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_harv2018,"30,028.84",usa_neonharv,Optech ALTM Gemini,32618,8/28/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_harv2019,"31,294.00",usa_neonharv,Optech ALTM Gemini,32618,8/12/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_heal2017,"12,556.89",usa_neonheal,Optech ALTM Gemini,32606,8/7/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_heal2018,"12,518.86",NA,Optech ALTM Gemini,32606,6/26/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_heal2019,"13,195.67",NA,Optech ALTM Gemini,32606,6/26/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_heal2021,"15,198.70",usa_neonheal,Riegl Q780,32606,8/2/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_jerc,"14,361.13",usa_neonjerc,,32616,5/1/2014,,,https://data.neonscience.org/data-products/explore,
+usa,neon_jerc2016,"36,177.53",usa_neonjerc,Optech ALTM Gemini,32616,10/3/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_jerc2017,"20,814.31",usa_neonjerc,Optech ALTM Gemini,32616,9/17/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_jerc2018,"10,606.04",usa_neonjerc,Optech ALTM Gemini,32616,9/20/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_jerc2019,"32,516.62",usa_neonjerc,Riegl Q780,32616,9/7/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_jerc2021,"30,088.93",usa_neonjerc,Optech ALTM Gemini,32616,9/26/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_jorn2017,"30,694.30",usa_neonjorn,Optech ALTM Gemini,32613,8/30/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_jorn2018,"20,142.06",usa_neonjorn,Riegl Q780,32613,8/31/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_jorn2019,"35,551.23",NA,Optech ALTM Gemini,32613,8/27/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_jorn2021,"36,398.71",NA,Riegl Q780,32613,9/9/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_konz2016,"21,208.70",usa_neonkonz,Optech ALTM Gemini,32614,7/17/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_konz2017,"24,847.28",usa_neonkonz,Optech ALTM Gemini,32614,6/9/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_konz2018,"25,386.46",usa_neonkonz,Optech ALTM Gemini,32614,6/5/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_konz2019,"23,633.51",usa_neonkonz,Optech ALTM Gemini,32614,7/16/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_konz2020,"19,577,725.17",usa_neonkonz,Riegl Q780,32614,7/13/2020,,,https://data.neonscience.org/data-products/explore,
+usa,neon_laja2018,"13,408.76",usa_neonlaja,Optech ALTM Gemini,32619,5/19/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_leno,"10,685.67",usa_neonleno,Optech ALTM Gemini,32616,7/25/2015,,,https://data.neonscience.org/data-products/explore,
+usa,neon_leno2016,"15,642.60",usa_neonleno,Optech ALTM Gemini,32616,5/8/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_leno2017,"11,406.64",usa_neonleno,Optech ALTM Gemini,32616,5/17/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_leno2018,"13,186.90",usa_neonleno,Riegl Q780,32616,4/28/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_leno2019,"11,667.15",usa_neonleno,Optech ALTM Gemini,32616,5/6/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_mlbs2015,"16,371.81",usa_neonmlbs,,32617,8/1/2015,,,https://data.neonscience.org/data-products/explore,
+usa,neon_mlbs2018,"2,831.90",usa_neonmlbs,Riegl Q780,32617,6/5/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_mlbs2021,"11,845.26",usa_neonmlbs,Optech Galaxy Prime,32617,6/17/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_moab2017,"17,157.11",usa_neonmoab,Optech ALTM Gemini,32612,9/18/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_moab2018,"13,629.83",usa_neonmoab,Riegl Q780,32612,7/30/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_moab2021,"8,110.19",usa_neonmoab,Optech Galaxy Prime,32612,4/29/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_niwo2017,"18,227.93",usa_neonniwo,Optech ALTM Gemini,32613,9/21/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_niwo2019,"16,705.26",usa_neonniwo,Riegl Q780,32613,8/26/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_niwo2020,"13,307.48",usa_neonniwo,Optech ALTM Gemini,32613,7/20/2020,,,https://data.neonscience.org/data-products/explore,
+usa,neon_nogp2016,"14,053.20",usa_neonnogp,Optech ALTM Gemini,32614,7/4/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_onaq2017,"16,540.00",usa_neononaq,Optech ALTM Gemini,32612,6/4/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_onaq2019,"18,835.58",usa_neononaq,Riegl Q780,32612,5/5/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_ornl,"29,137.77",usa_neonornl,,32616,6/8/2016,,,,
+usa,neon_osbs,"24,593.15",usa_neonosbs,,32617,5/1/2014,,,https://data.neonscience.org/data-products/explore,
+usa,neon_osbs2016,"26,842.73",usa_neonosbs,Optech ALTM Gemini,32617,9/23/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_osbs2017,"14,438.09",usa_neonosbs,Optech ALTM Gemini,32617,9/27/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_osbs2018,"6,423.82",usa_neonosbs,Optech ALTM Gemini,32617,10/12/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_osbs2019,"24,031.34",usa_neonosbs,Optech ALTM Gemini,32617,4/22/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_osbs2021,"19,346.75",usa_neonosbs,Optech Galaxy Prime,32617,9/27/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_prov,"1,580.78",NA,NA,32611,2013,,,,
+usa,neon_puum2019,"18,561.72",usa_neonpuum,Optech Pegasus,32605,2/2/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_puum2020,"29,349.56",usa_neonpuum,Optech Pegasus,32605,1/3/2020,,,https://data.neonscience.org/data-products/explore,
+usa,neon_rmnp2017,"21,762.55",usa_neonrmnp,Optech ALTM Gemini,32613,7/6/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_rmnp2018,"19,728.39",usa_neonrmnp,Riegl Q780,32613,9/13/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_rmnp2020,"21,572.07",usa_neonrmnp,Riegl Q780,32613,7/2/2020,,,https://data.neonscience.org/data-products/explore,
+usa,neon_sawb,"14,846.35",NA,NA,32619,2014,,,,
+usa,neon_scbi2016,"14,370.70",usa_neonscbi,Optech ALTM Gemini,32617,7/20/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_scbi2017,"11,355.21",usa_neonscbi,Optech ALTM Gemini,32617,7/30/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_scbi2019,"11,755.54",usa_neonscbi,Optech ALTM Gemini,32617,5/24/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_scbi2021,"11,219.44",usa_neonscbi,Optech Galaxy Prime,32617,8/12/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_serc,"10,224.14",usa_neonserc,Optech ALTM Gemini,32618,8/4/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_serc2016,"15,435.23",usa_neonserc,Optech ALTM Gemini,32618,7/24/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_serc2019,"11,363.85",usa_neonserc,Optech ALTM Gemini,32618,6/4/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_serc2021,"10,931.01",usa_neonserc,Optech Galaxy Prime,32618,8/24/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_sjer,"9,924.42",usa_neonsjer,Optech ALTM Gemini,32611,6/13/2013,,,https://data.neonscience.org/data-products/explore,
+usa,neon_sjer2017,"9,682.03",usa_neonsjer,Optech ALTM Gemini,32611,3/28/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_sjer2019,"11,266.00",usa_neonsjer,Optech ALTM Gemini,32611,3/24/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_soap,"4,386.94",NA,Optech ALTM Gemini,32611,6/12/2013,,,https://data.neonscience.org/data-products/explore,
+usa,neon_soap2017,"11,590.21",usa_neonsoap,Optech ALTM Gemini,32611,6/27/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_soap2018,"11,495.17",usa_neonsoap,Optech ALTM Gemini,32611,6/11/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_soap2019,"18,286.08",usa_neonsoap,Optech ALTM Gemini,32611,6/16/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_soap2021,"13,729.83",usa_neonsoap,Optech Galaxy Prime,32611,7/13/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_srer2017,"38,556.19",usa_neonsrer,Optech ALTM Gemini,32612,8/29/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_srer2019,"39,225.60",NA,Optech ALTM Gemini,32612,9/13/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_srer2021,"23,831.41",usa_neonsrer,Riegl Q780,32612,9/7/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_stei2016,"27,925.57",usa_neonstei; usa_neontree,Optech ALTM Gemini,32616,9/2/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_stei2017,"13,358.57",usa_neonstei; usa_neontree,Optech ALTM Gemini,32616,9/3/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_stei2019,"7,264.74",usa_neonstei; usa_neontree,Optech ALTM Gemini,32616,6/22/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_stei2020,"25,476.52",usa_neonstei; usa_neontree,Riegl Q780,32616,8/11/2020,,,https://data.neonscience.org/data-products/explore,
+usa,neon_steicheq2016,"6,177.38",usa_neonstei,Optech ALTM Gemini,32615,9/2/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_steicheq2017,"4,396.07",NA,Optech ALTM Gemini,32615,9/3/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_steicheq2019,327.37,NA,Optech ALTM Gemini,32615,6/22/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_steicheq2020,"6,309.74",usa_neonstei,Riegl Q780,32615,8/11/2020,,,https://data.neonscience.org/data-products/explore,
+usa,neon_ster,"6,792.53",NA,Optech ALTM Gemini,32611,6/24/2013,,,https://data.neonscience.org/data-products/explore,
+usa,neon_tall2015,"20,928.97",usa_neontall,Optech ALTM Gemini,32616,7/17/2015,,,https://data.neonscience.org/data-products/explore,
+usa,neon_tall2016,"17,873.98",usa_neontall,NA,32616,5/7/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_tall2017,"17,036.42",usa_neontall,Optech ALTM Gemini,32616,5/14/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_tall2018,"11,261.85",usa_neontall,Riegl Q780,32616,4/27/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_tall2019,"13,823.60",usa_neontall,Optech ALTM Gemini,32616,4/27/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_tall2021,"16,081.91",usa_neontall,Riegl Q780,32616,5/6/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_teak,"23,488.92",NA,Optech ALTM Gemini,32611,6/15/2013,,,https://data.neonscience.org/data-products/explore,
+usa,neon_teak2017,"12,279.54",usa_neonteak,Optech ALTM Gemini,32611,6/29/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_teak2021,"15,014.53",NA,Optech Galaxy Prime,32611,7/14/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_tool2019,"30,835.74",NA,Optech ALTM Gemini,32606,7/23/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_ukfs2016,"17,125.89",usa_neonukfs,,32615,7/16/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_ukfs2017,"9,923.69",usa_neonukfs,Optech ALTM Gemini,32615,6/9/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_ukfs2018,"3,304.09",usa_neonukfs,Optech ALTM Gemini,32615,6/1/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_ukfs2019,"15,267.47",usa_neonukfs,Optech ALTM Gemini,32615,5/23/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_ukfs2020,"13,821.61",usa_neonukfs,Riegl Q780,32615,7/10/2020,,,https://data.neonscience.org/data-products/explore,
+usa,neon_unde2016,"21,202.67",usa_neonunde,Optech ALTM Gemini,32616,9/2/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_unde2017,"14,415.45",usa_neonunde,Optech ALTM Gemini,32616,9/12/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_unde2019,"19,932.71",NA,Riegl Q780,32616,6/8/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_unde2020,"19,528.32",usa_neonunde,Riegl Q780,32616,8/11/2020,,,https://data.neonscience.org/data-products/explore,
+usa,neon_wood2016,"35,403.52",usa_neonwood,Optech ALTM Gemini,32614,6/30/2016,,,https://data.neonscience.org/data-products/explore,
+usa,neon_wref,"20,565.22",usa_neonwref,Optech ALTM Gemini,32610,6/22/2017,,,https://data.neonscience.org/data-products/explore,
+usa,neon_wref2019,"21,069.58",usa_neonwref,Riegl Q780,32610,7/14/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_wref2021,"23,032.42",usa_neonwref,Optech Galaxy Prime,32610,7/24/2021,,,https://data.neonscience.org/data-products/explore,
+usa,neon_yell2018,"27,181.07",usa_neonyell,Riegl Q780,32612,6/27/2018,,,https://data.neonscience.org/data-products/explore,
+usa,neon_yell2019,"25,702.73",usa_neonyell,Optech ALTM Gemini,32612,7/25/2019,,,https://data.neonscience.org/data-products/explore,
+usa,neon_yell2020,"25,818.15",usa_neonyell,Optech ALTM Gemini,32612,7/11/2020,,,https://data.neonscience.org/data-products/explore,
+usa,nezperce,"1,866.59",usa_nezperce,Leica ALS40,26911,7/26/2002,Patrick Fekety,patrick.fekety@colostate.edu,https://www.idaholidar.org/data/nez-perce-reservation/,
+usa,plumasnf_20180717,"429,507.35",NA,NA,3310,7/17/2018,Jonathan Greenberg,jgreenberg@unr.edu,,
+usa,pref_fia,"1,384.94",usa_pref_fia,Leica ALS50-II,26911,7/30/2011,Patrick Fekety,patrick.fekety@colostate.edu,https://www.fs.usda.gov/rds/archive/Catalog/RDS-2013-0001-2,
+usa,pref_pref,"1,101.70",usa_pref,Leica ALS50-II,26911,7/30/2011,Patrick Fekety,patrick.fekety@colostate.edu,https://www.fs.usda.gov/rds/archive/Catalog/RDS-2013-0001-2,
+usa,sagehen_20190730,"9,673.19",NA,NA,3310,7/30/2019,Jonathan Greenberg,jgreenberg@unr.edu,,
+usa,slatecreek_2008,"1,373.83",usa_slatecreek,Leica ALS50,26911,10/3/2006,Patrick Fekety,patrick.fekety@colostate.edu,https://portal.opentopography.org/lidarDataset?opentopoID=OTLAS.042012.26911.3,
+usa,slatecreek_2010,148.36,usa_slatecreek,Leica ALS50,26911,10/3/2006,Patrick Fekety,patrick.fekety@colostate.edu,https://portal.opentopography.org/lidarDataset?opentopoID=OTLAS.042012.26911.3,
+usa,stanley_stanley,474.85,usa_stanley,Leica ALS50-II,26911,8/5/2010,Patrick Fekety,patrick.fekety@colostate.edu,https://www.idaholidar.org/data/stanley/,
+usa,stjoe,"1,520.96",usa_stjoe,Leica ALS40,26911,9/22/2003,Patrick Fekety,patrick.fekety@colostate.edu,https://portal.opentopography.org/lidarDataset?opentopoID=OTLAS.042012.26911.1,
+usa,stri_serc_Jun2012,884.97,usa_serc,Riegl VQ-480,32618,6/28/2012,,,https://gliht.gsfc.nasa.gov/,"Cook, B. D., L. W. Corp, R. F. Nelson, E. M. Middleton, D. C. Morton, J. T. McCorkel, J. G. Masek, K. J. Ranson, and V. Ly. 2013. NASA Goddard's Lidar, Hyperspectral and Thermal (G-LiHT) airborne imager. Remote Sensing 5:4045-4066, doi:10.3390/rs5084045"
+usa,stri_serc_Mar2012,728.74,NA,Riegl VQ-480,32618,3/22/2012,,,https://gliht.gsfc.nasa.gov/,"Cook, B. D., L. W. Corp, R. F. Nelson, E. M. Middleton, D. C. Morton, J. T. McCorkel, J. G. Masek, K. J. Ranson, and V. Ly. 2013. NASA Goddard's Lidar, Hyperspectral and Thermal (G-LiHT) airborne imager. Remote Sensing 5:4045-4066, doi:10.3390/rs5084045"
+usa,stri_serc_Oct2011,773.32,NA,Riegl VQ-480,32618,10/5/2011,,,https://gliht.gsfc.nasa.gov/,"Cook, B. D., L. W. Corp, R. F. Nelson, E. M. Middleton, D. C. Morton, J. T. McCorkel, J. G. Masek, K. J. Ranson, and V. Ly. 2013. NASA Goddard's Lidar, Hyperspectral and Thermal (G-LiHT) airborne imager. Remote Sensing 5:4045-4066, doi:10.3390/rs5084045"
+usa,tepeecreek_2014,685.14,usa_tepeecreek,Leica ALS50-II,26911,2011,Patrick Fekety,patrick.fekety@colostate.edu,,
+usa,umn_colville_2012,77.44,usa_colville,Leica ALS50,32611,10/9/2012,Patrick Fekety,patrick.fekety@colostate.edu,https://lidarportal.dnr.wa.gov/,
+usa,umn_colville_2014,290.33,usa_colville,Leica ALS60,32611,8/29/2014,Patrick Fekety,patrick.fekety@colostate.edu,https://lidarportal.dnr.wa.gov/,
+usa,umn_colvilleeast_2015,"1,623.67",usa_colville,Leica ALS70 HP,32611,7/25/2015,Patrick Fekety,patrick.fekety@colostate.edu,https://lidarportal.dnr.wa.gov/,
+usa,umn_colvillewest_2015,170.98,usa_colville,Leica ALS70 HP,32611,7/25/2015,Patrick Fekety,patrick.fekety@colostate.edu,https://lidarportal.dnr.wa.gov/,
+usa,umn_mn_falkowski,408,usa_falkowski,Riegl LMS-Q680i,26916,6/30/2011,Michael Falkowski,Michael.Falkowski@nasa.gov,,
+usa,upperlolo,476.66,usa_upperlolo,Leica ALS50,26911,10/3/2006,Patrick Fekety,patrick.fekety@colostate.edu,https://portal.opentopography.org/lidarDataset?opentopoID=OTLAS.042012.26911.3,
+usa,usda_co,"400,243.66",usa_co,Riegl LMS-Q680i,26913,9/20/2014,,,,
+usa,usda_me,"276,878.76",usa_me,Riegl LMS-Q680i,26919,9/3/2014,,,,
+usa,usda_mn,"325,214.67",usa_mn,Riegl LMS-Q680i,26915,8/5/2014,,,,
+usa,usda_or,"381,504.03",usa_or,Riegl LMS-Q680i,26910,6/30/2015,,,,
+usa,usda_panj,"478,117.64",usa_panj,Riegl LMS-Q680i,26918,7/23/2014,,,,
+usa,usda_sc,"379,713.70",usa_sc,Riegl LMS-Q680i,26917,7/17/2014,,,,
+usa,walkerfire_20191007,"39,520.96",NA,NA,3310,10/7/2019,Jonathan Greenberg,jgreenberg@unr.edu,,

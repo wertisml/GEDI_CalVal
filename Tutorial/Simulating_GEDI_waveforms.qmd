@@ -1,0 +1,143 @@
+---
+title: "GEDI Waveform Simulator Workflow"
+author: "Luke Wertis"
+date: "09/08/2025"
+format:
+  html:
+    code-fold: true
+    toc: true
+    toc-title: Table of Contents
+    number-sections: true
+engine: R
+---
+
+## Know Before You Start
+
+- This workflow uses the gedisimulator created by Steven Hancock for the ALS to waveform processing, if there are questions related to how the waveforms are created or if there are specific alterations that you wish to make to this code based on your needs, refer to the [bitbucket page](https://bitbucket.org/StevenHancock/gedisimulator/src/master/).
+
+
+## Starting Your New Project
+
+1. In your project folder in **/data/** create a new folder name **las**, inside this folder, create a new folder for your **.las** projects, this is for when you have multiple sites that need to be run seperetly, but even if thats not the case, you need to create a new folder with the **l.project** name, place your project LiDAR data into this folder, make sure that these are in **.las** format and not **.laz**. 
+
+2. Navigate to the **shiny** folder and find the RDS file that you just created using `makeGEDICalVal.R`, it will be the name of your project along with a date string.
+
+## ALS Preprocessing 
+
+- The following step can be run from the command line or from this notebook, if run from the command line, you will run `Rscript /workspace/GEDI_CalVal/scripts/makeGEDImetrics.R -p {project name and date string}`, if you choose to use this notebook to run your project, replace the project and date string below with yours. 
+
+- This is a wrapper function that handles several different steps at once to reduce the number of steps you need to complete, I will go over each step of the function in case you need or want to make any changes.
+
+## Set-up
+
+- Set your working directory, this should be the `gedisimulator` folder and assign the name of your project based on the name scheme of the `r01.rds` file from the CalVal portion (`project name and date string`).
+
+- We use 6 functions from 3 different R scripts, the `.R` file each function can be found is listed below (beside the corresponding script).
+
+```{r}
+#| eval: false
+#| echo: true
+#| message: true
+#| warning: true
+# This is what users should do
+setwd("/workspace/GEDI_CalVal")
+
+source('scripts/makeGEDImetrics.R') # retile, gediRatListPreProcess, gediRatIterate, makeGEDImetrics
+source("scripts/makeCCPAVDmetrics.R") # combine_metrics
+source("scripts/combineGEDICalValFootprintData.R") # footprint.data
+
+project_name <- "australia_ausplotsforests_20240711"
+```
+
+# Single Command to Process Project
+
+- This is all you need assuming everything has been properly set up to take your rds file and LAS data and generate simulated GEDI waveforms over your plots.
+```{r}
+#| label: Run full process in a single function
+#| eval: false
+#| echo: true
+#| warning: false
+#| fig-cap: Running the full workflow
+makeGEDImetrics(project_name)
+```
+
+# Individual Steps
+
+## Subplot Locations
+
+- Generates a **csv** in `/gedi_database_sims/coords` for the center plot coordinates for the subplots for all **l.projects** and a **txt** file for indivdual **l.projects** in `/gedi_database_sims/coords/plots`.
+
+- If you need to run this step multiple times for the same project, make sure to delete the previous **csv** file.
+
+```{r}
+#| label: obtain footprint/subplot centers
+#| eval: false
+#| echo: true
+#| message: true
+#| warning: false
+#| fig-cap: First step in creating the waveform is knowing where to place it
+system(command = paste0("Rscript /workspace/GEDI_CalVal/scripts/exportGEDICalValFootprints.R -p ", project_name))
+```
+
+## retile
+
+- The second step is `retile`, this function will create or appened to a file named **plot_dir.txt**, which will be located in **gedi_als_processing/scripts/lists** this will have the **project name**, **l.project**, **file path to project site folder**, and the **EPSG** of your .las files.
+
+```{r}
+#| label: retile
+#| eval: false
+#| fig-cap: "obtain all LAS file path names"
+#| warning: false
+#| echo: true
+retile(project_name)
+```
+
+## gediRatListPreProcess
+
+- The third function run is `gediRatListPreProcess` this function, obtains the **l.project** names from the **.csv** file created in part 1, the coordinates from **gedicalval_gedirat_{your project and date string}.csv** is created in **gedi_database_sims/coords/plots**, named **gediCalCoord.{l.project}.txt**. The **plot_dir.txt** from step 2 is then read in and the **.las** files for the individual **l.project** have their min/max x,y,z coordinates obtained. These coordinates are then checked to ensure that there are points from **gediCalCoord.{l.project}.txt** that fall within the bounds, if there are 0 points then the individual **.las** file is ignored. The end result is outputted as **gedi_database_sims/LAS/boundGround.{l.project}.txt** and contains, the exact file path for the individual **.las** files along with the min/max x,y,z coordinates.
+```{r}
+#| label: gediRatListPreProcess
+#| eval: false
+#| fig-cap: "link footprint centers to the LAS files"
+#| warning: false
+#| echo: true
+gediRatListPreProcess(project_name)
+```
+
+## gediRatIterate
+
+- The fourth step, `gediRatIterate` is run, the **l.project** will be run separately and for each **l.project** a new folder in **gedi_database_sims/waveforms/** is created. A shell script is created for each **l.project** which contains the commands for preparing the environment for `gediRat` and `gediMetric`, it will also have the commands needed to create GEDI waveforms over the specified locations. For each **.las** file passed through `gediRat` which converts ALS point cloud into a simulated GEDI waveform, that output is passed through `gediMetric` which takes the simulated GEDI waveform and creates l2a and l2b metrics. The method used to create the waveforms is done through the use of `gediRat`, the method that the individual **l.project** are converted will need to be addressed, which can be done by altering the commands found in the **.sh**.
+```{r}
+#| label: gediRatIterate
+#| eval: false
+#| fig-cap: "Created the simulated waveforms for each file"
+#| warning: false
+#| echo: true
+gediRatIterate(project_name)
+```
+
+## combine_metrics
+
+- The fifth step, `source("scripts/makeCCPAVDmetrics.R")` `combined_metrics` is run, which takes the **.h5** file created from `gediRat` and calculates **Canopy Cover** and **PAVD** and adds that to the `gediMetric` output.
+
+- The output is in `metrics/gedi_metric_csv` which is the all of the .h5 file l2a, l2b, and l4a metrics for each project.
+```{r}
+#| label: combine_metrics
+#| eval: false
+#| fig-cap: "calculate CC and PAVD and bring files together"
+#| warning: false
+#| echo: true
+combine_metrics(project_name)
+```
+
+## footprint.data
+
+- Finally, `system(command = paste0("Rscript /workspace/GEDI_CalVal/scripts/combineGEDICalValFootprintData.R -p ", project ," -i r01 -o r03"))` is run which takes the combined **csv** files generated from step 5 in `metrics/gedi_metric_csv` and adds that to the preexisting **{project name and date string}_r01.rds** and creates a new **.rds** file with an ending of **r03** which contains a new data frame called **fpdata** which contains the simulated GEDI footprint data in the same `shiny` folder. 
+```{r}
+#| label: footprint.data
+#| eval: false
+#| fig-cap: "calculate CC and PAVD and bring files together"
+#| warning: false
+#| echo: true
+footprint.data(project_name)
+```

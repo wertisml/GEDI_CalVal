@@ -1,0 +1,11 @@
+Item,Value
+Source,National Ecological Observation Network
+Project,Abby Road (ABBY)
+Contact,https://data.neonscience.org
+Email,NULL
+Region,"Washington, USA"
+Sampling strategy,"These data are collected at all NEON terrestrial sites at which qualifying smaller woody individuals (individuals with DBH < 10 cm) are present at 10% cover or greater, or when larger individuals (individuals with DBH = 10 cm) are present in 10% or more of designated plots . Functionally, sampling occurs at forested sites, and sites with shrub/scrub vegetation. Plots are 40mx40m with 20mx20m subplots."
+Stem measurement,"Within a plot, all individuals with DBH >= 10 cm are mapped and measured throughout the plot sampling area. Individuals with DBH < 10 cm may be mapped if they are visible to airborne remote-sensing instruments, and if stem density thresholds are met, individuals with DBH < 10 cm may be measured within nested subplots in order to standardize sampling effort across plots."
+Height measurement,Height measured for some individuals
+Location measurement,Stems mapped for all trees >= 10 cm
+Status,Imported

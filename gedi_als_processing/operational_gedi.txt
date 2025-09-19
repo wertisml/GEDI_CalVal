@@ -1,0 +1,300 @@
+This describes the steps used to create GEDI waveforms and metrics to be used for pre-launch calibration.
+
+
+###########################################
+# Setting up the environment
+###########################################
+
+These steps are intended to be run on the UMD geography cluster, gsapp3 or gsapp4. Before it can be run, a number of environment variables must be set and programs compiled.
+
+
+1) Modules
+
+On the cluster, several modules need loading:
+
+module add libgeotiff
+module add gdal
+module add proj4
+module add wine
+module add hdf5/1.8.15/patch1
+
+
+
+2) Environment variables
+
+These environment variables need setting (bash syntax below). Add to ~/.bashrc
+
+export ARCH=`uname -m`
+export GEDIRAT_ROOT="$HOME/src/gediRat"
+export CMPFIT_ROOT="$HOME/src/minpack"
+export GSL_ROOT="/usr/local/lib"
+export LIBCLIDAR_ROOT="$HOME/src/libClidar"
+export HANCOCKTOOLS_ROOT="$HOME/src/headers"
+export GEDIALS_ROOT="$HOME/wordybits/gedi/operational_gedi"
+export HDF5_LIB="/usr/local/hdf5"
+export LASTOOLS="$HOME/src/lastools/bin"
+
+
+
+Where:
+
+GEDIALS_ROOT - is the directory containing this file once you have downloaded it from https://bitbucket.org/umdgedi/gedi_als_processing
+
+GEDIRAT_ROOT - is the directory containing he gedi simulator programs, downloaded from https://bitbucket.org/umdgedi/gedisimulator
+
+CMPFIT_ROOT - is the directory containing the MINPACK optimisation function, downloaded from https://www.physics.wisc.edu/~craigm/idl/cmpfit.html
+
+GSL_ROOT - points to the Gnu Scientific Library, which is best installed by a package manager
+
+LIBCLIDAR_ROOT - is the directory containing Hancock's lidar library, downloaded from https://bitbucket.org/StevenHancock/libclidar
+
+HANCOCKTOOLS_ROOT - contains Hancock's C shorthand tools, downloaded from https://bitbucket.org/StevenHancock/tools
+
+HDF5_LIB - points to the compiled HDF5 library, best installed by a package manager such as Anaconda
+
+LASTOOLS - is the directory containing the lastools executables, downloaded from https://rapidlasso.com/lastools/
+
+
+
+Make sure that the library path is correctly set up:
+
+
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib:/opt/local/lib:/sw/lib:/opt/local/lib:/anaconda/pkgs/libtiff-4.0.2-0/lib:/opt/local/lib:/usr/local/hdf5/lib"
+
+
+3) Executable path
+
+The makefiles are set up to install programs in ~/bin/csh and ~/bin/$ARCH. Make sure that these directories exist and are in the executable path. Add the line below to ~/.bashrc
+
+export PATH="./:$path:$HOME/bin/$ARCH:$HOME/bin/csh:
+
+
+4) Compiling
+
+The C programs must be compiled and all executables need moving to somewhere within your path. Within the $GEDIRAT_ROOT directory, run:
+
+
+# 4.1 gediRat: Simulates GEDI waveforms from ALS .las data
+
+make THIS=gediRat
+make THIS=gediRat install
+
+# 4.2 gediMetric: Processes waveforms, either gediRat simulations, LVIS HDF5 or .lgw files, adds noise and outputs metrics.
+
+make THIS=gediMetric 
+make THIS=gediMetric install
+
+# 4.3 lasPoints: Extracts  point clouds from .las files.
+
+make THIS=lasPoints
+make THIS=lasPoints install
+
+# 4.3 mapLidar: Makes geotiffs of ALS intensity or height and determines bounding boxes.
+
+make THIS=mapLidar
+make THIS=mapLidar install
+
+# 4.4 Put executables into accessible area
+
+cp *.csh ~/bin/csh/
+
+
+
+###########################################
+# Datasets
+###########################################
+
+A list of all lidar datasets is kept as a space delimited text file in:
+
+$GEDIALS_ROOT/scripts/lists/plot_dir.txt
+
+Of the form:
+
+continent lidar_label raw_data_directory
+
+The scripts below use this to match the raw data to a lidar plot label. As new datasets are added append the information to this file and re-run all scripts.
+
+The footprint locations are held in John's database. Export the relevant information as a csv and store in:
+
+/gpfs/data1/vclgp/data/gedi/simulations/coords/gedicalval_gedirat.csv
+
+
+###########################################
+# Pre - Processing
+###########################################
+
+-1) Reproject into metres and EPSG codes
+Some of the data is in feet rather than metres. Some are in projections without EPSG codes.
+
+% Sonoma            $GEDIALS_ROOT/scripts/reproject/projectSonoma.csh &
+% Pfynwald          $GEDIALS_ROOT/scripts/reproject/projectPfynwald.csh
+% Colville          $GEDIALS_ROOT/scripts/reproject/projectColville.csh &
+
+
+0) Unzip and reproject data
+The simulator only works with .las files and not .laz files at the moment. Unzip any .laz files. Separate scripts will be written for each dataset that is delievered as .laz files. .spd is another matter. The database requires each dataset to have a defined EPSG code. Some do not, so these must be reprojected.
+
+%%% Unzip %%%
+%                              module add wine
+
+1) List raw data:
+Generate a list of raw las data.
+
+% list      $GEDIALS_ROOT/scripts/lists/listAll.csh &
+% bounds    $GEDIALS_ROOT/scripts/file_bounds/rawBounds.csh &
+
+
+2) Split large files:
+lasground_new.exe cannot handle files larger than 730 Mybtes. Split the data up into chunks smaller than that.
+
+
+%    module add wine
+%    $GEDIALS_ROOT/scripts/split_large/splitLarge.csh &
+
+
+3) Find the ground:
+Using lastools' lasground_new.exe. Use consistent settings across all sites.
+
+%       module add wine;module add libgeotiff
+%       $GEDIALS_ROOT/scripts/ground/findGround.csh &
+% Tidy  $GEDIALS_ROOT/scripts/ground/clean_empty.csh
+
+
+4) List grounded files
+Make a new list of the files with the ground identified.
+
+%    $GEDIALS_ROOT/scripts/lists/listGround.csh &
+
+
+5) File bounds:
+Generate a new list of the files with ground points identified and the bounds of each las file. This file is the input to the simulator.
+
+%    $GEDIALS_ROOT/scripts/file_bounds/findBounds.csh &
+
+
+6) Subset plots:
+Processing could be speeded by extracting separate las files for each plot subset .
+
+% In      /gpfs/data1/vclgp/data/gedi/imported/clipped
+% modules  module add wine;module add gdal;module add proj4
+% Subset   $GEDIALS_ROOT/scripts/subset/subsetPlots.csh &
+% Zip      $GEDIALS_ROOT/scripts/subset/zipAll.csh
+
+
+
+
+###########################################
+# Processing
+###########################################
+
+
+A script to run everything in the correct order
+
+% In     /gpfs/data1/vclgp/data/gedi/simulations/database
+% Run    $GEDIALS_ROOT/scripts/run_all/runAll.csh
+
+If old waveforms need over-writing, add "-overWrite" to the above. If old metrics only need overwriting add "-writeMetrics". To increase the number of cores used to N add "-nCores N". The input coordinates are controlled by "-database". Directories can be modeified. Add "-help" to see options.
+
+
+The initial measure of the GEDI pulse is in. We can test it's impact.
+
+%  $GEDIALS_ROOT/scripts/run_all/runGEDIpulse.csh
+
+
+
+This is made up of the sub-scripts below, along with status checks.
+
+
+1) Generate waveforms
+Run the simulator over a list of coordinates to generate GEDI waveforms without noise.
+
+% In            /gpfs/data1/vclgp/data/gedi/simulations/waveforms
+% Coordinates   $GEDIALS_ROOT/scripts/simulate/chopPlots.csh
+% Unneded       $GEDIALS_ROOT/scripts/tidy_up/tidyWaveforms.csh
+% Simulate      $GEDIALS_ROOT/scripts/simulate/simulate.csh &
+
+
+2) Extract metrics
+The noise is added here.
+
+% In         /gpfs/data1/vclgp/data/gedi/simulations/metrics
+% Unnoised   $GEDIALS_ROOT/scripts/metrics/metricUnnoised.csh &
+% Noised     $GEDIALS_ROOT/scripts/metrics/metricNoised.csh &
+% Filter     $GEDIALS_ROOT/scripts/metrics/filterMetrics.csh
+
+
+3) Sanity checks
+To spot errors in the above, produce a number of sample waveforms and point clouds per plot and scatterplots of ground finding accuracy.
+
+% In         /gpfs/data1/vclgp/data/gedi/simulations/check_waves
+% Scatter    $GEDIALS_ROOT/scripts/check/plotScatter.csh
+% Typeset    arrange_graphs.csh -inRoot checkGround;create_many.csh -inRoot checkGround
+% Waves      $GEDIALS_ROOT/scripts/check/plotWaves.csh -nPer 4
+% Typeset    arrange_graphs.csh -inRoot gediWave;create_many.csh -inRoot gediWave
+% Points     $GEDIALS_ROOT/scripts/check/plotPoints.csh -nPer 4
+% Typeset    arrange_graphs.csh -inRoot checkPoints;create_many.csh -inRoot checkPoints
+
+
+
+
+###########################################
+# LVIS, currently a bit difference from ALS
+###########################################
+
+0) Plot lists:
+
+%    /Users/dill/wordybits/gedi/operational_gedi/scripts/lists/lvis_plots.txt
+
+
+1) Extract waveforms
+
+% In        /gpfs/data1/vclgp/data/gedi/simulations/lvis_wave
+% Extract   $GEDIALS_ROOT/scripts/lvis/extractLVIS.csh &
+
+
+2) Extract metrics
+The noise is added here.
+
+% In         /gpfs/data1/vclgp/data/gedi/simulations/metrics
+% List       $GEDIALS_ROOT/scripts/lists/listLVIS.csh &
+% Unnoised   $GEDIALS_ROOT/scripts/metrics/lvisUnnoised.csh &
+% Noised     $GEDIALS_ROOT/scripts/metrics/lvisNoised.csh &
+% Filter     $GEDIALS_ROOT/scripts/metrics/filterLVIS.csh
+
+
+
+
+###########################################
+# Mapping and sub-setting data
+###########################################
+
+People may want to examine the raw ALS datasets around plots in more detail. For this use the plot level database.
+
+0) Determine if EPSGs are constant
+% In     the directory where the raw data arrives
+%        module add wine
+% EPSG   /home/hancocks/wordybits/gedi/operational_gedi/scripts/epsg/findEPSG.csh
+
+
+1) Map all data
+To check that the data makes sense, 
+
+% In    /gpfs/data1/vclgp/data/gedi/simulations/experiments/maps
+% Map   $GEDIALS_ROOT/scripts/map/mapAll.csh &
+
+
+X) Make shapefiles of all ALS coverage
+
+% In    /gpfs/data1/vclgp/data/gedi/simulations/experiments/als_shapes
+% Map   $GEDIALS_ROOT/scripts/map/makeShapes.csh &
+
+
+1) List
+Generate a list of which ALS files overlap which footprints
+
+
+2)
+
+
+
+

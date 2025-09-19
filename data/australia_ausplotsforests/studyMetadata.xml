@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project ID="australia_ausplotsforests">
+  <gedi.metadata>
+    <source>Queensland Department of Science Information Technology and Innovation</source>
+    <project>Ausplots Forests</project>
+    <contact>Ben Sparrow, John Armston</contact>
+    <email>ben.sparrow@adelaide.edu.au, armston@umd.edu</email>
+    <region>Australia</region>
+    <sampling.strategy>100mx100m stem mapped plots</sampling.strategy>
+    <stem.measurement>Stem diameter measure with diameter tape at 1.3m for all stems &gt;10 cm</stem.measurement>
+    <height.measurement>Height measured for all trees &gt;10 cm</height.measurement>
+    <location.measurement>Unknown</location.measurement>
+  </gedi.metadata>
+  <submitted.metadata>Australia<key><study.id>Australia</study.id><email.submit>ben.sparrow@adelaide.edu.au</email.submit><institution>The University of Adelaide</institution><name.contact>Ben Sparrow</name.contact><email.contact>ben.sparrow@adelaide.edu.au</email.contact><citation>Wood SW, Prior LD, Stephens HC, and Bowman DMJS (2015). Macroecology of Australian Tall Eucalypt Forests: Baseline Data from a Continental-Scale Permanent Plot Network. PLoS ONE 10(9): e0137811. doi:10.1371/journal.pone.0137811; 
+Wood, S, Stephens, H, Foulkes, J, Ebsworth, E, and Bowman, D (2012). AusPlots Forests Survey Protocols Manual, Version 1.6. Terrestrial Ecosystem Research Network (TERN) and University of Tasmania.
+http://aekos.org.au/collection/adelaide.edu.au/TAF</citation><affiliation.details>NA</affiliation.details><submit.timestamp>2/8/2019 15:42</submit.timestamp></key><field><field.restrictions>Some restrictions on use and sharing</field.restrictions><field.restrictions.details>Data is licenced as CC4by 
+Wood SW, Bowman DMJS, Stephens HC, TERN AusPlots Forests Monitoring Network (2016). TERN AusPlots Forests Monitoring Network - Large Tree Survey - 2012-2015, Version 4 /2016. Persistent URL: http://aekos.org.au/collection/adelaide.edu.au/TAF. TERN AEKOS, rights owned by The University of Tasmania and The University of Adelaide. Accessed [dd mmm yyyy, e.g., 01 Jan 2016]</field.restrictions.details><field.fos.sharing>Yes</field.fos.sharing><field.contact.fos>NA</field.contact.fos><veg.type>tropical evergreen broadleaf</veg.type><country>Australia</country><study.area>Australia</study.area><field.date>2/13/2015</field.date><d.stem.protocol>Record the TreeID for each tree &gt;10cm inside the subplot. Live trees are given a sequential number 1-999. Dead trees in the initial survey are recorded as 'D' and tree ferns are recorded as 'DA' (i.e. Dicksonia Antarctica, a Tasmanian tree fern).
+Record the tree status as either dead (D), Alive (A) or Resprouting (R). Resprouting trees have a dead trunk, but have coppicing live foliage sprouting from the base.
+Record the genus and species of each tree &gt;10cm DBH using a six letter code with three letters from the genus and three letters from the species (i.e. Eucalyptus regnans is EucReg).
+Record the species and six letter code used in the Plot Establishment Data Sheet.
+For trees that cannot be identified, take a photo and a well labelled voucher specimen for identification at the State Herbaria. Record unidentified trees on the Datasheet as SPP001, SPP002, SPP003 etc. and make a note in the Plot Establishment Data Sheet.
+</d.stem.protocol><mindiam>&gt;10cm DBH</mindiam><field.coord.sys>Lat / Long</field.coord.sys><p.layout>Other</p.layout><p.layout.details>48 x 1 ha plots were fully surveyed</p.layout.details><p.shape>Square</p.shape><h.t.meas>Measured</h.t.meas><biomass.method>Abovground biomass was not estimated</biomass.method><biomass.equation>NA</biomass.equation><tree.id>Yes</tree.id><tree.id.level>Species</tree.id.level><tree.status>Yes</tree.status><tree.status.details>0 = dead</tree.status.details><tree.wood.dens>No</tree.wood.dens><data.level>Information on individual trees</data.level><tree.map>Yes</tree.map><notes>NA</notes></field><lidar><lidar.share>No</lidar.share><lidar.restrictions>NA</lidar.restrictions><lidar.restrictions.details>NA</lidar.restrictions.details><lidar.fos.sharing>NA</lidar.fos.sharing><lidar.fos.contact>NA</lidar.fos.contact><lidar.date>NA</lidar.date><lidar.sensor>NA</lidar.sensor><lidar.sensor.write>NA</lidar.sensor.write><lidar.coord.sys>NA</lidar.coord.sys><lidar.proj>NA</lidar.proj><lidar.alt>NA</lidar.alt><lidar.classification>NA</lidar.classification><lidar.qc>NA</lidar.qc><lidar.qc.details>NA</lidar.qc.details><lidar.waveform>NA</lidar.waveform></lidar></submitted.metadata>
+</project>

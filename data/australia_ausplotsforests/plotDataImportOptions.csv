@@ -1,0 +1,4 @@
+name,plotData.csv
+header,TRUE
+skip,0
+separator,";"

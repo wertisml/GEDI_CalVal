@@ -1,0 +1,7 @@
+"l.instr","instr.name","instr.type","max.returns","beam.div","wavelength"
+"r01","riegl vq-480","discrete return",6,0.3,1064
+"r02","riegl lms-q560","waveform",6,NA,1550
+"r03","riegl lms-q680i","waveform",6,NA,1550
+"o01","optech gemini","discrete return",4,NA,1064
+"l01","leica als50","discrete return",4,NA,1064
+"unk","unknown",NA,NA,NA,NA

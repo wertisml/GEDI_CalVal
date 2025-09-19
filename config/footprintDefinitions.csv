@@ -1,0 +1,66 @@
+variable,units,group,type,has_methods,essential,label,minValue,maxValue,allowableValues,description
+g.x,m,footprint,numeric,FALSE,FALSE,footprint center easting,NA,NA,NA,footprint center easting UTM coordinate
+g.y,m,footprint,numeric,FALSE,FALSE,footprint center northing,NA,NA,NA,footprint center northing UTM coordinate
+g.edge,NA,footprint,numeric,FALSE,FALSE,footprint edge flag,0,1,"0,1","footprint edge flag (1=interior of plot, 0=edge of plot)"
+g.edge.frac,NA,footprint,numeric,FALSE,FALSE,footprint edge fraction,0,1,NA,footprint edge fraction
+g.agb,kg,footprint,numeric,FALSE,FALSE,footprint aboveground biomass,0,NA,NA,footprint aboveground biomass
+g.agb.valid,NA,footprint,numeric,FALSE,FALSE,valid biomass prediction,0,1,"0,1","footprint valid allometric prediction flag (1=TRUE, 0=FALSE)"
+g.agbd.ha,Mg/ha,footprint,numeric,FALSE,FALSE,footprint aboveground biomass density,0,NA,NA,footprint aboveground biomass density
+g.agbd.ha.sd,Mg/ha,footprint,numeric,FALSE,FALSE,footprint aboveground biomass density standard deviation,0,NA,NA,footprint aboveground biomass density standard deviation
+g.sn,n,footprint,numeric,FALSE,FALSE,footprint stem number,0,NA,NA,footprint stem number
+g.snd.ha,n/ha,footprint,numeric,FALSE,FALSE,footprint stem number density,0,NA,NA,footprint stem number density
+g.snd.ha.sd,n/ha,footprint,numeric,FALSE,FALSE,footprint stem number density standard deviation,0,NA,NA,footprint stem number density standard deviation
+g.sba,m2,footprint,numeric,FALSE,FALSE,footprint stand basal area,0,NA,NA,footprint stand basal area
+g.sba.ha,m2/ha,footprint,numeric,FALSE,FALSE,footprint stand basal area density,0,NA,NA,footprint stand basal area density
+g.sba.ha.sd,m2/ha,footprint,numeric,FALSE,FALSE,footprint stand basal area standard deviation,0,NA,NA,footprint stand basal area standard deviation
+g.wsg.ba,g/cm3,footprint,numeric,FALSE,FALSE,footprint wood specific gravity,0,1,NA,footprint wood specific gravity
+g.wsg.ba.sd,g/cm3,footprint,numeric,FALSE,FALSE,footprint wood specific gravity standard deviation,0,NA,NA,footprint wood specific gravity standard deviation
+g.h.t.max,m,footprint,numeric,FALSE,FALSE,footprint maximum tree height,0,NA,NA,footprint maximum tree height
+g.clump,NA,footprint,numeric,FALSE,FALSE,footprint clump ID,0,NA,NA,footprint clump ID
+g.track,NA,footprint,numeric,FALSE,FALSE,footprint track ID,0,NA,NA,footprint track ID
+g.block,NA,footprint,numeric,FALSE,FALSE,footprint block ID,0,NA,NA,footprint block ID      
+g.nfootprints,n,footprint,numeric,FALSE,FALSE,number of footprints along-track,1,NA,NA,number of footprints along-track
+g.ntracks,n,footprint,numeric,FALSE,FALSE,number of tracks,1,NA,NA,number of tracks
+g.colocation,NA,footprint,numeric,FALSE,FALSE,footprint-plot colocation error,0,NA,NA,footprint-plot colocation error
+gHeight,m,footprint,numeric,FALSE,FALSE,ground elevation from Gaussian fitting,0,NA,NA,ground elevation from Gaussian fitting
+maxGround,m,footprint,numeric,FALSE,FALSE,ground elevation from lowest maximum,0,NA,NA,ground elevation from lowest maximum
+inflGround,m,footprint,numeric,FALSE,FALSE,ground elevation from inflection points,0,NA,NA,ground elevation from inflection points
+signaltop,m,footprint,numeric,FALSE,FALSE,elevation of first point above noise,0,NA,NA,elevation of first pint above noise (may include noise tracking)
+signalbottom,m,footprint,numeric,FALSE,FALSE,elevation of last return above noise,0,NA,NA,elevation of last return above noise (may include noise tracking)
+cover,NA,footprint,numeric,FALSE,FALSE,canopy cover (fraction) from area of Gaussian fitted ground,0,1,NA,canopy cover (fraction) from area of Gaussian fitted ground. Uses rho_v=0.57 and rho_g=0.4
+leadingedgeext,m,footprint,numeric,FALSE,FALSE,leading edge extent,0,NA,NA,leading edge extent from Lefsky et al (2007)
+trailingedgeextent,m,footprint,numeric,FALSE,FALSE,trailing edge extent,0,NA,NA,trailing edge extent from Lefsky et al (2007)
+rhGauss0-100,m,footprint,numeric,FALSE,FALSE,"RH metrics, 0%-100%, using ground from Gaussian fitting",NA,NA,NA,"RH metrics, 0%-100%, using ground from Gaussian fitting"
+rhMax0-100,m,footprint,numeric,FALSE,FALSE,"RH metrics, 0%-100%, using ground from lowest maximum",NA,NA,NA,"RH metrics, 0%-100%, using ground from lowest maximum"
+rhInfl0-100,m,footprint,numeric,FALSE,FALSE,"RH metrics, 0%-100%, using ground from inflection points",NA,NA,NA,"RH metrics, 0%-100%, using ground from inflection points"
+gaussHalfCov,NA,footprint,numeric,FALSE,FALSE,canopy cover (fraction) from double the energy beneath the Gaussian ground,0,1,NA,canopy cover (fraction) from double the energy beneath the Gaussian ground. Uses rho_v=0.57 and rho_g=0.4
+maxHalfCov,NA,footprint,numeric,FALSE,FALSE,canopy cover (fraction) from double the energy beneath the lowest maximum ground,0,1,NA,canopy cover (fraction) from double the energy beneath the lowest maximum ground. Uses rho_v=0.57 and rho_g=0.4
+infHalfCov,NA,footprint,numeric,FALSE,FALSE,canopy cover (fraction) from double the energy beneath the inflection point ground,0,1,NA,canopy cover (fraction) from double the energy beneath the inflection point ground. Uses rho_v=0.57 and rho_g=0.4
+bayHalfCov,NA,footprint,numeric,FALSE,FALSE,"canopy cover (fraction) from double the energy beneath the experimental ""Bayesian"" ground",0,1,NA,"canopy cover (fraction) from double the energy beneath the experimental ""Bayesian"" ground. Uses rho_v=0.57 and rho_g=0.4"
+lon,m,footprint,numeric,FALSE,FALSE,footprint center longitude in projection of ALS data,NA,NA,NA,footprint center longitude in projection of ALS data
+lat,m,footprint,numeric,FALSE,FALSE,footprint center latitude in projection of ALS data,NA,NA,NA,footprint center latitude in projection of ALS data
+waveEnergy,NA,footprint,numeric,FALSE,FALSE,total energy within waveform,NA,NA,NA,total energy within waveform (will be 1 scaled by noise for simulations)
+blairSense,NA,footprint,numeric,FALSE,FALSE,Blair's sensitivity metric,0,1,NA,Blair's sensitivity metric. Canopy cover at which this SNR would have 90% chance of detecting ground (does not account for rho_v/rho_g)
+FHD,NA,footprint,numeric,FALSE,FALSE,Foliage height diversity,0,NA,NA,Foliage height diversity
+niM2,m2,footprint,numeric,FALSE,FALSE,Wenge Ni's biomass metric 2,NA,NA,NA,"Wenge Ni's biomass metric, equal to the sum of the RH metrics to the power of 2 (unpublished)"
+niM2.1,NA,footprint,numeric,FALSE,FALSE,Wenge Ni's biomass metric 2.1,NA,NA,NA,"Wenge Ni's biomass metric, equal to the sum of the RH metrics to the power of 2.1 (unpublished)"
+waveID,NA,footprint,character,FALSE,FALSE,waveform label,NA,NA,NA,"waveform label, relates to plot name and footprint number"
+trueground,m,footprint,numeric,FALSE,FALSE,ground elevation from ALS,NA,NA,NA,ground elevation from ALS. Center of gravity of ground points within footprint
+truetop,m,footprint,numeric,FALSE,FALSE,elevation of highest point of waveform,NA,NA,NA,"elevation of highest point of waveform, without noise. Includes pulse blurring"
+groundslope,deg,footprint,numeric,FALSE,FALSE,effective ground slope,NA,NA,NA,"effective ground slope, from width of ground return. Includes roughness"
+ALScover,NA,footprint,numeric,FALSE,FALSE,canopy cover from ALS data,0,1,NA,canopy cover from ALS data. Uses rho_v=0.57 and rho_g=0.4
+rhReal0-100,m,footprint,numeric,FALSE,FALSE,"RH metrics, 0%-100%, using ""true"" ground from ALS data",NA,NA,NA,"RH metrics, 0%-100%, using ""true"" ground from ALS data"
+groundOverlap,NA,footprint,numeric,FALSE,FALSE,fraction of ground return overlapping with canopy return,0,1,NA,fraction of ground return overlapping with canopy return. A measure of understory
+groundMin,NA,footprint,numeric,FALSE,FALSE,depth of minimum between ground and canopy return,NA,NA,NA,depth of minimum between ground and canopy return. A measure of understory
+groundInfl,NA,footprint,numeric,FALSE,FALSE,dy2/dx2 of inflection point between ground and canopy return,NA,NA,NA,dy2/dx2 of inflection point between ground and canopy return. A measure of understory
+pointDense,n/m2,footprint,numeric,FALSE,FALSE,average ALS point density within GEDI footprint,0,NA,NA,average ALS point density within GEDI footprint
+beamDense,n/m2,footprint,numeric,FALSE,FALSE,average ALS beam density within GEDI footprint,0,NA,NA,average ALS beam density within GEDI footprint
+pSigma,m,footprint,numeric,FALSE,FALSE,"GEDI system pulse width, sigma",0,NA,NA,"GEDI system pulse width, sigma"
+fSigma,m,footprint,numeric,FALSE,FALSE,"GEDI footprint width, sigma",0,NA,NA,"GEDI footprint width, sigma"
+linkM,db,footprint,numeric,FALSE,FALSE,link margin if noise is added,NA,NA,NA,link margin if noise is added
+linkCov,NA,footprint,numeric,FALSE,FALSE,canopy cover at which linkM is true,0,1,NA,canopy cover at which linkM is true
+filename,NA,footprint,character,FALSE,FALSE,name of input waveform file,NA,NA,NA,name of input waveform file
+noise,NA,footprint,character,FALSE,FALSE,noise status,NA,NA,"unnoised,noised",noise status (unnoised or noised)
+power,mJ,footprint,numeric,FALSE,FALSE,beam power,3.6,9,"3.6,9.0",beam power (3.6 or 9.0)
+obstime,NA,footprint,character,FALSE,FALSE,observation time,NA,NA,"Day,Night",observation time (Day or Night)
+zenith,deg,footprint,numeric,FALSE,FALSE,angle between beam and the normal to the surface,0,90,NA,angle between beam and the normal to the surface

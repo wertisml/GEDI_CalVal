@@ -1,0 +1,26 @@
+var_in,method,unit_in,var_out,notes
+plot,NA,NA,plot,NA
+survey,NA,NA,survey,NA
+date,NA,NA,date,NA
+longitude,NA,deg,longitude,NA
+latitude,NA,deg,latitude,NA
+major_axis,NA,m,p.majoraxis,NA
+minor_axis,NA,m,p.minoraxis,NA
+orientation,NA,deg,p.orientation,NA
+shape,NA,NA,p.shape,NA
+origin,NA,NA,p.origin,NA
+plotarea_ha,NA,ha,p.area,NA
+p.geom,NA,m,p.geom,NA
+p.epsg,NA,NA,p.epsg,NA
+id,NA,NA,tree,NA
+species,NA,NA,species,NA
+status,NA,NA,status,NA
+ht,NA,m,h.t,NA
+subplotdmin,NA,cm,sp.mindiam,NA
+st_x,NA,m,x,NA
+st_y,NA,m,y,NA
+d1,NA,cm,d.stem,Check if taper corrected
+allom.key,NA,NA,allom.key,NA
+l.epsg,NA,NA,l.epsg,NA
+subplot,NA,NA,subplot,NA
+sp.geom,NA,NA,sp.geom,NA
