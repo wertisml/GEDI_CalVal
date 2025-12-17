@@ -93,9 +93,9 @@ raw
 }
 
 manipulate_plot <- function(raw) {
-  opts <- read_data_raw_import_options("data/usa_neonabby/plotDataImportOptions.csv")
+  opts <- read_data_raw_import_options("data/A_Practice/plotDataImportOptions.csv")
   
-  raw<- read_csv("data/usa_neonabby/plotData2020-08.csv", header=opts$header, skip=opts$skip, na.strings=opts$na.strings)
+  raw<- read_csv("data/A_Practice/plotData2020-08.csv", header=opts$header, skip=opts$skip, na.strings=opts$na.strings)
   
   # Format date
   raw$date <- as.Date(raw$date, format='%Y-%m-%d')
@@ -151,8 +151,8 @@ manipulate_tree <- function(raw) {
   raw$species[raw$species=="Unknown plant" & !is.na(raw$species)] <- NA
   
   # Add species data to the tree data. Includes allom.key
-  opts <- read_data_raw_import_options("data/usa_neonabby/speciesDataImportOptions.csv")
-  species.raw <- read_csv("data/usa_neonabby/speciesData.csv",
+  opts <- read_data_raw_import_options("data/A_Practice/speciesDataImportOptions.csv")
+  species.raw <- read_csv("data/A_Practice/speciesData.csv",
                           header=opts$header, skip=opts$skip, na.strings=opts$na.strings)
   raw <- merge(raw, species.raw, by.x='taxonID', by.y=opts$key, all.x=TRUE, all.y=FALSE)
   
