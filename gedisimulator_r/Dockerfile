@@ -57,12 +57,20 @@ RUN git clone https://bitbucket.org/StevenHancock/libclidar.git && \
     git clone https://bitbucket.org/StevenHancock/tools.git
 
 # Download and extract cmpfit
-RUN mkdir -p $CMPFIT_ROOT && \
-    cd $CMPFIT_ROOT && \
-    wget https://www.physics.wisc.edu/~craigm/idl/down/cmpfit-1.2.tar.gz && \
+#RUN mkdir -p $CMPFIT_ROOT && \
+#    cd $CMPFIT_ROOT && \
+#    wget https://www.physics.wisc.edu/~craigm/idl/down/cmpfit-1.2.tar.gz && \
+#    tar -xvf cmpfit-1.2.tar.gz && \
+#    mv cmpfit-1.2/* $CMPFIT_ROOT/ && \
+#    rm cmpfit-1.2.tar.gz
+
+# Download and extract cmpfit
+RUN mkdir -p $CMPFIT_ROOT
+COPY cmpfit-1.2.tar.gz $CMPFIT_ROOT/
+RUN cd $CMPFIT_ROOT && \
     tar -xvf cmpfit-1.2.tar.gz && \
     mv cmpfit-1.2/* $CMPFIT_ROOT/ && \
-    rm cmpfit-1.2.tar.gz
+    rm -rf cmpfit-1.2 cmpfit-1.2.tar.gz
 
 # Clone GEDI simulator and build tools
 RUN git clone https://StevenHancock@bitbucket.org/StevenHancock/gedisimulator.git && \
