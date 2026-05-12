@@ -55,7 +55,7 @@ RUN rm -rf libclidar tools voxelate
 # Clone repositories
 RUN git clone https://bitbucket.org/StevenHancock/libclidar.git && \
     git clone https://bitbucket.org/StevenHancock/tools.git
-
+    
 # Download and extract cmpfit
 #RUN mkdir -p $CMPFIT_ROOT && \
 #    cd $CMPFIT_ROOT && \
@@ -64,13 +64,15 @@ RUN git clone https://bitbucket.org/StevenHancock/libclidar.git && \
 #    mv cmpfit-1.2/* $CMPFIT_ROOT/ && \
 #    rm cmpfit-1.2.tar.gz
 
-# Download and extract cmpfit
-RUN mkdir -p $CMPFIT_ROOT
-COPY cmpfit-1.2.tar.gz $CMPFIT_ROOT/
-RUN cd $CMPFIT_ROOT && \
-    tar -xvf cmpfit-1.2.tar.gz && \
-    mv cmpfit-1.2/* $CMPFIT_ROOT/ && \
-    rm -rf cmpfit-1.2 cmpfit-1.2.tar.gz
+# Download and extract cmpfit via GitHub sparse checkout
+# This replaces the broken wisc.edu link and the local COPY command
+RUN git clone --filter=blob:none --no-checkout https://github.com/sthancock/gedisimulator.git $CMPFIT_ROOT && \
+    cd $CMPFIT_ROOT && \
+    git sparse-checkout init --cone && \
+    git sparse-checkout set packages/cmpfit-1.2 && \
+    git checkout && \
+    mv packages/cmpfit-1.2/* . && \
+    rm -rf packages .git
 
 # Clone GEDI simulator and build tools
 RUN git clone https://StevenHancock@bitbucket.org/StevenHancock/gedisimulator.git && \
@@ -93,7 +95,7 @@ RUN git clone https://StevenHancock@bitbucket.org/StevenHancock/gedisimulator.gi
     mv lgw2hdf /usr/bin/ && \
     make THIS=fitTXpulse && \
     mv fitTXpulse /usr/bin/
-
+    
 # Copy renv files and restore R packages
 WORKDIR /root/renv
 COPY *.R ./
